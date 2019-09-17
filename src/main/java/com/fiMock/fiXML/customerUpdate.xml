@@ -1,0 +1,388 @@
+        <!--Customer Update Request-->
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
+            <soapenv:Header/>
+            <soapenv:Body>
+                <web:executeService>
+                    <arg_0_0>-->
+
+        <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+            <Body>
+                <executeCustUpdateService xmlns="http://webservice.fiusb.ci.infosys.com">
+                    <arg_0_0 xmlns="">
+                        <![CDATA[
+                <FIXML xsi:schemaLocation="http://www.finacle.com/fixml RetCustMod.xsd" xmlns="http://www.finacle.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Header>
+                    <RequestHeader>
+                        <MessageKey>
+                            <RequestUUID>Req_1561731915070</RequestUUID>
+                            <ServiceRequestId>RetCustMod</ServiceRequestId>
+                            <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                            <ChannelId>CRM</ChannelId>
+                            <LanguageId></LanguageId>
+                        </MessageKey>
+                        <RequestMessageInfo>
+                            <BankId>01</BankId>
+                            <TimeZone></TimeZone>
+                            <EntityId></EntityId>
+                            <EntityType></EntityType>
+                            <ArmCorrelationId></ArmCorrelationId>
+                            <MessageDateTime>2019-06-28T15:25:15.070</MessageDateTime>
+                        </RequestMessageInfo>
+                        <Security>
+                            <Token>
+                                <PasswordToken>
+                                    <UserId></UserId>
+                                    <Password></Password>
+                                </PasswordToken>
+                            </Token>
+                            <FICertToken></FICertToken>
+                            <RealUserLoginSessionId></RealUserLoginSessionId>
+                            <RealUser></RealUser>
+                            <RealUserPwd></RealUserPwd>
+                            <SSOTransferToken></SSOTransferToken>
+                        </Security>
+                    </RequestHeader>
+                </Header>
+                    <Body>
+                        <RetCustModRequest>
+                            <RetCustModRq>
+                                <RetCustModMainData>
+                                    <CustModData>
+                                        <CustId>4243907</CustId>
+                                        <FirstName>BUHARI</FirstName>
+                                        <LastName>LAWALI</LastName>
+                                        <MiddleName></MiddleName>
+                                        <Salutation>MR</Salutation>
+                                        <MaidenNameOfMother>ASMAU LAWAL</MaidenNameOfMother>
+                                        <ShortName>BUHARI</ShortName>
+                                        <DateOfBirth>1990-01-01T00:00:00.000</DateOfBirth>
+                                        <Occupation>STUDT</Occupation>
+                                        <Gender>M</Gender>
+                                        <RetAddrModDtls>
+                                            <AddrLine1>NO. 04, KASHARUWWA AREA, BUNGUDU, ZAMFARA NIGERIA</AddrLine1>
+                                            <AddrLine2></AddrLine2>
+                                            <AddrCategory>Mailing</AddrCategory>
+                                            <HoldMailFlag>N</HoldMailFlag>
+                                            <PrefFormat>FREE_TEXT_FORMAT</PrefFormat>
+                                            <addressID>17064021</addressID>
+                                            <state>ZM</state>
+                                            <addressID>17064021</addressID>
+                                            <city>BGD</city>
+                                            <country>NG</country>
+                                        </RetAddrModDtls>
+
+                                            <PhoneEmailModData>
+                                                <PhoneNum>234(0)08137950629</PhoneNum>
+                                                <PhoneNumCityCode>0</PhoneNumCityCode>
+                                                <PhoneNumCountryCode>234</PhoneNumCountryCode>
+                                                <PhoneNumLocalCode>08137950629</PhoneNumLocalCode>
+                                                <PhoneOrEmail>PHONE</PhoneOrEmail>
+                                                <Email></Email>
+                                                <PrefFlag>Y</PrefFlag>
+                                                <StartDt>2019-06-28T15:25:15.070</StartDt>
+                                                <PhoneEmailtType>COMM1</PhoneEmailtType>
+
+                                                    <PhoneEmailID>49580782</PhoneEmailID>
+
+                                            </PhoneEmailModData>
+
+                                            <PhoneEmailModData>
+                                                <PhoneNum></PhoneNum>
+                                                <PhoneNumCityCode> </PhoneNumCityCode>
+                                                <PhoneNumCountryCode></PhoneNumCountryCode>
+                                                <PhoneNumLocalCode></PhoneNumLocalCode>
+                                                <PhoneOrEmail>EMAIL</PhoneOrEmail>
+                                                <Email>NOEMAIL@FCMB.COM</Email>
+                                                <PrefFlag>Y</PrefFlag>
+                                                <StartDt>2019-06-28T15:25:15.070</StartDt>
+                                                <PhoneEmailtType>COMML</PhoneEmailtType>
+
+                                                    <PhoneEmailID>49580783</PhoneEmailID>
+
+                                            </PhoneEmailModData>
+
+                                        <Sector>1800</Sector>
+                                        <SubSector>1802</SubSector>
+                                    </CustModData>
+                                </RetCustModMainData>
+                                <RetailCustModRelatedData>
+                                    <DemographicModData>
+                                        <DemographicType>CURRENT_EMPLOYMENT</DemographicType>
+                                        <EmailWork></EmailWork>
+                                        <NameOfEmployer></NameOfEmployer>
+                                        <EmploymentStatus></EmploymentStatus>
+                                        <PhoneCell></PhoneCell>
+
+
+                                        <Nationality></Nationality>
+                                        <MaritalStatus></MaritalStatus>
+                                    </DemographicModData>
+                                    <DemographicModData>
+                                        <DemographicType>Account</DemographicType>
+                                        <EmailWork></EmailWork>
+                                        <NameOfEmployer></NameOfEmployer>
+                                        <EmploymentStatus></EmploymentStatus>
+                                        <PhoneCell></PhoneCell>
+
+
+                                        <Nationality></Nationality>
+                                        <MaritalStatus></MaritalStatus>
+                                    </DemographicModData>
+                                </RetailCustModRelatedData>
+                            </RetCustModRq>
+                        </RetCustModRequest>
+                    </Body>
+                </FIXML>
+                ]]>
+                    </arg_0_0>
+                </executeCustUpdateService>
+            </Body>
+        </Envelope>
+                <!--</arg_0_0>
+                    </web:executeService>
+                </soapenv:Body>
+            </soapenv:Envelope>-->
+
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
+            <soapenv:Header/>
+            <soapenv:Body>
+                <web:executeService>
+                    <arg_0_0>-->
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+<Body>
+    <executeService xmlns="http://webservice.fiusb.ci.infosys.com">
+        <arg_0_0 xmlns="">
+            <![CDATA[
+                <FIXML xsi:schemaLocation="http://www.finacle.com/fixml RetCustMod.xsd" xmlns="http://www.finacle.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Header>
+                    <RequestHeader>
+                        <MessageKey>
+                            <RequestUUID>Req_1561731907400</RequestUUID>
+                            <ServiceRequestId>RetCustMod</ServiceRequestId>
+                            <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                            <ChannelId>CRM</ChannelId>
+                            <LanguageId></LanguageId>
+                        </MessageKey>
+                        <RequestMessageInfo>
+                            <BankId>01</BankId>
+                            <TimeZone></TimeZone>
+                            <EntityId></EntityId>
+                            <EntityType></EntityType>
+                            <ArmCorrelationId></ArmCorrelationId>
+                            <MessageDateTime>2019-06-28T15:25:07.400</MessageDateTime>
+                        </RequestMessageInfo>
+                        <Security>
+                            <Token>
+                                <PasswordToken>
+                                    <UserId></UserId>
+                                    <Password></Password>
+                                </PasswordToken>
+                            </Token>
+                            <FICertToken></FICertToken>
+                            <RealUserLoginSessionId></RealUserLoginSessionId>
+                            <RealUser></RealUser>
+                            <RealUserPwd></RealUserPwd>
+                            <SSOTransferToken></SSOTransferToken>
+                        </Security>
+                    </RequestHeader>
+                </Header>
+                    <Body>
+                        <RetCustModRequest>
+                            <RetCustModRq>
+                                <RetCustModMainData>
+                                    <CustModData>
+                                        <CustId>6208227</CustId>
+                                        <FirstName>SAMUEL</FirstName>
+                                        <LastName>DEHINBO</LastName>
+                                        <MiddleName>SEUN</MiddleName>
+                                        <Salutation>MR</Salutation>
+                                        <MaidenNameOfMother>OLUYEMISI</MaidenNameOfMother>
+                                        <ShortName>SAMUEL</ShortName>
+                                        <DateOfBirth>1989-09-19T00:00:00.000</DateOfBirth>
+                                        <Occupation>BUS</Occupation>
+                                        <Gender>M</Gender>
+                                        <RetAddrModDtls>
+                                            <AddrLine1>13, AYOADE  STREET, BAJULAIYE  SHOMOLU LAGOS.</AddrLine1>
+                                            <AddrLine2>NIGERIA</AddrLine2>
+                                            <AddrCategory>Mailing</AddrCategory>
+                                            <HoldMailFlag>N</HoldMailFlag>
+                                            <PrefFormat>FREE_TEXT_FORMAT</PrefFormat>
+                                            <addressID>33406488</addressID>
+                                            <state>LG</state>
+                                            <addressID>33406488</addressID>
+                                            <city>SMK</city>
+                                            <country>NG</country>
+                                        </RetAddrModDtls>
+
+                                            <PhoneEmailModData>
+                                                <PhoneNum>234(0)09098657641</PhoneNum>
+                                                <PhoneNumCityCode>0</PhoneNumCityCode>
+                                                <PhoneNumCountryCode>234</PhoneNumCountryCode>
+                                                <PhoneNumLocalCode>09098657641</PhoneNumLocalCode>
+                                                <PhoneOrEmail>PHONE</PhoneOrEmail>
+                                                <Email></Email>
+                                                <PrefFlag>Y</PrefFlag>
+                                                <StartDt>2019-06-28T15:25:07.400</StartDt>
+                                                <PhoneEmailtType>COMM1</PhoneEmailtType>
+
+                                                    <PhoneEmailID>72192827</PhoneEmailID>
+
+                                            </PhoneEmailModData>
+
+                                            <PhoneEmailModData>
+                                                <PhoneNum></PhoneNum>
+                                                <PhoneNumCityCode> </PhoneNumCityCode>
+                                                <PhoneNumCountryCode></PhoneNumCountryCode>
+                                                <PhoneNumLocalCode></PhoneNumLocalCode>
+                                                <PhoneOrEmail>EMAIL</PhoneOrEmail>
+                                                <Email>ademolu26@yahoo.com</Email>
+                                                <PrefFlag>Y</PrefFlag>
+                                                <StartDt>2019-06-28T15:25:07.400</StartDt>
+                                                <PhoneEmailtType>COMML</PhoneEmailtType>
+
+                                                    <PhoneEmailID>72192828</PhoneEmailID>
+
+                                            </PhoneEmailModData>
+
+                                        <Sector>1800</Sector>
+                                        <SubSector>1802</SubSector>
+                                    </CustModData>
+                                </RetCustModMainData>
+                                <RetailCustModRelatedData>
+                                    <DemographicModData>
+                                        <DemographicType>CURRENT_EMPLOYMENT</DemographicType>
+                                        <EmailWork></EmailWork>
+                                        <NameOfEmployer></NameOfEmployer>
+                                        <EmploymentStatus></EmploymentStatus>
+                                        <PhoneCell></PhoneCell>
+
+
+                                        <Nationality>NG</Nationality>
+                                        <MaritalStatus>SNG</MaritalStatus>
+                                    </DemographicModData>
+                                    <DemographicModData>
+                                        <DemographicType>Account</DemographicType>
+                                        <EmailWork></EmailWork>
+                                        <NameOfEmployer></NameOfEmployer>
+                                        <EmploymentStatus></EmploymentStatus>
+                                        <PhoneCell></PhoneCell>
+
+
+                                        <Nationality>NG</Nationality>
+                                        <MaritalStatus>SNG</MaritalStatus>
+                                    </DemographicModData>
+                                </RetailCustModRelatedData>
+                            </RetCustModRq>
+                        </RetCustModRequest>
+                    </Body>
+                </FIXML>
+                ]]>
+        </arg_0_0>
+    </executeService>
+</Body>
+</Envelope>
+        <!--</arg_0_0>
+            </web:executeService>
+        </soapenv:Body>
+    </soapenv:Envelope>-->
+
+
+        <!--Customer Update Response-->
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
+            <executeServiceReturn>
+                <FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml RetCustMod.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+                <Header>
+                    <ResponseHeader>
+                        <RequestMessageKey>
+                            <RequestUUID>Req_1561731915070</RequestUUID>
+                            <ServiceRequestId>RetCustMod</ServiceRequestId>
+                            <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                            <ChannelId>CRM</ChannelId>
+                        </RequestMessageKey>
+                        <ResponseMessageInfo>
+                            <BankId>01</BankId>
+                            <TimeZone></TimeZone>
+                            <MessageDateTime>2019-06-28T14:27:18.161</MessageDateTime>
+                        </ResponseMessageInfo><UBUSTransaction>
+                        <Id/>
+                        <Status/>
+                    </UBUSTransaction>
+                        <HostTransaction>
+                            <Id/>
+                            <Status>SUCCESS</Status>
+                        </HostTransaction>
+                        <HostParentTransaction>
+                            <Id/>
+                            <Status/>
+                        </HostParentTransaction>
+                        <CustomInfo/>
+                    </ResponseHeader>
+                </Header>
+                <Body>
+                    <RetCustModResponse>
+                        <RetCustModRs>
+                            <CustId>4243907</CustId>
+                            <Desc>Retail Customer successfully updated with CIFID 4243907</Desc>
+                            <Entity>Retail Customer</Entity>
+                            <Service>CIFRetailCustomerUpdate</Service>
+                            <Status>SUCCESS</Status>
+                        </RetCustModRs>
+                        <RetCustMod_CustomData/>
+                    </RetCustModResponse>
+                </Body>
+            </FIXML>
+        </executeServiceReturn>
+    </p594:executeServiceResponse>
+</soapenv:Body>
+</soapenv:Envelope>
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com"><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml RetCustMod.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+    <Header>
+        <ResponseHeader>
+            <RequestMessageKey>
+                <RequestUUID>Req_1561731907400</RequestUUID>
+                <ServiceRequestId>RetCustMod</ServiceRequestId>
+                <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                <ChannelId>CRM</ChannelId>
+            </RequestMessageKey>
+            <ResponseMessageInfo>
+                <BankId>01</BankId>
+                <TimeZone></TimeZone>
+                <MessageDateTime>2019-06-28T14:27:10.459</MessageDateTime>
+            </ResponseMessageInfo><UBUSTransaction>
+            <Id/>
+            <Status/>
+        </UBUSTransaction>
+            <HostTransaction>
+                <Id/>
+                <Status>SUCCESS</Status>
+            </HostTransaction>
+            <HostParentTransaction>
+                <Id/>
+                <Status/>
+            </HostParentTransaction>
+            <CustomInfo/>
+        </ResponseHeader>
+    </Header>
+    <Body>
+        <RetCustModResponse>
+            <RetCustModRs>
+                <CustId>6208227</CustId>
+                <Desc>Retail Customer successfully updated with CIFID 6208227</Desc>
+                <Entity>Retail Customer</Entity>
+                <Service>CIFRetailCustomerUpdate</Service>
+                <Status>SUCCESS</Status>
+            </RetCustModRs><RetCustMod_CustomData/>
+        </RetCustModResponse></Body></FIXML></executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>

@@ -1,0 +1,61 @@
+    <!--Customer Tab Fetching Request-->
+
+<!--<?xml version=\1.0\ encoding=\UTF-8\?> -->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope" xmlns:web="http://webservice.fiusb.ci.infosys.com">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <web:executeService>
+            <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope">
+                <Body>
+                    <executeService xmlns="http://webservice.fiusb.ci.infosys.com">
+                    <FIXML xsi:schemaLocation="http://www.finacle.com/fixml executeFinacleScript.xsd" xmlns="http://www.finacle.com/fixml\ xmlns:xsi=\http://www.w3.org/2001/XMLSchema-instance">
+                        <Header>
+                            <RequestHeader>
+                                <MessageKey>
+                                    <RequestUUID>transaction.getRequestID()</RequestUUID>
+                                    <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                                    <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                                    <ChannelId>COR</ChannelId>
+                                    <LanguageId></LanguageId>
+                                </MessageKey>
+                                <RequestMessageInfo>
+                                    <BankId></BankId>
+                                    <TimeZone></TimeZone>
+                                    <EntityId></EntityId>
+                                    <EntityType></EntityType>
+                                    <ArmCorrelationId></ArmCorrelationId>
+                                    <MessageDateTime>transaction.getMessageDate()</MessageDateTime>
+                                </RequestMessageInfo>
+                                <Security>
+                                    <Token>
+                                        <PasswordToken>
+                                            <UserId></UserId>
+                                            <Password></Password>
+                                        </PasswordToken>
+                                    </Token>
+                                    <FICertToken></FICertToken>
+                                    <RealUserLoginSessionId></RealUserLoginSessionId>
+                                    <RealUser></RealUser>
+                                    <RealUserPwd></RealUserPwd>
+                                    <SSOTransferToken></SSOTransferToken>
+                                </Security>
+                            </RequestHeader>
+                        </Header>
+                        <Body>
+                            <executeFinacleScriptRequest>
+                                <ExecuteFinacleScriptInputVO>
+                                    <requestId>customCustInfoUpdate.scr</requestId>
+                                </ExecuteFinacleScriptInputVO>
+                                <executeFinacleScript_CustomData>
+                                    <accountID>transaction.getAccount()</accountID>
+                                    <option>CD</option>
+                                </executeFinacleScript_CustomData>
+                            </executeFinacleScriptRequest>
+                        </Body>
+                    </FIXML>
+                </executeService>
+            </Body>
+        </Envelope>
+    </web:executeService>
+</soapenv:Body>
+</soapenv:Envelope>

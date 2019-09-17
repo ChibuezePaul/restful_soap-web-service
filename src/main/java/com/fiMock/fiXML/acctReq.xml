@@ -1,0 +1,121 @@
+    <!--Account Tab Fetching Request-->
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Body>
+        <executeService xmlns="http://webservice.fiusb.ci.infosys.com">
+            <arg_0_0 xmlns=""><![CDATA[
+                <FIXML xsi:schemaLocation="http://www.finacle.com/fixml executeFinacleScript.xsd" xmlns="http://www.finacle.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <Header>
+                        <RequestHeader>
+                            <MessageKey>
+                                <RequestUUID>transaction.getRequestID()</RequestUUID>
+                                <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                                <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                                <ChannelId>COR</ChannelId>
+                                <LanguageId></LanguageId>
+                            </MessageKey>
+                            <RequestMessageInfo>
+                                <BankId></BankId>
+                                <TimeZone></TimeZone>
+                                <EntityId></EntityId>
+                                <EntityType></EntityType>
+                                <ArmCorrelationId></ArmCorrelationId>
+                                <MessageDateTime>transaction.getMessageDate()</MessageDateTime>
+                            </RequestMessageInfo>
+                            <Security>
+                                <Token>
+                                    <PasswordToken>
+                                        <UserId></UserId>
+                                        <Password></Password>
+                                    </PasswordToken>
+                                </Token>
+                                <FICertToken></FICertToken>
+                                <RealUserLoginSessionId></RealUserLoginSessionId>
+                                <RealUser></RealUser>
+                                <RealUserPwd></RealUserPwd>
+                                <SSOTransferToken></SSOTransferToken>
+                            </Security>
+                        </RequestHeader>
+                    </Header>
+                    <Body>
+                        <executeFinacleScriptRequest>
+                            <ExecuteFinacleScriptInputVO>
+                                <requestId>customAcctInfoUpdate.scr</requestId>
+                            </ExecuteFinacleScriptInputVO>
+                            <executeFinacleScript_CustomData>
+                                <option>AD</option>
+                                <accountID>transaction.getAccount()</accountID>
+                            </executeFinacleScript_CustomData>
+                        </executeFinacleScriptRequest>
+                    </Body>
+                </FIXML>]]>
+            </arg_0_0>
+        </executeService>
+</Body>
+</Envelope>
+
+        <!--Account Tab Fetching Response-->
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Header/>
+<soapenv:Body>
+    <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
+        <executeServiceReturn>
+            <FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+            <Header>
+                <ResponseHeader>
+                    <RequestMessageKey>
+                        <RequestUUID>Req_1561468016247</RequestUUID>
+                        <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                        <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                        <ChannelId>COR</ChannelId>
+                    </RequestMessageKey>
+                    <ResponseMessageInfo>
+                        <BankId>01</BankId>
+                        <TimeZone></TimeZone>
+                        <MessageDateTime>2019-06-25T13:06:36.437</MessageDateTime>
+                    </ResponseMessageInfo>
+                    <UBUSTransaction>
+                        <Id/>
+                        <Status/>
+                    </UBUSTransaction>
+                    <HostTransaction>
+                        <Id/>
+                        <Status>SUCCESS</Status>
+                    </HostTransaction>
+                    <HostParentTransaction>
+                        <Id/>
+                        <Status/>
+                    </HostParentTransaction>
+                    <CustomInfo/>
+                </ResponseHeader>
+            </Header>
+            <Body>
+                <executeFinacleScriptResponse>
+                    <ExecuteFinacleScriptOutputVO></ExecuteFinacleScriptOutputVO>
+                    <executeFinacleScript_CustomData>
+                        <solId>001</solId>
+                        <crncyCode>NGN</crncyCode>
+                        <acctName>OKOROAFOR VINCENT ONYEKWERE</acctName>
+                        <freezeCode>null</freezeCode>
+                        <AcctBal>375.66</AcctBal>
+                        <schmType>CAA</schmType>
+                        <schmCode>CA202</schmCode>
+                    <schmCodeDesc>PREMIUM CURRENT</schmCodeDesc>
+                        <acctOfficerCode>001DE</acctOfficerCode>
+                        <acctOfficerCodeDesc>UGOH JACINTA CHINONSO</acctOfficerCodeDesc>
+                        <acctBrokerCode>D1782</acctBrokerCode>
+                        <brokerCodeDesc>ENEJE JANE ONYINYE</brokerCodeDesc>
+                        <acctStatus>I</acctStatus>
+                        <acctSMSStatus>N</acctSMSStatus>
+                        <acctEmailStatus>NULL</acctEmailStatus>
+                        <SuccessOrFailure>SUCCESS</SuccessOrFailure>
+                    </executeFinacleScript_CustomData>
+                </executeFinacleScriptResponse>
+            </Body>
+        </FIXML>
+    </executeServiceReturn>
+</p594:executeServiceResponse>
+</soapenv:Body>
+        </soapenv:Envelope>

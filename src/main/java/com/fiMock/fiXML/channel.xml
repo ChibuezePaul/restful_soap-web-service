@@ -1,0 +1,220 @@
+        <!--Channel Request-->
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
+            <soapenv:Header/>
+            <soapenv:Body>
+                <web:executeService>
+                    <arg_0_0>-->
+        <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+            <Body>
+                <executeChannelService xmlns="http://webservice.fiusb.ci.infosys.com">
+                    <arg_0_0 xmlns="">
+                        <![CDATA[
+        <FIXML xsi:schemaLocation="http://www.finacle.com/fixml executeFinacleScript.xsd" xmlns="http://www.finacle.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Header>
+            <RequestHeader>
+              <MessageKey>
+                <RequestUUID>Req_1507286678884</RequestUUID>
+                <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                <ChannelId>CRM</ChannelId>
+                <LanguageId></LanguageId>
+              </MessageKey>
+              <RequestMessageInfo>
+                <BankId></BankId>
+                <TimeZone></TimeZone>
+                <EntityId></EntityId>
+                <EntityType></EntityType>
+                <ArmCorrelationId></ArmCorrelationId>
+                <MessageDateTime>2017-10-06T11:44:38.884</MessageDateTime>
+              </RequestMessageInfo>
+              <Security>
+                <Token>
+                  <PasswordToken>
+                    <UserId></UserId>
+                    <Password></Password>
+                  </PasswordToken>
+                </Token>
+                <FICertToken></FICertToken>
+                <RealUserLoginSessionId></RealUserLoginSessionId>
+                <RealUser></RealUser>
+                <RealUserPwd></RealUserPwd>
+                <SSOTransferToken></SSOTransferToken>
+              </Security>
+            </RequestHeader>
+          </Header>
+          <Body>
+            <executeFinacleScriptRequest>
+              <ExecuteFinacleScriptInputVO>
+                <requestId>customHol.scr</requestId>
+              </ExecuteFinacleScriptInputVO>
+              <executeFinacleScript_CustomData>
+                <year>2017</year>
+                <month>10</month>
+                <day>04</day>
+                <solId>026</solId>
+              </executeFinacleScript_CustomData>
+            </executeFinacleScriptRequest>
+          </Body>
+        </FIXML>
+        ]]>
+                    </arg_0_0>
+                </executeChannelService>
+            </Body>
+        </Envelope>
+                <!--</arg_0_0>
+                      </web:executeService>
+                  </soapenv:Body>
+              </soapenv:Envelope>-->
+
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
+            <soapenv:Header/>
+            <soapenv:Body>
+                <web:executeService>
+                    <arg_0_0>-->
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+<Body>
+    <executeService xmlns="http://webservice.fiusb.ci.infosys.com">
+        <arg_0_0 xmlns="">
+            <![CDATA[
+        <FIXML xsi:schemaLocation="http://www.finacle.com/fixml executeFinacleScript.xsd" xmlns="http://www.finacle.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Header>
+            <RequestHeader>
+              <MessageKey>
+                <RequestUUID>Req_1507286630051</RequestUUID>
+                <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                <ChannelId>CRM</ChannelId>
+                <LanguageId></LanguageId>
+              </MessageKey>
+              <RequestMessageInfo>
+                <BankId></BankId>
+                <TimeZone></TimeZone>
+                <EntityId></EntityId>
+                <EntityType></EntityType>
+                <ArmCorrelationId></ArmCorrelationId>
+                <MessageDateTime>2017-10-06T11:43:50.051</MessageDateTime>
+              </RequestMessageInfo>
+              <Security>
+                <Token>
+                  <PasswordToken>
+                    <UserId></UserId>
+                    <Password></Password>
+                  </PasswordToken>
+                </Token>
+                <FICertToken></FICertToken>
+                <RealUserLoginSessionId></RealUserLoginSessionId>
+                <RealUser></RealUser>
+                <RealUserPwd></RealUserPwd>
+                <SSOTransferToken></SSOTransferToken>
+              </Security>
+            </RequestHeader>
+          </Header>
+          <Body>
+            <executeFinacleScriptRequest>
+              <ExecuteFinacleScriptInputVO>
+                <requestId>customHol.scr</requestId>
+              </ExecuteFinacleScriptInputVO>
+              <executeFinacleScript_CustomData>
+                <year>2017</year>
+                <month>10</month>
+                <day>06</day>
+                <solId>026</solId>
+              </executeFinacleScript_CustomData>
+            </executeFinacleScriptRequest>
+          </Body>
+        </FIXML>
+        ]]>
+        </arg_0_0>
+    </executeService>
+</Body>
+</Envelope>
+        <!--</arg_0_0>
+              </web:executeService>
+          </soapenv:Body>
+      </soapenv:Envelope>-->
+
+
+
+        <!--Channel Response-->
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com"><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+    <Header>
+        <ResponseHeader>
+            <RequestMessageKey>
+                <RequestUUID>Req_1507286678884</RequestUUID>
+                <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                <ChannelId>CRM</ChannelId>
+            </RequestMessageKey>
+            <ResponseMessageInfo>
+                <BankId>01</BankId>
+                <TimeZone></TimeZone>
+                <MessageDateTime>2017-10-06T10:49:42.962</MessageDateTime>
+            </ResponseMessageInfo><UBUSTransaction>
+            <Id/>
+            <Status/>
+        </UBUSTransaction>
+            <HostTransaction>
+                <Id/>
+                <Status>SUCCESS</Status>
+            </HostTransaction>
+            <HostParentTransaction>
+                <Id/>
+                <Status/>
+            </HostParentTransaction>
+            <CustomInfo/>
+        </ResponseHeader>
+    </Header>
+    <Body>
+        <executeFinacleScriptResponse>
+            <ExecuteFinacleScriptOutputVO>
+            </ExecuteFinacleScriptOutputVO><executeFinacleScript_CustomData>
+            <SuccessOrFailure>SUCCESS</SuccessOrFailure><mainHol>YYNN</mainHol><prevHol>YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY</prevHol></executeFinacleScript_CustomData>
+        </executeFinacleScriptResponse></Body></FIXML></executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com"><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+    <Header>
+        <ResponseHeader>
+            <RequestMessageKey>
+                <RequestUUID>Req_1507286630051</RequestUUID>
+                <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                <ChannelId>CRM</ChannelId>
+            </RequestMessageKey>
+            <ResponseMessageInfo>
+                <BankId>01</BankId>
+                <TimeZone></TimeZone>
+                <MessageDateTime>2017-10-06T10:48:53.998</MessageDateTime>
+            </ResponseMessageInfo><UBUSTransaction>
+            <Id/>
+            <Status/>
+        </UBUSTransaction>
+            <HostTransaction>
+                <Id/>
+                <Status>SUCCESS</Status>
+            </HostTransaction>
+            <HostParentTransaction>
+                <Id/>
+                <Status/>
+            </HostParentTransaction>
+            <CustomInfo/>
+        </ResponseHeader>
+    </Header>
+    <Body>
+        <executeFinacleScriptResponse>
+            <ExecuteFinacleScriptOutputVO>
+            </ExecuteFinacleScriptOutputVO>
+            <executeFinacleScript_CustomData>
+            <SuccessOrFailure>SUCCESS</SuccessOrFailure>
+                <mainHol>YYNNNN</mainHol>
+                <prevHol>YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY</prevHol>
+            </executeFinacleScript_CustomData>
+        </executeFinacleScriptResponse></Body></FIXML></executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>
