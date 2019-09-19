@@ -52,17 +52,17 @@ import javax.xml.bind.annotation.XmlType;
 public class SignatureAddRs {
 
     @XmlElement(name = "AcctId", required = true)
-    protected String acctId;// = "6201106012";
+    protected String acctId;
     @XmlElement(name = "AcctCode", required = true)
-    protected String acctCode;// = "N";
+    protected String acctCode;
     @XmlElement(name = "CustId", required = true)
-    protected String custId;// = " ";
+    protected String custId;
     @XmlElement(name = "EmployeeIdent", required = true)
-    protected String employeeIdent;// = " ";
+    protected String employeeIdent;
     @XmlElement(name = "BankCode", required = true)
-    protected String bankCode;// = "01";
+    protected String bankCode;
     @XmlElement(name = "SigPowerNum", required = true)
-    protected String sigPowerNum;// = "01";
+    protected String sigPowerNum;
     @XmlElement(name = "SigAddStatusCode", required = true)
     protected String sigAddStatusCode;// = "true";
 
@@ -236,14 +236,12 @@ public class SignatureAddRs {
     
     @Override
     public String toString () {
-        return "SignatureAddRs{" +
-              "acctId='" + acctId + '\'' +
-              ", acctCode='" + acctCode + '\'' +
-              ", custId='" + custId + '\'' +
-              ", employeeIdent='" + employeeIdent + '\'' +
-              ", bankCode='" + bankCode + '\'' +
-              ", sigPowerNum='" + sigPowerNum + '\'' +
-              ", sigAddStatusCode='" + sigAddStatusCode + '\'' +
-              '}';
+        return "\n<AcctId>" + acctId + "</AcctId>\n" +
+              "<AcctCode>" + acctCode + "</AcctCode>\n" +
+              "<CustId>" + custId + "</CustId>\n" +
+              "<EmployeeIdent>" + employeeIdent + "</EmployeeIdent>\n" +
+              "<BankCode>" + bankCode + "</BankCode>\n" +
+              "<SigPowerNum>" + sigPowerNum + "</SigPowerNum>\n" +
+              "<SigAddStatusCode>" + sigAddStatusCode + "</SigAddStatusCode>\n";
     }
 }

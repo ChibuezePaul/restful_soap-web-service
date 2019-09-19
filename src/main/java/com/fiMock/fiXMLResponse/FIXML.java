@@ -42,9 +42,9 @@ import javax.xml.bind.annotation.XmlType;
 public class FIXML {
 
     @XmlElement(name = "Header", required = true)
-    protected Header header;// = new Header();
+    protected Header header;
     @XmlElement(name = "Body", required = true)
-    protected Body body;// = new Body();
+    protected Body body;
 
     /**
      * Gets the value of the header property.
@@ -96,9 +96,7 @@ public class FIXML {
     
     @Override
     public String toString () {
-        return "FIXML{" +
-              "header=" + header +
-              ", body=" + body +
-              '}';
+        return "\n<Header>" + header + "</Header>" +
+              "\n<Body>" + body + "</Body>\n";
     }
 }

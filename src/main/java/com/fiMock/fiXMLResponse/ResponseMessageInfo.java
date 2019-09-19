@@ -47,9 +47,9 @@ import java.util.GregorianCalendar;
 public class ResponseMessageInfo {
 
     @XmlElement(name = "BankId", required = true)
-    protected String bankId;// = "01";
+    protected String bankId;
     @XmlElement(name = "TimeZone", required = true)
-    protected String timeZone;// = " ";
+    protected String timeZone;
     @XmlElement(name = "MessageDateTime", required = true)
     protected String messageDateTime;
 
@@ -135,10 +135,8 @@ public class ResponseMessageInfo {
     
     @Override
     public String toString () {
-        return "ResponseMessageInfo{" +
-              "bankId='" + bankId + '\'' +
-              ", timeZone='" + timeZone + '\'' +
-              ", messageDateTime='" + messageDateTime + '\'' +
-              '}';
+        return "\n<BankId>" + bankId + "</BankId>\n" +
+                 "<TimeZone>" + timeZone + "</TimeZone>\n" +
+                 "<MessageDateTime>" + messageDateTime + "</MessageDateTime>\n";
     }
 }

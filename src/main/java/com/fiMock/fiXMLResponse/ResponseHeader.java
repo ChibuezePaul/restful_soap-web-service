@@ -50,17 +50,17 @@ import javax.xml.bind.annotation.XmlType;
 public class ResponseHeader {
 
     @XmlElement(name = "RequestMessageKey", required = true)
-    protected RequestMessageKey requestMessageKey;// = new RequestMessageKey();
+    protected RequestMessageKey requestMessageKey;
     @XmlElement(name = "ResponseMessageInfo", required = true)
-    protected ResponseMessageInfo responseMessageInfo;// = new ResponseMessageInfo();
+    protected ResponseMessageInfo responseMessageInfo;
     @XmlElement(name = "UBUSTransaction", required = true)
-    protected UBUSTransaction ubusTransaction;// = new UBUSTransaction();
+    protected UBUSTransaction ubusTransaction;
     @XmlElement(name = "HostTransaction", required = true)
-    protected HostTransaction hostTransaction;// = new HostTransaction();
+    protected HostTransaction hostTransaction;
     @XmlElement(name = "HostParentTransaction", required = true)
-    protected HostParentTransaction hostParentTransaction;// = new HostParentTransaction();
+    protected HostParentTransaction hostParentTransaction;
     @XmlElement(name = "CustomInfo", required = true)
-    protected String customInfo;// = "";
+    protected String customInfo;
 
     /**
      * Gets the value of the requestMessageKey property.
@@ -208,13 +208,11 @@ public class ResponseHeader {
     
     @Override
     public String toString () {
-        return "ResponseHeader{" +
-              "requestMessageKey=" + requestMessageKey +
-              ", responseMessageInfo=" + responseMessageInfo +
-              ", ubusTransaction=" + ubusTransaction +
-              ", hostTransaction=" + hostTransaction +
-              ", hostParentTransaction=" + hostParentTransaction +
-              ", customInfo='" + customInfo + '\'' +
-              '}';
+        return "\n<RequestMessageKey>" + requestMessageKey + "</RequestMessageKey>" +
+              "\n<ResponseMessageInfo>" + responseMessageInfo + "</ResponseMessageInfo>" +
+              "\n<UBUSTransaction>" + ubusTransaction + "</UBUSTransaction>" +
+              "\n<HostTransaction>" + hostTransaction + "</HostTransaction>" +
+              "\n<HostParentTransaction>" + hostParentTransaction + "</HostParentTransaction>\n" +
+              "<CustomInfo/>\n";
     }
 }

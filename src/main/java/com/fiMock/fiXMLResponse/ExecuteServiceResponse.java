@@ -63,5 +63,17 @@ public class ExecuteServiceResponse {
     public void setExecuteServiceReturn(ExecuteServiceReturn value) {
         this.executeServiceReturn = value;
     }
-
+    
+    @Override
+    public String toString () {
+        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www" +
+              ".w3.org/2001/XMLSchema-instance\">" +
+              "\n<soapenv:Header/>" +
+              "\n <soapenv:Body>\n" +
+              "<executeServiceResponse xmlns:p594=\"http://webservice.fiusb.ci.infosys.com\"> \n" +
+              "<executeServiceReturn>" + executeServiceReturn + "<executeServiceReturn>\n" +
+              "</p594:executeServiceResponse>\n" +
+              "</soapenv:Body>\n" +
+              "</soapenv:Envelope>";
+    }
 }

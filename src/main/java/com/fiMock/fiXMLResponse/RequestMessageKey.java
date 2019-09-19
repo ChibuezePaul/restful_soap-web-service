@@ -46,13 +46,13 @@ import javax.xml.bind.annotation.XmlType;
 public class RequestMessageKey {
 
     @XmlElement(name = "RequestUUID", required = true)
-    protected String requestUUID;// = "Req_1507303907459";
+    protected String requestUUID;
     @XmlElement(name = "ServiceRequestId", required = true)
-    protected String serviceRequestId;// = "executeFinacleScript";
+    protected String serviceRequestId;
     @XmlElement(name = "ServiceRequestVersion", required = true)
-    protected String serviceRequestVersion;// = "10.2";
+    protected String serviceRequestVersion;
     @XmlElement(name = "ChannelId", required = true)
-    protected String channelId;// = "CRM";
+    protected String channelId;
 
     /**
      * Gets the value of the requestUUID property.
@@ -152,11 +152,9 @@ public class RequestMessageKey {
     
     @Override
     public String toString () {
-        return "RequestMessageKey{" +
-              "requestUUID='" + requestUUID + '\'' +
-              ", serviceRequestId='" + serviceRequestId + '\'' +
-              ", serviceRequestVersion='" + serviceRequestVersion + '\'' +
-              ", channelId='" + channelId + '\'' +
-              '}';
+        return "\n<RequestUUID>" + requestUUID + "</RequestUUID>\n" +
+              "<ServiceRequestId>" + serviceRequestId + "</ServiceRequestId>\n" +
+              "<ServiceRequestVersion>" + serviceRequestVersion + "</ServiceRequestVersion>\n" +
+              "<ChannelId>" + channelId + "</ChannelId>\n";
     }
 }

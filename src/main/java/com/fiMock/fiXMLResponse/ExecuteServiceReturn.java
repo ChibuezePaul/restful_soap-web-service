@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 public class ExecuteServiceReturn {
 
     @XmlElement(name = "FIXML", required = true)
-    protected FIXML fixml;// = new FIXML();
+    protected FIXML fixml;
 
     /**
      * Gets the value of the fixml property.
@@ -65,5 +65,9 @@ public class ExecuteServiceReturn {
     public void setFIXML(FIXML value) {
         this.fixml = value;
     }
-
+    
+    @Override
+    public String toString () {
+        return "\n<FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>" + fixml + "</FIXML>\n";
+    }
 }

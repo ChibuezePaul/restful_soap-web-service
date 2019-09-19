@@ -48,15 +48,15 @@ import javax.xml.bind.annotation.XmlType;
 public class RetCustModRs {
 
     @XmlElement(name = "CustId", required = true)
-    protected String custId;// = "6208227";
+    protected String custId;
     @XmlElement(name = "Desc", required = true)
-    protected String desc;// = "Retail Customer successfully updated with CIFID 6208227";
+    protected String desc;
     @XmlElement(name = "Entity", required = true)
-    protected String entity;// = "Retail Customer";
+    protected String entity;
     @XmlElement(name = "Service", required = true)
-    protected String service;// = "CIFRetailCustomerUpdate";
+    protected String service;
     @XmlElement(name = "Status", required = true)
-    protected String status;// = "SUCCESS";
+    protected String status;
 
     /**
      * Gets the value of the custId property.
@@ -180,12 +180,10 @@ public class RetCustModRs {
     
     @Override
     public String toString () {
-        return "RetCustModRs{" +
-              "custId='" + custId + '\'' +
-              ", desc='" + desc + '\'' +
-              ", entity='" + entity + '\'' +
-              ", service='" + service + '\'' +
-              ", status='" + status + '\'' +
-              '}';
+        return "\n<CustId>" + custId + "</CustId>\n" +
+              "<Desc>" + desc + "</Desc>\n" +
+              "<Entity>" + entity + "</Entity>\n" +
+              "<Service>" + service + "</Service>\n" +
+              "<Status>" + status + "</Status>\n";
     }
 }

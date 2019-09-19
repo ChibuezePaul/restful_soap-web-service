@@ -42,9 +42,9 @@ import javax.xml.bind.annotation.XmlType;
 public class HostTransaction {
 
     @XmlElement(name = "Id", required = true)
-    protected String id;// = "";
+    protected String id;
     @XmlElement(name = "Status", required = true)
-    protected String status;// =  "SUCCESS";
+    protected String status;
 
     /**
      * Gets the value of the id property.
@@ -96,9 +96,7 @@ public class HostTransaction {
     
     @Override
     public String toString () {
-        return "HostTransaction{" +
-              "id='" + id + '\'' +
-              ", status='" + status + '\'' +
-              '}';
+        return "\n<Id>" + id + "</Id>\n" +
+                "<Status/>" + status + "<Status/>\n";
     }
 }

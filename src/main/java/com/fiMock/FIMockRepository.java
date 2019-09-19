@@ -24,7 +24,7 @@ public class FIMockRepository {
 	}
 	
 	public ExecuteServiceResponse executeFIScript ( String reqUUID, String channelId, String signId, boolean lienId,
-		  boolean prevHol, boolean mainHol, String successOrFailure ) {
+		  boolean prevHol, boolean mainHol ) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
@@ -62,7 +62,7 @@ public class FIMockRepository {
 			header.setResponseHeader ( responseHeader );
 			
 			ExecuteFinacleScriptCustomData customData = new ExecuteFinacleScriptCustomData ();
-			customData.setSuccessOrFailure ( successOrFailure );
+			customData.setSuccessOrFailure ( "SUCCESS" );
 			if ( signId != null ) customData.setSignId ( signId );
 			if ( lienId ) customData.setLienB2KId ( "01183256054" );
 			if ( prevHol ) customData.setPrevHol ( "YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY" );
@@ -90,7 +90,7 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	public ExecuteServiceResponse updateCustomerInfo (String reqUUID, String custId, String desc, String entity, String service, String retCustModStatus) {
+	public ExecuteServiceResponse updateCustomerInfo (String reqUUID, String custId ) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		
@@ -158,7 +158,7 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	public ExecuteServiceResponse addMandate (String reqUUID, String acctId, String acctCode, String bankCode, String sigPowerNum, String sigAddStatusCode) {
+	public ExecuteServiceResponse addMandate (String reqUUID, String acctId, String acctCode, String bankCode, String sigPowerNum) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		

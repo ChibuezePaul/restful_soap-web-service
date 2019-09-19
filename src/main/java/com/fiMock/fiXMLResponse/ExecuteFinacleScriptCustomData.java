@@ -48,15 +48,15 @@ import javax.xml.bind.annotation.XmlType;
 public class ExecuteFinacleScriptCustomData {
 
     @XmlElement(required = true)
-    protected String signId;// = "FCMBFIN7696223";
+    protected String signId;
     @XmlElement(name = "SuccessOrFailure", required = true)
-    protected String successOrFailure;// = "SUCCESS";
+    protected String successOrFailure;
     @XmlElement(required = true)
-    protected String mainHol;// = "YYNNNN";
+    protected String mainHol;
     @XmlElement(required = true)
-    protected String prevHol;// = "YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY";
+    protected String prevHol;
     @XmlElement(name = "LienB2kId", required = true)
-    protected String lienB2KId;// = "01183256054";
+    protected String lienB2KId;
 
     /**
      * Gets the value of the signId property.
@@ -180,12 +180,10 @@ public class ExecuteFinacleScriptCustomData {
     
     @Override
     public String toString () {
-        return "ExecuteFinacleScriptCustomData{" +
-              "signId='" + signId + '\'' +
-              ", successOrFailure='" + successOrFailure + '\'' +
-              ", mainHol='" + mainHol + '\'' +
-              ", prevHol='" + prevHol + '\'' +
-              ", lienB2KId='" + lienB2KId + '\'' +
-              '}';
+        return "\n<signId>" + signId + "</signId>\n" +
+              "<SuccessOrFailure>" + successOrFailure + "</SuccessOrFailure>\n" +
+              "<mainHol>" + mainHol + "</mainHol>\n" +
+              "<prevHol>" + prevHol + "</prevHol>\n" +
+              "<LienB2kId>" + lienB2KId + "</LienB2kId>\n";
     }
 }

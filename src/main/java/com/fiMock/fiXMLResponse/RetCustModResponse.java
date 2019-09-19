@@ -42,9 +42,9 @@ import javax.xml.bind.annotation.XmlType;
 public class RetCustModResponse {
 
     @XmlElement(name = "RetCustModRs", required = true)
-    protected RetCustModRs retCustModRs;// = new RetCustModRs();
+    protected RetCustModRs retCustModRs;
     @XmlElement(name = "RetCustMod_CustomData", required = true)
-    protected String retCustModCustomData;// = "";
+    protected String retCustModCustomData;
 
     /**
      * Gets the value of the retCustModRs property.
@@ -96,9 +96,7 @@ public class RetCustModResponse {
     
     @Override
     public String toString () {
-        return "RetCustModResponse{" +
-              "retCustModRs=" + retCustModRs +
-              ", retCustModCustomData='" + retCustModCustomData + '\'' +
-              '}';
+        return "\n<RetCustModRs>" + retCustModRs + "</RetCustModRs>\n" +
+              "<RetCustMod_CustomData></RetCustMod_CustomData>\n";
     }
 }

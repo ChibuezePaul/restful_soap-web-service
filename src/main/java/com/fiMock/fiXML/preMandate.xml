@@ -4013,12 +4013,13 @@ zRUN/kzDtRhQKyGTtxwKNhH/2Q==</SigFile>
                 <ServiceRequestVersion>10.2</ServiceRequestVersion>
                 <ChannelId>COR</ChannelId>
             </RequestMessageKey>
-            <ResponseMessageInfo>
-                <BankId>01</BankId>
-                <TimeZone></TimeZone>
-                <MessageDateTime></MessageDateTime>
-            </ResponseMessageInfo><UBUSTransaction>
-            <Id/>
+            <UBUSTransaction>
+                <ResponseMessageInfo>
+                    <BankId>01</BankId>
+                    <TimeZone></TimeZone>
+                    <MessageDateTime></MessageDateTime>
+                </ResponseMessageInfo>
+                <Id/>
             <Status/>
         </UBUSTransaction>
             <HostTransaction>
@@ -4043,4 +4044,9 @@ zRUN/kzDtRhQKyGTtxwKNhH/2Q==</SigFile>
                 <SigPowerNum>01</SigPowerNum>
                 <SigAddStatusCode>true</SigAddStatusCode>
             </SignatureAddRs><SignatureAdd_CustomData/>
-        </SignatureAddResponse></Body></FIXML></executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>
+        </SignatureAddResponse>
+    </Body>
+</FIXML>
+</executeServiceReturn>
+</p594:executeServiceResponse>
+</soapenv:Body></soapenv:Envelope>

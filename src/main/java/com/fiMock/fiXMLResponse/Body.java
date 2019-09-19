@@ -44,11 +44,11 @@ import javax.xml.bind.annotation.XmlType;
 public class Body {
 
     @XmlElement(required = true)
-    protected ExecuteFinacleScriptResponse executeFinacleScriptResponse;// = new ExecuteFinacleScriptResponse();
+    protected ExecuteFinacleScriptResponse executeFinacleScriptResponse;
     @XmlElement(name = "RetCustModResponse", required = true)
-    protected RetCustModResponse retCustModResponse;// = new RetCustModResponse();
+    protected RetCustModResponse retCustModResponse;
     @XmlElement(name = "SignatureAddResponse", required = true)
-    protected SignatureAddResponse signatureAddResponse;// = new SignatureAddResponse();
+    protected SignatureAddResponse signatureAddResponse;
 
     /**
      * Gets the value of the executeFinacleScriptResponse property.
@@ -124,10 +124,8 @@ public class Body {
     
     @Override
     public String toString () {
-        return "Body{" +
-              "executeFinacleScriptResponse=" + executeFinacleScriptResponse +
-              ", retCustModResponse=" + retCustModResponse +
-              ", signatureAddResponse=" + signatureAddResponse +
-              '}';
+        return "\n<executeFinacleScriptResponse>" + executeFinacleScriptResponse + "</executeFinacleScriptResponse>" +
+              "\n<RetCustModResponse>" + retCustModResponse + "</RetCustModResponse>" +
+              "\n<SignatureAddResponse>" + signatureAddResponse +"</SignatureAddResponse>\n";
     }
 }
