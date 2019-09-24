@@ -5,11 +5,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Date;
 
 @RestController
 public class FIMockController {
@@ -22,7 +22,7 @@ public class FIMockController {
 	
 	public FIMockController(){}
 	
-	@PostMapping(value = "/fi",consumes = "text/xml",produces = "text/xml")
+	@PostMapping(value = "/fi",consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
 	public ExecuteServiceResponse getRequest(@RequestBody String request){
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {

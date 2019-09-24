@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.*;
 public class ExecuteServiceResponse {
 
     @XmlElement(required = true)
-    protected ExecuteServiceReturn executeServiceReturn;// = new ExecuteServiceReturn();
+    protected ExecuteServiceReturn executeServiceReturn;
 
     /**
      * Gets the value of the executeServiceReturn property.
