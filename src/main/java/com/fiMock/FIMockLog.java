@@ -1,10 +1,9 @@
 package com.fiMock;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class FIMockLog {
-//	Timestamp id = new Timestamp(new Date ().getTime ());
+	//	Timestamp id = new Timestamp(new Date ().getTime ());
 	Date date;
 	String request;
 	String response;

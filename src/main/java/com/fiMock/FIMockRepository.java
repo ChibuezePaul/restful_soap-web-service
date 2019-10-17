@@ -23,8 +23,8 @@ public class FIMockRepository {
 		}
 	}
 	
-	public ExecuteServiceResponse executeFIScript ( String reqUUID, String channelId, String signId, boolean lienId,
-		  boolean prevHol, boolean mainHol ) {
+	public ExecuteServiceResponse executeFIScript ( String reqUUID, String channelId, String signId, boolean isLien,
+		  boolean isChannel ) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
@@ -37,14 +37,14 @@ public class FIMockRepository {
 			ResponseMessageInfo messageInfo = new ResponseMessageInfo ();
 			messageInfo.setBankId ( "01" );
 			messageInfo.setMessageDateTime ( messageDateTime );
-			messageInfo.setTimeZone ( " " );
+			messageInfo.setTimeZone ( "" );
 			
 			UBUSTransaction ubusTransaction = new UBUSTransaction ();
 			ubusTransaction.setId ( "" );
 			ubusTransaction.setStatus ( "" );
 			
 			HostTransaction hostTransaction = new HostTransaction ();
-			hostTransaction.setId ( "" );
+			hostTransaction.setId ( hostTransaction.getId () );
 			hostTransaction.setStatus ( "SUCCESS" );
 			
 			HostParentTransaction parentTransaction = new HostParentTransaction ();
@@ -54,6 +54,7 @@ public class FIMockRepository {
 			ResponseHeader responseHeader = new ResponseHeader ();
 			responseHeader.setRequestMessageKey ( messageKey );
 			responseHeader.setResponseMessageInfo ( messageInfo );
+			responseHeader.setUBUSTransaction ( ubusTransaction );
 			responseHeader.setHostTransaction ( hostTransaction );
 			responseHeader.setHostParentTransaction ( parentTransaction );
 			responseHeader.setCustomInfo ( "" );
@@ -64,13 +65,15 @@ public class FIMockRepository {
 			ExecuteFinacleScriptCustomData customData = new ExecuteFinacleScriptCustomData ();
 			customData.setSuccessOrFailure ( "SUCCESS" );
 			if ( signId != null ) customData.setSignId ( signId );
-			if ( lienId ) customData.setLienB2KId ( "01183256054" );
-			if ( prevHol ) customData.setPrevHol ( "YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY" );
-			if ( mainHol ) customData.setMainHol ( "YYNNNN" );
+			if ( isLien ) customData.setLienB2KId ( "01183256054" );
+			if ( isChannel ) {
+				customData.setPrevHol ( "YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY" );
+				customData.setMainHol ( "YYNNNN" );
+			}
 			
 			ExecuteFinacleScriptResponse scriptResponse = new ExecuteFinacleScriptResponse ();
 			scriptResponse.setExecuteFinacleScriptCustomData ( customData );
-			scriptResponse.setExecuteFinacleScriptOutputVO ( " " );
+			scriptResponse.setExecuteFinacleScriptOutputVO ( "" );
 			
 			Body body = new Body ();
 			body.setExecuteFinacleScriptResponse ( scriptResponse );
@@ -90,7 +93,7 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	public ExecuteServiceResponse updateCustomerInfo (String reqUUID, String custId ) {
+	public ExecuteServiceResponse updateCustomerInfo (String reqUUID, String custId, boolean isCorpCustomer ) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		
@@ -104,7 +107,7 @@ public class FIMockRepository {
 			ResponseMessageInfo messageInfo = new ResponseMessageInfo ();
 			messageInfo.setBankId ( "01" );
 			messageInfo.setMessageDateTime ( messageDateTime );
-			messageInfo.setTimeZone ( " " );
+			messageInfo.setTimeZone ( "" );
 			
 			UBUSTransaction ubusTransaction = new UBUSTransaction ();
 			ubusTransaction.setId ( "" );
@@ -121,6 +124,7 @@ public class FIMockRepository {
 			ResponseHeader responseHeader = new ResponseHeader ();
 			responseHeader.setRequestMessageKey ( messageKey );
 			responseHeader.setResponseMessageInfo ( messageInfo );
+			responseHeader.setUBUSTransaction ( ubusTransaction );
 			responseHeader.setHostTransaction ( hostTransaction );
 			responseHeader.setHostParentTransaction ( parentTransaction );
 			responseHeader.setCustomInfo ( "" );
@@ -128,19 +132,36 @@ public class FIMockRepository {
 			Header header = new Header ();
 			header.setResponseHeader ( responseHeader );
 			
-			RetCustModRs retCustModRs = new RetCustModRs ();
-			retCustModRs.setCustId ( custId );
-			retCustModRs.setDesc ( String.format ( "Retail Customer successfully updated with CIFID %s", custId ) );
-			retCustModRs.setEntity ( "Retail Customer" );
-			retCustModRs.setService ( "CIFRetailCustomerUpdate" );
-			retCustModRs.setStatus ( "SUCCESS" );
-			
-			RetCustModResponse custModResponse = new RetCustModResponse ();
-			custModResponse.setRetCustModCustomData ( " " );
-			custModResponse.setRetCustModRs ( retCustModRs );
-			
 			Body body = new Body ();
-			body.setRetCustModResponse ( custModResponse );
+			
+			if(isCorpCustomer){
+				
+				CustomerModOutputStruct customerModOutputStruct = new CustomerModOutputStruct ();
+				customerModOutputStruct.setcifid ( custId );
+				customerModOutputStruct.setDesc ( String.format ( "Corporate Customer successfully updated with CIFID %s", custId ) );
+				customerModOutputStruct.setEntity ( "Corporate Customer" );
+				customerModOutputStruct.setService ( "CIFCorpCustomerUpdate" );
+				customerModOutputStruct.setStatus ( "SUCCESS" );
+				
+				updateCorpCustomerResponse corpCustomerResponse = new updateCorpCustomerResponse ();
+				corpCustomerResponse.setCustomerModOutputStruct ( customerModOutputStruct );
+				
+				body.setupdateCorpCustomerResponse ( corpCustomerResponse );
+			}
+			else {
+				RetCustModRs retCustModRs = new RetCustModRs ();
+				retCustModRs.setCustId ( custId );
+				retCustModRs.setDesc ( String.format ( "Retail Customer successfully updated with CIFID %s", custId ) );
+				retCustModRs.setEntity ( "Retail Customer" );
+				retCustModRs.setService ( "CIFRetailCustomerUpdate" );
+				retCustModRs.setStatus ( "SUCCESS" );
+				
+				RetCustModResponse custModResponse = new RetCustModResponse ();
+				custModResponse.setRetCustModCustomData ( "" );
+				custModResponse.setRetCustModRs ( retCustModRs );
+				
+				body.setRetCustModResponse ( custModResponse );
+			}
 			
 			FIXML fixml = new FIXML ();
 			fixml.setBody ( body );
@@ -172,7 +193,7 @@ public class FIMockRepository {
 			ResponseMessageInfo messageInfo = new ResponseMessageInfo ();
 			messageInfo.setBankId ( "01" );
 			messageInfo.setMessageDateTime ( messageDateTime );
-			messageInfo.setTimeZone ( " " );
+			messageInfo.setTimeZone ( "" );
 			
 			UBUSTransaction ubusTransaction = new UBUSTransaction ();
 			ubusTransaction.setId ( "" );
@@ -189,6 +210,7 @@ public class FIMockRepository {
 			ResponseHeader responseHeader = new ResponseHeader ();
 			responseHeader.setRequestMessageKey ( messageKey );
 			responseHeader.setResponseMessageInfo ( messageInfo );
+			responseHeader.setUBUSTransaction ( ubusTransaction );
 			responseHeader.setHostTransaction ( hostTransaction );
 			responseHeader.setHostParentTransaction ( parentTransaction );
 			responseHeader.setCustomInfo ( "" );
@@ -199,14 +221,14 @@ public class FIMockRepository {
 			SignatureAddRs signatureAddRs = new SignatureAddRs ();
 			signatureAddRs.setAcctId ( acctId );
 			signatureAddRs.setAcctCode ( acctCode );
-			signatureAddRs.setCustId ( " " );
-			signatureAddRs.setEmployeeIdent ( " " );
+			signatureAddRs.setCustId ( "" );
+			signatureAddRs.setEmployeeIdent ( "" );
 			signatureAddRs.setBankCode ( bankCode );
 			signatureAddRs.setSigPowerNum ( sigPowerNum );
 			signatureAddRs.setSigAddStatusCode ( "true" );
 			
 			SignatureAddResponse signatureAddResponse = new SignatureAddResponse ();
-			signatureAddResponse.setSignatureAddCustomData ( " " );
+			signatureAddResponse.setSignatureAddCustomData ( "" );
 			signatureAddResponse.setSignatureAddRs ( signatureAddRs );
 			Body body = new Body ();
 			body.setSignatureAddResponse ( signatureAddResponse );

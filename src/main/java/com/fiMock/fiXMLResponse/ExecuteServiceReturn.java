@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for executeServiceReturn complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="executeServiceReturn">
  *   &lt;complexContent>
@@ -30,44 +30,40 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "executeServiceReturn", propOrder = {
-    "fixml"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "executeServiceReturn", propOrder = {
+	  "fixml"
+} )
 public class ExecuteServiceReturn {
-
-    @XmlElement(name = "FIXML", required = true)
-    protected FIXML fixml;
-
-    /**
-     * Gets the value of the fixml property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FIXML }
-     *     
-     */
-    public FIXML getFIXML() {
-        return fixml;
-    }
-
-    /**
-     * Sets the value of the fixml property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FIXML }
-     *     
-     */
-    public void setFIXML(FIXML value) {
-        this.fixml = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>" + fixml + "</FIXML>\n";
-    }
+	
+	@XmlElement ( name = "FIXML", required = true )
+	protected FIXML fixml;
+	
+	/**
+	 * Gets the value of the fixml property.
+	 *
+	 * @return possible object is
+	 * {@link FIXML }
+	 */
+	public FIXML getFIXML () {
+		return fixml;
+	}
+	
+	/**
+	 * Sets the value of the fixml property.
+	 *
+	 * @param value allowed object is
+	 *              {@link FIXML }
+	 */
+	public void setFIXML ( FIXML value ) {
+		this.fixml = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; " +
+			  "xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www" +
+			  ".w3.org/2001/XMLSchema-instance&quot;>" + fixml + "</FIXML>\n";
+	}
 }

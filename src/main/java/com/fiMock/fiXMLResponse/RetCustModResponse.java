@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for RetCustModResponse complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="RetCustModResponse">
  *   &lt;complexContent>
@@ -31,72 +31,62 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RetCustModResponse", propOrder = {
-    "retCustModRs",
-    "retCustModCustomData"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "RetCustModResponse", propOrder = {
+	  "retCustModRs" ,
+	  "retCustModCustomData"
+} )
 public class RetCustModResponse {
-
-    @XmlElement(name = "RetCustModRs", required = true)
-    protected RetCustModRs retCustModRs;
-    @XmlElement(name = "RetCustMod_CustomData", required = true)
-    protected String retCustModCustomData;
-
-    /**
-     * Gets the value of the retCustModRs property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RetCustModRs }
-     *     
-     */
-    public RetCustModRs getRetCustModRs() {
-        return retCustModRs;
-    }
-
-    /**
-     * Sets the value of the retCustModRs property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RetCustModRs }
-     *     
-     */
-    public void setRetCustModRs(RetCustModRs value) {
-        this.retCustModRs = value;
-    }
-
-    /**
-     * Gets the value of the retCustModCustomData property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRetCustModCustomData() {
-        return retCustModCustomData;
-    }
-
-    /**
-     * Sets the value of the retCustModCustomData property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRetCustModCustomData(String value) {
-        this.retCustModCustomData = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<RetCustModRs>" + retCustModRs + "</RetCustModRs>\n" +
-              "<RetCustMod_CustomData></RetCustMod_CustomData>\n";
-    }
+	
+	@XmlElement ( name = "RetCustModRs", required = true )
+	protected RetCustModRs retCustModRs;
+	@XmlElement ( name = "RetCustMod_CustomData", required = true )
+	protected String retCustModCustomData;
+	
+	/**
+	 * Gets the value of the retCustModRs property.
+	 *
+	 * @return possible object is
+	 * {@link RetCustModRs }
+	 */
+	public RetCustModRs getRetCustModRs () {
+		return retCustModRs;
+	}
+	
+	/**
+	 * Sets the value of the retCustModRs property.
+	 *
+	 * @param value allowed object is
+	 *              {@link RetCustModRs }
+	 */
+	public void setRetCustModRs ( RetCustModRs value ) {
+		this.retCustModRs = value;
+	}
+	
+	/**
+	 * Gets the value of the retCustModCustomData property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getRetCustModCustomData () {
+		return retCustModCustomData;
+	}
+	
+	/**
+	 * Sets the value of the retCustModCustomData property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setRetCustModCustomData ( String value ) {
+		this.retCustModCustomData = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<RetCustModRs>" + retCustModRs + "</RetCustModRs>\n" +
+			  "</RetCustMod_CustomData/>\n";
+	}
 }

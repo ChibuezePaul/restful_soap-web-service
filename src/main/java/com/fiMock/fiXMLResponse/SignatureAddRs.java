@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for SignatureAddRs complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="SignatureAddRs">
  *   &lt;complexContent>
@@ -36,212 +36,182 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SignatureAddRs", propOrder = {
-    "acctId",
-    "acctCode",
-    "custId",
-    "employeeIdent",
-    "bankCode",
-    "sigPowerNum",
-    "sigAddStatusCode"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "SignatureAddRs", propOrder = {
+	  "acctId" ,
+	  "acctCode" ,
+	  "custId" ,
+	  "employeeIdent" ,
+	  "bankCode" ,
+	  "sigPowerNum" ,
+	  "sigAddStatusCode"
+} )
 public class SignatureAddRs {
-
-    @XmlElement(name = "AcctId", required = true)
-    protected String acctId;
-    @XmlElement(name = "AcctCode", required = true)
-    protected String acctCode;
-    @XmlElement(name = "CustId", required = true)
-    protected String custId;
-    @XmlElement(name = "EmployeeIdent", required = true)
-    protected String employeeIdent;
-    @XmlElement(name = "BankCode", required = true)
-    protected String bankCode;
-    @XmlElement(name = "SigPowerNum", required = true)
-    protected String sigPowerNum;
-    @XmlElement(name = "SigAddStatusCode", required = true)
-    protected String sigAddStatusCode;// = "true";
-
-    /**
-     * Gets the value of the acctId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAcctId() {
-        return acctId;
-    }
-
-    /**
-     * Sets the value of the acctId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAcctId(String value) {
-        this.acctId = value;
-    }
-
-    /**
-     * Gets the value of the acctCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAcctCode() {
-        return acctCode;
-    }
-
-    /**
-     * Sets the value of the acctCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAcctCode(String value) {
-        this.acctCode = value;
-    }
-
-    /**
-     * Gets the value of the custId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCustId() {
-        return custId;
-    }
-
-    /**
-     * Sets the value of the custId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCustId(String value) {
-        this.custId = value;
-    }
-
-    /**
-     * Gets the value of the employeeIdent property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEmployeeIdent() {
-        return employeeIdent;
-    }
-
-    /**
-     * Sets the value of the employeeIdent property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEmployeeIdent(String value) {
-        this.employeeIdent = value;
-    }
-
-    /**
-     * Gets the value of the bankCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBankCode() {
-        return bankCode;
-    }
-
-    /**
-     * Sets the value of the bankCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBankCode(String value) {
-        this.bankCode = value;
-    }
-
-    /**
-     * Gets the value of the sigPowerNum property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSigPowerNum() {
-        return sigPowerNum;
-    }
-
-    /**
-     * Sets the value of the sigPowerNum property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSigPowerNum(String value) {
-        this.sigPowerNum = value;
-    }
-
-    /**
-     * Gets the value of the sigAddStatusCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSigAddStatusCode() {
-        return sigAddStatusCode;
-    }
-
-    /**
-     * Sets the value of the sigAddStatusCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSigAddStatusCode(String value) {
-        this.sigAddStatusCode = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<AcctId>" + acctId + "</AcctId>\n" +
-              "<AcctCode>" + acctCode + "</AcctCode>\n" +
-              "<CustId>" + custId + "</CustId>\n" +
-              "<EmployeeIdent>" + employeeIdent + "</EmployeeIdent>\n" +
-              "<BankCode>" + bankCode + "</BankCode>\n" +
-              "<SigPowerNum>" + sigPowerNum + "</SigPowerNum>\n" +
-              "<SigAddStatusCode>" + sigAddStatusCode + "</SigAddStatusCode>\n";
-    }
+	
+	@XmlElement ( name = "AcctId", required = true )
+	protected String acctId;
+	@XmlElement ( name = "AcctCode", required = true )
+	protected String acctCode;
+	@XmlElement ( name = "CustId", required = true )
+	protected String custId;
+	@XmlElement ( name = "EmployeeIdent", required = true )
+	protected String employeeIdent;
+	@XmlElement ( name = "BankCode", required = true )
+	protected String bankCode;
+	@XmlElement ( name = "SigPowerNum", required = true )
+	protected String sigPowerNum;
+	@XmlElement ( name = "SigAddStatusCode", required = true )
+	protected String sigAddStatusCode;// = "true";
+	
+	/**
+	 * Gets the value of the acctId property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getAcctId () {
+		return acctId;
+	}
+	
+	/**
+	 * Sets the value of the acctId property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setAcctId ( String value ) {
+		this.acctId = value;
+	}
+	
+	/**
+	 * Gets the value of the acctCode property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getAcctCode () {
+		return acctCode;
+	}
+	
+	/**
+	 * Sets the value of the acctCode property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setAcctCode ( String value ) {
+		this.acctCode = value;
+	}
+	
+	/**
+	 * Gets the value of the custId property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getCustId () {
+		return custId;
+	}
+	
+	/**
+	 * Sets the value of the custId property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setCustId ( String value ) {
+		this.custId = value;
+	}
+	
+	/**
+	 * Gets the value of the employeeIdent property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getEmployeeIdent () {
+		return employeeIdent;
+	}
+	
+	/**
+	 * Sets the value of the employeeIdent property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setEmployeeIdent ( String value ) {
+		this.employeeIdent = value;
+	}
+	
+	/**
+	 * Gets the value of the bankCode property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getBankCode () {
+		return bankCode;
+	}
+	
+	/**
+	 * Sets the value of the bankCode property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setBankCode ( String value ) {
+		this.bankCode = value;
+	}
+	
+	/**
+	 * Gets the value of the sigPowerNum property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getSigPowerNum () {
+		return sigPowerNum;
+	}
+	
+	/**
+	 * Sets the value of the sigPowerNum property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setSigPowerNum ( String value ) {
+		this.sigPowerNum = value;
+	}
+	
+	/**
+	 * Gets the value of the sigAddStatusCode property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getSigAddStatusCode () {
+		return sigAddStatusCode;
+	}
+	
+	/**
+	 * Sets the value of the sigAddStatusCode property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setSigAddStatusCode ( String value ) {
+		this.sigAddStatusCode = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<AcctId>" + acctId + "</AcctId>\n" +
+			  "<AcctCode>" + acctCode + "</AcctCode>\n" +
+			  "<CustId>" + custId + "</CustId>\n" +
+			  "<EmployeeIdent>" + employeeIdent + "</EmployeeIdent>\n" +
+			  "<BankCode>" + bankCode + "</BankCode>\n" +
+			  "<SigPowerNum>" + sigPowerNum + "</SigPowerNum>\n" +
+			  "<SigAddStatusCode>" + sigAddStatusCode + "</SigAddStatusCode>\n";
+	}
 }

@@ -1,4 +1,3 @@
-
 <!--<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
     <soapenv:Header/>
@@ -6,10 +5,10 @@
         <web:executeService>
             <arg_0_0>-->
 <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
-  <Body>
-    <executeReactivationService xmlns="http://webservice.fiusb.ci.infosys.com">
-      <arg_0_0 xmlns="">
-        <![CDATA[
+    <Body>
+        <executeReactivationService xmlns="http://webservice.fiusb.ci.infosys.com">
+            <arg_0_0 xmlns="">
+                <![CDATA[
         <FIXML xsi:schemaLocation="http://www.finacle.com/fixml executeFinacleScript.xsd" xmlns="http://www.finacle.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <Header>
             <RequestHeader>
@@ -55,49 +54,61 @@
           </Body>
         </FIXML>
         ]]>
-      </arg_0_0>
-    </executeReactivationService>
-  </Body>
+            </arg_0_0>
+        </executeReactivationService>
+    </Body>
 </Envelope>
-<!--</arg_0_0>
-        </web:executeService>
-    </soapenv:Body>
-</soapenv:Envelope>-->
-
+        <!--</arg_0_0>
+                </web:executeService>
+            </soapenv:Body>
+        </soapenv:Envelope>-->
 
 
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com"><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
-<Header>
-<ResponseHeader>
-<RequestMessageKey>
-<RequestUUID>Req_1507303907459</RequestUUID>
-<ServiceRequestId>executeFinacleScript</ServiceRequestId>
-<ServiceRequestVersion>10.2</ServiceRequestVersion>
-<ChannelId>COR</ChannelId>
-</RequestMessageKey>
-<ResponseMessageInfo>
-<BankId>01</BankId>
-<TimeZone></TimeZone>
-<MessageDateTime>2017-10-06T15:36:51.842</MessageDateTime>
-</ResponseMessageInfo><UBUSTransaction>
-<Id/>
-<Status/>
-</UBUSTransaction>
-<HostTransaction>
-<Id/>
-<Status>SUCCESS</Status>
-</HostTransaction>
-<HostParentTransaction>
-<Id/>
-<Status/>
-</HostParentTransaction>
-<CustomInfo/>
-</ResponseHeader>
-</Header>
-<Body>
-<executeFinacleScriptResponse>
-<ExecuteFinacleScriptOutputVO>
-</ExecuteFinacleScriptOutputVO><executeFinacleScript_CustomData>
-<SuccessOrFailure>SUCCESS</SuccessOrFailure></executeFinacleScript_CustomData>
-</executeFinacleScriptResponse></Body></FIXML></executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Header/>
+<soapenv:Body>
+    <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
+        <executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot;
+            xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+            <Header>
+                <ResponseHeader>
+                    <RequestMessageKey>
+                        <RequestUUID>Req_1507303907459</RequestUUID>
+                        <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                        <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                        <ChannelId>COR</ChannelId>
+                    </RequestMessageKey>
+                    <ResponseMessageInfo>
+                        <BankId>01</BankId>
+                        <TimeZone></TimeZone>
+                        <MessageDateTime>2017-10-06T15:36:51.842</MessageDateTime>
+                    </ResponseMessageInfo>
+                    <UBUSTransaction>
+                        <Id/>
+                        <Status/>
+                    </UBUSTransaction>
+                    <HostTransaction>
+                        <Id/>
+                        <Status>SUCCESS</Status>
+                    </HostTransaction>
+                    <HostParentTransaction>
+                        <Id/>
+                        <Status/>
+                    </HostParentTransaction>
+                    <CustomInfo/>
+                </ResponseHeader>
+            </Header>
+            <Body>
+                <executeFinacleScriptResponse>
+                    <ExecuteFinacleScriptOutputVO>
+                    </ExecuteFinacleScriptOutputVO>
+                    <executeFinacleScript_CustomData>
+                        <SuccessOrFailure>SUCCESS</SuccessOrFailure>
+                    </executeFinacleScript_CustomData>
+                </executeFinacleScriptResponse>
+            </Body>
+        </FIXML>
+    </executeServiceReturn>
+</p594:executeServiceResponse>
+</soapenv:Body></soapenv:Envelope>

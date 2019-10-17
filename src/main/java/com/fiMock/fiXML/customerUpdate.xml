@@ -1,18 +1,18 @@
-        <!--Customer Update Request-->
+<!--Customer Update Request-->
 
 
-        <!--<?xml version="1.0" encoding="UTF-8"?>
-        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
-            <soapenv:Header/>
-            <soapenv:Body>
-                <web:executeService>
-                    <arg_0_0>-->
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <web:executeService>
+            <arg_0_0>-->
 
-        <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
-            <Body>
-                <executeCustUpdateService xmlns="http://webservice.fiusb.ci.infosys.com">
-                    <arg_0_0 xmlns="">
-                        <![CDATA[
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Body>
+        <executeCustUpdateService xmlns="http://webservice.fiusb.ci.infosys.com">
+            <arg_0_0 xmlns="">
+                <![CDATA[
                 <FIXML xsi:schemaLocation="http://www.finacle.com/fixml RetCustMod.xsd" xmlns="http://www.finacle.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Header>
                     <RequestHeader>
                         <MessageKey>
@@ -136,15 +136,14 @@
                     </Body>
                 </FIXML>
                 ]]>
-                    </arg_0_0>
-                </executeCustUpdateService>
-            </Body>
-        </Envelope>
-                <!--</arg_0_0>
-                    </web:executeService>
-                </soapenv:Body>
-            </soapenv:Envelope>-->
-
+            </arg_0_0>
+        </executeCustUpdateService>
+    </Body>
+</Envelope>
+        <!--</arg_0_0>
+            </web:executeService>
+        </soapenv:Body>
+    </soapenv:Envelope>-->
 
 
         <!--<?xml version="1.0" encoding="UTF-8"?>
@@ -295,72 +294,259 @@
         <!--Customer Update Response-->
 
 
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
-            <executeServiceReturn>
-                <FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml RetCustMod.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
-                <Header>
-                    <ResponseHeader>
-                        <RequestMessageKey>
-                            <RequestUUID>Req_1561731915070</RequestUUID>
-                            <ServiceRequestId>RetCustMod</ServiceRequestId>
-                            <ServiceRequestVersion>10.2</ServiceRequestVersion>
-                            <ChannelId>CRM</ChannelId>
-                        </RequestMessageKey>
-                        <ResponseMessageInfo>
-                            <BankId>01</BankId>
-                            <TimeZone></TimeZone>
-                            <MessageDateTime>2019-06-28T14:27:18.161</MessageDateTime>
-                        </ResponseMessageInfo><UBUSTransaction>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Header/>
+<soapenv:Body>
+    <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
+        <executeServiceReturn>
+            <FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml RetCustMod.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot;
+            xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+            <Header>
+                <ResponseHeader>
+                    <RequestMessageKey>
+                        <RequestUUID>Req_1561731915070</RequestUUID>
+                        <ServiceRequestId>RetCustMod</ServiceRequestId>
+                        <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                        <ChannelId>CRM</ChannelId>
+                    </RequestMessageKey>
+                    <ResponseMessageInfo>
+                        <BankId>01</BankId>
+                        <TimeZone></TimeZone>
+                        <MessageDateTime>2019-06-28T14:27:18.161</MessageDateTime>
+                    </ResponseMessageInfo>
+                    <UBUSTransaction>
                         <Id/>
                         <Status/>
                     </UBUSTransaction>
-                        <HostTransaction>
-                            <Id/>
-                            <Status>SUCCESS</Status>
-                        </HostTransaction>
-                        <HostParentTransaction>
-                            <Id/>
-                            <Status/>
-                        </HostParentTransaction>
-                        <CustomInfo/>
-                    </ResponseHeader>
-                </Header>
-                <Body>
-                    <RetCustModResponse>
-                        <RetCustModRs>
-                            <CustId>4243907</CustId>
-                            <Desc>Retail Customer successfully updated with CIFID 4243907</Desc>
-                            <Entity>Retail Customer</Entity>
-                            <Service>CIFRetailCustomerUpdate</Service>
-                            <Status>SUCCESS</Status>
-                        </RetCustModRs>
-                        <RetCustMod_CustomData/>
-                    </RetCustModResponse>
-                </Body>
-            </FIXML>
-        </executeServiceReturn>
-    </p594:executeServiceResponse>
+                    <HostTransaction>
+                        <Id/>
+                        <Status>SUCCESS</Status>
+                    </HostTransaction>
+                    <HostParentTransaction>
+                        <Id/>
+                        <Status/>
+                    </HostParentTransaction>
+                    <CustomInfo/>
+                </ResponseHeader>
+            </Header>
+            <Body>
+                <RetCustModResponse>
+                    <RetCustModRs>
+                        <CustId>4243907</CustId>
+                        <Desc>Retail Customer successfully updated with CIFID 4243907</Desc>
+                        <Entity>Retail Customer</Entity>
+                        <Service>CIFRetailCustomerUpdate</Service>
+                        <Status>SUCCESS</Status>
+                    </RetCustModRs>
+                    <RetCustMod_CustomData/>
+                </RetCustModResponse>
+            </Body>
+        </FIXML>
+    </executeServiceReturn>
+</p594:executeServiceResponse>
 </soapenv:Body>
-</soapenv:Envelope>
+        </soapenv:Envelope>
 
 
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com"><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml RetCustMod.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Header/>
+<soapenv:Body>
+    <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
+        <executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml RetCustMod.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot;
+            xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+            <Header>
+                <ResponseHeader>
+                    <RequestMessageKey>
+                        <RequestUUID>Req_1561731907400</RequestUUID>
+                        <ServiceRequestId>RetCustMod</ServiceRequestId>
+                        <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                        <ChannelId>CRM</ChannelId>
+                    </RequestMessageKey>
+                    <ResponseMessageInfo>
+                        <BankId>01</BankId>
+                        <TimeZone></TimeZone>
+                        <MessageDateTime>2019-06-28T14:27:10.459</MessageDateTime>
+                    </ResponseMessageInfo>
+                    <UBUSTransaction>
+                        <Id/>
+                        <Status/>
+                    </UBUSTransaction>
+                    <HostTransaction>
+                        <Id/>
+                        <Status>SUCCESS</Status>
+                    </HostTransaction>
+                    <HostParentTransaction>
+                        <Id/>
+                        <Status/>
+                    </HostParentTransaction>
+                    <CustomInfo/>
+                </ResponseHeader>
+            </Header>
+            <Body>
+                <RetCustModResponse>
+                    <RetCustModRs>
+                        <CustId>6208227</CustId>
+                        <Desc>Retail Customer successfully updated with CIFID 6208227</Desc>
+                        <Entity>Retail Customer</Entity>
+                        <Service>CIFRetailCustomerUpdate</Service>
+                        <Status>SUCCESS</Status>
+                    </RetCustModRs>
+                    <RetCustMod_CustomData/>
+                </RetCustModResponse>
+            </Body>
+        </FIXML>
+    </executeServiceReturn>
+</p594:executeServiceResponse>
+</soapenv:Body></soapenv:Envelope>
+
+
+
+
+
+
+
+
+
+
+
+        "
+        <!--<?xml version=""1.0"" encoding=""UTF-8""?>
+        <soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:web=""http://webservice.fiusb.ci.infosys.com"">
+            <soapenv:Header/>
+            <soapenv:Body>
+                <web:executeService>
+                    <arg_0_0>-->
+
+<Envelope xmlns=""http://schemas.xmlsoap.org/soap/envelope/"">
+<Body>
+<executeService xmlns=""http://webservice.fiusb.ci.infosys.com"">
+<arg_0_0 xmlns="""">
+<![CDATA[
+                <FIXML xsi:schemaLocation=""http://www.finacle.com/fixml RetCustMod.xsd"" xmlns=""http://www.finacle.com/fixml"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><Header>
+                    <RequestHeader>
+                        <MessageKey>
+                            <RequestUUID>Req_1570639068189</RequestUUID>
+                            <ServiceRequestId>updateCorpCustomer</ServiceRequestId>
+                            <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                            <ChannelId>CRM</ChannelId>
+                            <LanguageId></LanguageId>
+                        </MessageKey>
+                        <RequestMessageInfo>
+                            <BankId>01</BankId>
+                            <TimeZone></TimeZone>
+                            <EntityId></EntityId>
+                            <EntityType></EntityType>
+                            <ArmCorrelationId></ArmCorrelationId>
+                            <MessageDateTime>2019-10-09T17:37:48.189</MessageDateTime>
+                        </RequestMessageInfo>
+                        <Security>
+                            <Token>
+                                <PasswordToken>
+                                    <UserId></UserId>
+                                    <Password></Password>
+                                </PasswordToken>
+                            </Token>
+                            <FICertToken></FICertToken>
+                            <RealUserLoginSessionId></RealUserLoginSessionId>
+                            <RealUser></RealUser>
+                            <RealUserPwd></RealUserPwd>
+                            <SSOTransferToken></SSOTransferToken>
+                        </Security>
+                    </RequestHeader>
+                </Header>
+                    <Body>
+                        <updateCorpCustomerRequest>
+                            <CorpCustomerModData>
+                                <mainData>
+                                    <corpCustomerModCorporateData>
+                                        <corp_key>0130739</corp_key>
+                                        <registration_number>RC334900</registration_number>
+                                        <corpAddressModData>
+                                            <address_line1>20 kunla street</address_line1>
+                                            <address_line2>VICTORIA ISLAND,IKEJA.</address_line2>
+                                            <addresscategory>Registered</addresscategory>
+
+
+                                            <state>IM</state>
+                                            <addressID>9662720</addressID>
+                                            <city>ABK</city>
+                                            <country>DZ</country>
+
+                                        </corpAddressModData>
+                                        <sector>40600</sector>
+                                        <subsector>2317</subsector>
+
+                                            <PhoneEmail>
+                                                <phoneemailtype>COMML</phoneemailtype>
+                                                <phoneno></phoneno>
+                                                <email>noemail@fcmb.com</email>
+                                                <phonenocitycode> </phonenocitycode>
+                                                <phonenocountrycode></phonenocountrycode>
+                                                <phonenolocalcode></phonenolocalcode>
+                                                <phoneoremail>EMAIL</phoneoremail>
+                                                <preferredflag>Y</preferredflag>
+
+
+                                                    <PhoneEmailID>40156883</PhoneEmailID>
+
+                                            </PhoneEmail>
+
+                                            <PhoneEmail>
+                                                <phoneemailtype>COMM1</phoneemailtype>
+                                                <phoneno>229(2)07065472578</phoneno>
+                                                <email></email>
+                                                <phonenocitycode>2</phonenocitycode>
+                                                <phonenocountrycode>229</phonenocountrycode>
+                                                <phonenolocalcode>07065472578</phonenolocalcode>
+                                                <phoneoremail>PHONE</phoneoremail>
+                                                <preferredflag>Y</preferredflag>
+
+
+                                                    <PhoneEmailID>40156882</PhoneEmailID>
+
+                                            </PhoneEmail>
+
+                                        <FirstName>ATSC Test</FirstName>
+                                        <LastName>ATSC INTERNATIONAL LTD</LastName>
+                                        <MiddleName></MiddleName>
+                                        <Salutation>MS.</Salutation>
+
+                                        <MaidenNameOfMother></MaidenNameOfMother>
+                                        <short_name>ATSC Test</short_name>
+                                        <date_of_incorporation>1990-01-18T00:00:00.000</date_of_incorporation>
+                                        <preferredAddress></preferredAddress>
+                                        <corporate_name>ATSC INTERNATIONAL LTD</corporate_name>
+                                        <region>70J</region>
+                                    </corpCustomerModCorporateData>
+                                </mainData>
+                            </CorpCustomerModData>
+                        </updateCorpCustomerRequest>
+                    </Body>
+                </FIXML>
+                ]]>
+</arg_0_0>
+        </executeService>
+        </Body>
+        </Envelope>
+        <!--</arg_0_0>
+            </web:executeService>
+        </soapenv:Body>
+    </soapenv:Envelope>-->
+        "	"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:soapenc=""http://schemas.xmlsoap.org/soap/encoding/"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594=""http://webservice.fiusb.ci.infosys.com""><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml updateCorpCustomer.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
     <Header>
         <ResponseHeader>
             <RequestMessageKey>
-                <RequestUUID>Req_1561731907400</RequestUUID>
-                <ServiceRequestId>RetCustMod</ServiceRequestId>
+                <RequestUUID>Req_1570639068189</RequestUUID>
+                <ServiceRequestId>updateCorpCustomer</ServiceRequestId>
                 <ServiceRequestVersion>10.2</ServiceRequestVersion>
                 <ChannelId>CRM</ChannelId>
             </RequestMessageKey>
             <ResponseMessageInfo>
                 <BankId>01</BankId>
                 <TimeZone></TimeZone>
-                <MessageDateTime>2019-06-28T14:27:10.459</MessageDateTime>
+                <MessageDateTime>2019-10-09T16:38:00.249</MessageDateTime>
             </ResponseMessageInfo><UBUSTransaction>
             <Id/>
             <Status/>
@@ -377,12 +563,12 @@
         </ResponseHeader>
     </Header>
     <Body>
-        <RetCustModResponse>
-            <RetCustModRs>
-                <CustId>6208227</CustId>
-                <Desc>Retail Customer successfully updated with CIFID 6208227</Desc>
-                <Entity>Retail Customer</Entity>
-                <Service>CIFRetailCustomerUpdate</Service>
-                <Status>SUCCESS</Status>
-            </RetCustModRs><RetCustMod_CustomData/>
-        </RetCustModResponse></Body></FIXML></executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>
+        <updateCorpCustomerResponse>
+            <CustomerModOutputStruct>
+                <cifid>0130739</cifid>
+                <desc>Corporate Customer successfully updated with CIFID 0130739</desc>
+                <entity>Corporate Customer</entity>
+                <service>CIFCorpCustomerUpdate</service>
+                <status>SUCCESS</status>
+            </CustomerModOutputStruct><updateCorpCustomer_CustomData/>
+        </updateCorpCustomerResponse></Body></FIXML></executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>"

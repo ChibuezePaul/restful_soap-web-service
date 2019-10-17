@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for executeFinacleScript_CustomData complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="executeFinacleScript_CustomData">
  *   &lt;complexContent>
@@ -34,156 +34,134 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "executeFinacleScript_CustomData", propOrder = {
-    "signId",
-    "successOrFailure",
-    "mainHol",
-    "prevHol",
-    "lienB2KId"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "executeFinacleScript_CustomData", propOrder = {
+	  "signId" ,
+	  "successOrFailure" ,
+	  "mainHol" ,
+	  "prevHol" ,
+	  "lienB2KId"
+} )
 public class ExecuteFinacleScriptCustomData {
-
-    @XmlElement(required = true)
-    protected String signId;
-    @XmlElement(name = "SuccessOrFailure", required = true)
-    protected String successOrFailure;
-    @XmlElement(required = true)
-    protected String mainHol;
-    @XmlElement(required = true)
-    protected String prevHol;
-    @XmlElement(name = "LienB2kId", required = true)
-    protected String lienB2KId;
-
-    /**
-     * Gets the value of the signId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSignId() {
-        return signId;
-    }
-
-    /**
-     * Sets the value of the signId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSignId(String value) {
-        this.signId = value;
-    }
-
-    /**
-     * Gets the value of the successOrFailure property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSuccessOrFailure() {
-        return successOrFailure;
-    }
-
-    /**
-     * Sets the value of the successOrFailure property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSuccessOrFailure(String value) {
-        this.successOrFailure = value;
-    }
-
-    /**
-     * Gets the value of the mainHol property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMainHol() {
-        return mainHol;
-    }
-
-    /**
-     * Sets the value of the mainHol property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMainHol(String value) {
-        this.mainHol = value;
-    }
-
-    /**
-     * Gets the value of the prevHol property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPrevHol() {
-        return prevHol;
-    }
-
-    /**
-     * Sets the value of the prevHol property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPrevHol(String value) {
-        this.prevHol = value;
-    }
-
-    /**
-     * Gets the value of the lienB2KId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLienB2KId() {
-        return lienB2KId;
-    }
-
-    /**
-     * Sets the value of the lienB2KId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLienB2KId(String value) {
-        this.lienB2KId = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<signId>" + signId + "</signId>\n" +
-              "<SuccessOrFailure>" + successOrFailure + "</SuccessOrFailure>\n" +
-              "<mainHol>" + mainHol + "</mainHol>\n" +
-              "<prevHol>" + prevHol + "</prevHol>\n" +
-              "<LienB2kId>" + lienB2KId + "</LienB2kId>\n";
-    }
+	
+	@XmlElement ( required = true )
+	protected String signId;
+	@XmlElement ( name = "SuccessOrFailure", required = true )
+	protected String successOrFailure;
+	@XmlElement ( required = true )
+	protected String mainHol;
+	@XmlElement ( required = true )
+	protected String prevHol;
+	@XmlElement ( name = "LienB2kId", required = true )
+	protected String lienB2KId;
+	
+	/**
+	 * Gets the value of the signId property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getSignId () {
+		return signId;
+	}
+	
+	/**
+	 * Sets the value of the signId property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setSignId ( String value ) {
+		this.signId = value;
+	}
+	
+	/**
+	 * Gets the value of the successOrFailure property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getSuccessOrFailure () {
+		return successOrFailure;
+	}
+	
+	/**
+	 * Sets the value of the successOrFailure property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setSuccessOrFailure ( String value ) {
+		this.successOrFailure = value;
+	}
+	
+	/**
+	 * Gets the value of the mainHol property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getMainHol () {
+		return mainHol;
+	}
+	
+	/**
+	 * Sets the value of the mainHol property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setMainHol ( String value ) {
+		this.mainHol = value;
+	}
+	
+	/**
+	 * Gets the value of the prevHol property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getPrevHol () {
+		return prevHol;
+	}
+	
+	/**
+	 * Sets the value of the prevHol property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setPrevHol ( String value ) {
+		this.prevHol = value;
+	}
+	
+	/**
+	 * Gets the value of the lienB2KId property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getLienB2KId () {
+		return lienB2KId;
+	}
+	
+	/**
+	 * Sets the value of the lienB2KId property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setLienB2KId ( String value ) {
+		this.lienB2KId = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<signId>" + signId + "</signId>\n" +
+			  "<SuccessOrFailure>" + successOrFailure + "</SuccessOrFailure>\n" +
+			  "<mainHol>" + mainHol + "</mainHol>\n" +
+			  "<prevHol>" + prevHol + "</prevHol>\n" +
+			  "<LienB2kId>" + lienB2KId + "</LienB2kId>\n";
+	}
 }

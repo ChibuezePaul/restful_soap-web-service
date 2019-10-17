@@ -16,15 +16,16 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Body complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Body">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="executeFinacleScriptResponse" type="{http://webservice.fiusb.ci.infosys.com}executeFinacleScriptResponse"/>
+ *         &lt;element name="executeFinacleScriptResponse" type="{http://webservice.fiusb.ci.infosys
+ *         .com}executeFinacleScriptResponse"/>
  *         &lt;element name="RetCustModResponse" type="{http://webservice.fiusb.ci.infosys.com}RetCustModResponse"/>
  *         &lt;element name="SignatureAddResponse" type="{http://webservice.fiusb.ci.infosys.com}SignatureAddResponse"/>
  *       &lt;/sequence>
@@ -32,100 +33,110 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Body", propOrder = {
-    "executeFinacleScriptResponse",
-    "retCustModResponse",
-    "signatureAddResponse"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "Body", propOrder = {
+	  "executeFinacleScriptResponse" ,
+	  "retCustModResponse" ,
+	  "updateCorpCustomerResponse" ,
+	  "signatureAddResponse"
+} )
 public class Body {
-
-    @XmlElement(required = true)
-    protected ExecuteFinacleScriptResponse executeFinacleScriptResponse;
-    @XmlElement(name = "RetCustModResponse", required = true)
-    protected RetCustModResponse retCustModResponse;
-    @XmlElement(name = "SignatureAddResponse", required = true)
-    protected SignatureAddResponse signatureAddResponse;
-
-    /**
-     * Gets the value of the executeFinacleScriptResponse property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExecuteFinacleScriptResponse }
-     *     
-     */
-    public ExecuteFinacleScriptResponse getExecuteFinacleScriptResponse() {
-        return executeFinacleScriptResponse;
-    }
-
-    /**
-     * Sets the value of the executeFinacleScriptResponse property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExecuteFinacleScriptResponse }
-     *     
-     */
-    public void setExecuteFinacleScriptResponse(ExecuteFinacleScriptResponse value) {
-        this.executeFinacleScriptResponse = value;
-    }
-
-    /**
-     * Gets the value of the retCustModResponse property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RetCustModResponse }
-     *     
-     */
-    public RetCustModResponse getRetCustModResponse() {
-        return retCustModResponse;
-    }
-
-    /**
-     * Sets the value of the retCustModResponse property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RetCustModResponse }
-     *     
-     */
-    public void setRetCustModResponse(RetCustModResponse value) {
-        this.retCustModResponse = value;
-    }
-
-    /**
-     * Gets the value of the signatureAddResponse property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SignatureAddResponse }
-     *     
-     */
-    public SignatureAddResponse getSignatureAddResponse() {
-        return signatureAddResponse;
-    }
-
-    /**
-     * Sets the value of the signatureAddResponse property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SignatureAddResponse }
-     *     
-     */
-    public void setSignatureAddResponse(SignatureAddResponse value) {
-        this.signatureAddResponse = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<executeFinacleScriptResponse>" + executeFinacleScriptResponse + "</executeFinacleScriptResponse>" +
-              "\n<RetCustModResponse>" + retCustModResponse + "</RetCustModResponse>" +
-              "\n<SignatureAddResponse>" + signatureAddResponse +"</SignatureAddResponse>\n";
-    }
+	
+	@XmlElement ( required = true )
+	protected ExecuteFinacleScriptResponse executeFinacleScriptResponse;
+	@XmlElement ( name = "RetCustModResponse", required = true )
+	protected RetCustModResponse retCustModResponse;
+	@XmlElement ( name = "updateCorpCustomerResponse", required = true )
+	protected updateCorpCustomerResponse updateCorpCustomerResponse;
+	@XmlElement ( name = "SignatureAddResponse", required = true )
+	protected SignatureAddResponse signatureAddResponse;
+	
+	/**
+	 * Gets the value of the executeFinacleScriptResponse property.
+	 *
+	 * @return possible object is
+	 * {@link ExecuteFinacleScriptResponse }
+	 */
+	public ExecuteFinacleScriptResponse getExecuteFinacleScriptResponse () {
+		return executeFinacleScriptResponse;
+	}
+	
+	/**
+	 * Sets the value of the executeFinacleScriptResponse property.
+	 *
+	 * @param value allowed object is
+	 *              {@link ExecuteFinacleScriptResponse }
+	 */
+	public void setExecuteFinacleScriptResponse ( ExecuteFinacleScriptResponse value ) {
+		this.executeFinacleScriptResponse = value;
+	}
+	
+	/**
+	 * Gets the value of the retCustModResponse property.
+	 *
+	 * @return possible object is
+	 * {@link RetCustModResponse }
+	 */
+	public RetCustModResponse getRetCustModResponse () {
+		return retCustModResponse;
+	}
+	
+	/**
+	 * Sets the value of the retCustModResponse property.
+	 *
+	 * @param value allowed object is
+	 *              {@link RetCustModResponse }
+	 */
+	public void setRetCustModResponse ( RetCustModResponse value ) {
+		this.retCustModResponse = value;
+	}
+	
+	/**
+	 * Gets the value of the updateCorpCustomerResponse property.
+	 *
+	 * @return possible object is
+	 * {@link updateCorpCustomerResponse }
+	 */
+	public updateCorpCustomerResponse getupdateCorpCustomerResponse () {
+		return updateCorpCustomerResponse;
+	}
+	
+	/**
+	 * Sets the value of the updateCorpCustomerResponse property.
+	 *
+	 * @param value allowed object is
+	 *              {@link updateCorpCustomerResponse }
+	 */
+	public void setupdateCorpCustomerResponse ( updateCorpCustomerResponse value ) {
+		this.updateCorpCustomerResponse = value;
+	}
+	
+	/**
+	 * Gets the value of the signatureAddResponse property.
+	 *
+	 * @return possible object is
+	 * {@link SignatureAddResponse }
+	 */
+	public SignatureAddResponse getSignatureAddResponse () {
+		return signatureAddResponse;
+	}
+	
+	/**
+	 * Sets the value of the signatureAddResponse property.
+	 *
+	 * @param value allowed object is
+	 *              {@link SignatureAddResponse }
+	 */
+	public void setSignatureAddResponse ( SignatureAddResponse value ) {
+		this.signatureAddResponse = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<executeFinacleScriptResponse>" + executeFinacleScriptResponse + "</executeFinacleScriptResponse>" +
+			  "\n<RetCustModResponse>" + retCustModResponse + "</RetCustModResponse>" +
+			  "\n<updateCorpCustomerResponse>" + updateCorpCustomerResponse + "</updateCorpCustomerResponse>" +
+			  "\n<SignatureAddResponse>" + signatureAddResponse + "</SignatureAddResponse>\n";
+	}
 }

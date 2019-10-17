@@ -6,35 +6,37 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FIMockController {
 	
-	private FIMockService fiMockService;
 	private final Logger logger = LoggerFactory.getLogger ( this.getClass () );
+	private FIMockService fiMockService;
 	
 	@Autowired
 	public FIMockController ( FIMockService fiMockService ) {this.fiMockService = fiMockService;}
 	
-	public FIMockController(){}
+	public FIMockController () {}
 	
-	@PostMapping(value = "/fi",consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-	public ExecuteServiceResponse getRequest(@RequestBody String request){
+	@PostMapping ( value = "/fi", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE )
+	public ExecuteServiceResponse getRequest ( @RequestBody String request, String reqId ) {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
-			String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>" , "</ServiceRequestId>");
+			reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
 			response = fiMockService.executeServiceResponse ( reqId, request );
 			return response;
-		}catch ( Exception e ){
-			logger.info ( "Level1 Error Occurred : {}",e.getMessage () );
+		}
+		catch ( Exception e ) {
+			logger.info ( "Level1 Error Occurred, RequestId is empty : {}, Error : {}", reqId.isEmpty () , e.getMessage () );
 			e.printStackTrace ();
 		}
 		return response;
 	}
 	
 	@GetMapping
-	public String index(){
+	public String index () {
 		return "THIS IS A FINACLE MOCK SERVER...URI - http://{hostname}:8888/fi";
 	}
 }

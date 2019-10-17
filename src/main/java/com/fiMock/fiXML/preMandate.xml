@@ -1,4 +1,4 @@
-        <!--Mandate Request-->
+<!--Mandate Request-->
 
 <!--<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
@@ -2287,7 +2287,6 @@ BpXFADCuKYEB4pjEBpASDigBQMUCHAUAJQMjJxQAmaAP/9k=</SigFile>
 </Envelope>
 
 
-
         <!--<?xml version="1.0" encoding="UTF-8"?>
         <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.fiusb.ci.infosys.com">
             <soapenv:Header/>
@@ -3961,92 +3960,110 @@ zRUN/kzDtRhQKyGTtxwKNhH/2Q==</SigFile>
 
         <!--Mandate Response-->
 
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com"><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml SignatureAdd.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
-    <Header>
-        <ResponseHeader>
-            <RequestMessageKey>
-                <RequestUUID></RequestUUID>
-                <ServiceRequestId></ServiceRequestId>
-                <ServiceRequestVersion>10.2</ServiceRequestVersion>
-                <ChannelId>COR</ChannelId>
-            </RequestMessageKey>
-            <ResponseMessageInfo>
-                <BankId>01</BankId>
-                <TimeZone></TimeZone>
-                <MessageDateTime></MessageDateTime>
-            </ResponseMessageInfo><UBUSTransaction>
-            <Id/>
-            <Status/>
-        </UBUSTransaction>
-            <HostTransaction>
-                <Id/>
-                <Status>SUCCESS</Status>
-            </HostTransaction>
-            <HostParentTransaction>
-                <Id/>
-                <Status/>
-            </HostParentTransaction>
-            <CustomInfo/>
-        </ResponseHeader>
-    </Header>
-    <Body>
-        <SignatureAddResponse>
-            <SignatureAddRs>
-                <AcctId>6086889046</AcctId>
-                <AcctCode>N</AcctCode>
-                <CustId></CustId>
-                <EmployeeIdent></EmployeeIdent>
-                <BankCode>01</BankCode>
-                <SigPowerNum>01</SigPowerNum>
-                <SigAddStatusCode>true</SigAddStatusCode>
-            </SignatureAddRs>
-            <SignatureAdd_CustomData/>
-        </SignatureAddResponse></Body></FIXML></executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Header/>
+<soapenv:Body>
+    <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
+        <executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml SignatureAdd.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot;
+            xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+            <Header>
+                <ResponseHeader>
+                    <RequestMessageKey>
+                        <RequestUUID></RequestUUID>
+                        <ServiceRequestId></ServiceRequestId>
+                        <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                        <ChannelId>COR</ChannelId>
+                    </RequestMessageKey>
+                    <ResponseMessageInfo>
+                        <BankId>01</BankId>
+                        <TimeZone></TimeZone>
+                        <MessageDateTime></MessageDateTime>
+                    </ResponseMessageInfo>
+                    <UBUSTransaction>
+                        <Id/>
+                        <Status/>
+                    </UBUSTransaction>
+                    <HostTransaction>
+                        <Id/>
+                        <Status>SUCCESS</Status>
+                    </HostTransaction>
+                    <HostParentTransaction>
+                        <Id/>
+                        <Status/>
+                    </HostParentTransaction>
+                    <CustomInfo/>
+                </ResponseHeader>
+            </Header>
+            <Body>
+                <SignatureAddResponse>
+                    <SignatureAddRs>
+                        <AcctId>6086889046</AcctId>
+                        <AcctCode>N</AcctCode>
+                        <CustId></CustId>
+                        <EmployeeIdent></EmployeeIdent>
+                        <BankCode>01</BankCode>
+                        <SigPowerNum>01</SigPowerNum>
+                        <SigAddStatusCode>true</SigAddStatusCode>
+                    </SignatureAddRs>
+                    <SignatureAdd_CustomData/>
+                </SignatureAddResponse>
+            </Body>
+        </FIXML>
+    </executeServiceReturn>
+</p594:executeServiceResponse>
+</soapenv:Body></soapenv:Envelope>
 
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com"><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml SignatureAdd.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
-    <Header>
-        <ResponseHeader>
-            <RequestMessageKey>
-                <RequestUUID></RequestUUID>
-                <ServiceRequestId></ServiceRequestId>
-                <ServiceRequestVersion>10.2</ServiceRequestVersion>
-                <ChannelId>COR</ChannelId>
-            </RequestMessageKey>
-            <UBUSTransaction>
-                <ResponseMessageInfo>
-                    <BankId>01</BankId>
-                    <TimeZone></TimeZone>
-                    <MessageDateTime></MessageDateTime>
-                </ResponseMessageInfo>
-                <Id/>
-            <Status/>
-        </UBUSTransaction>
-            <HostTransaction>
-                <Id/>
-                <Status>SUCCESS</Status>
-            </HostTransaction>
-            <HostParentTransaction>
-                <Id/>
-                <Status/>
-            </HostParentTransaction>
-            <CustomInfo/>
-        </ResponseHeader>
-    </Header>
-    <Body>
-        <SignatureAddResponse>
-            <SignatureAddRs>
-                <AcctId>6201106012</AcctId>
-                <AcctCode>N</AcctCode>
-                <CustId></CustId>
-                <EmployeeIdent></EmployeeIdent>
-                <BankCode>01</BankCode>
-                <SigPowerNum>01</SigPowerNum>
-                <SigAddStatusCode>true</SigAddStatusCode>
-            </SignatureAddRs><SignatureAdd_CustomData/>
-        </SignatureAddResponse>
-    </Body>
-</FIXML>
-</executeServiceReturn>
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Header/>
+<soapenv:Body>
+    <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
+        <executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml SignatureAdd.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot;
+            xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+            <Header>
+                <ResponseHeader>
+                    <RequestMessageKey>
+                        <RequestUUID></RequestUUID>
+                        <ServiceRequestId></ServiceRequestId>
+                        <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                        <ChannelId>COR</ChannelId>
+                    </RequestMessageKey>
+                    <UBUSTransaction>
+                        <ResponseMessageInfo>
+                            <BankId>01</BankId>
+                            <TimeZone></TimeZone>
+                            <MessageDateTime></MessageDateTime>
+                        </ResponseMessageInfo>
+                        <Id/>
+                        <Status/>
+                    </UBUSTransaction>
+                    <HostTransaction>
+                        <Id/>
+                        <Status>SUCCESS</Status>
+                    </HostTransaction>
+                    <HostParentTransaction>
+                        <Id/>
+                        <Status/>
+                    </HostParentTransaction>
+                    <CustomInfo/>
+                </ResponseHeader>
+            </Header>
+            <Body>
+                <SignatureAddResponse>
+                    <SignatureAddRs>
+                        <AcctId>6201106012</AcctId>
+                        <AcctCode>N</AcctCode>
+                        <CustId></CustId>
+                        <EmployeeIdent></EmployeeIdent>
+                        <BankCode>01</BankCode>
+                        <SigPowerNum>01</SigPowerNum>
+                        <SigAddStatusCode>true</SigAddStatusCode>
+                    </SignatureAddRs>
+                    <SignatureAdd_CustomData/>
+                </SignatureAddResponse>
+            </Body>
+        </FIXML>
+    </executeServiceReturn>
 </p594:executeServiceResponse>
 </soapenv:Body></soapenv:Envelope>

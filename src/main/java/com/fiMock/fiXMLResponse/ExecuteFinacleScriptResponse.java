@@ -16,87 +16,80 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for executeFinacleScriptResponse complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="executeFinacleScriptResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="ExecuteFinacleScriptOutputVO" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="executeFinacleScript_CustomData" type="{http://webservice.fiusb.ci.infosys.com}executeFinacleScript_CustomData"/>
+ *         &lt;element name="executeFinacleScript_CustomData" type="{http://webservice.fiusb.ci.infosys
+ *         .com}executeFinacleScript_CustomData"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "executeFinacleScriptResponse", propOrder = {
-    "executeFinacleScriptOutputVO",
-    "executeFinacleScriptCustomData"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "executeFinacleScriptResponse", propOrder = {
+	  "executeFinacleScriptOutputVO" ,
+	  "executeFinacleScriptCustomData"
+} )
 public class ExecuteFinacleScriptResponse {
-
-    @XmlElement(name = "ExecuteFinacleScriptOutputVO", required = true)
-    protected String executeFinacleScriptOutputVO;
-    @XmlElement(name = "executeFinacleScript_CustomData", required = true)
-    protected ExecuteFinacleScriptCustomData executeFinacleScriptCustomData;
-
-    /**
-     * Gets the value of the executeFinacleScriptOutputVO property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getExecuteFinacleScriptOutputVO() {
-        return executeFinacleScriptOutputVO;
-    }
-
-    /**
-     * Sets the value of the executeFinacleScriptOutputVO property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setExecuteFinacleScriptOutputVO(String value) {
-        this.executeFinacleScriptOutputVO = value;
-    }
-
-    /**
-     * Gets the value of the executeFinacleScriptCustomData property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExecuteFinacleScriptCustomData }
-     *     
-     */
-    public ExecuteFinacleScriptCustomData getExecuteFinacleScriptCustomData() {
-        return executeFinacleScriptCustomData;
-    }
-
-    /**
-     * Sets the value of the executeFinacleScriptCustomData property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExecuteFinacleScriptCustomData }
-     *     
-     */
-    public void setExecuteFinacleScriptCustomData(ExecuteFinacleScriptCustomData value) {
-        this.executeFinacleScriptCustomData = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<ExecuteFinacleScriptOutputVO>" + executeFinacleScriptOutputVO + "</ExecuteFinacleScriptOutputVO>\n" +
-              "<executeFinacleScript_CustomData>" + executeFinacleScriptCustomData + "</executeFinacleScript_CustomData>\n";
-    }
+	
+	@XmlElement ( name = "ExecuteFinacleScriptOutputVO", required = true )
+	protected String executeFinacleScriptOutputVO;
+	@XmlElement ( name = "executeFinacleScript_CustomData", required = true )
+	protected ExecuteFinacleScriptCustomData executeFinacleScriptCustomData;
+	
+	/**
+	 * Gets the value of the executeFinacleScriptOutputVO property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getExecuteFinacleScriptOutputVO () {
+		return executeFinacleScriptOutputVO;
+	}
+	
+	/**
+	 * Sets the value of the executeFinacleScriptOutputVO property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setExecuteFinacleScriptOutputVO ( String value ) {
+		this.executeFinacleScriptOutputVO = value;
+	}
+	
+	/**
+	 * Gets the value of the executeFinacleScriptCustomData property.
+	 *
+	 * @return possible object is
+	 * {@link ExecuteFinacleScriptCustomData }
+	 */
+	public ExecuteFinacleScriptCustomData getExecuteFinacleScriptCustomData () {
+		return executeFinacleScriptCustomData;
+	}
+	
+	/**
+	 * Sets the value of the executeFinacleScriptCustomData property.
+	 *
+	 * @param value allowed object is
+	 *              {@link ExecuteFinacleScriptCustomData }
+	 */
+	public void setExecuteFinacleScriptCustomData ( ExecuteFinacleScriptCustomData value ) {
+		this.executeFinacleScriptCustomData = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<ExecuteFinacleScriptOutputVO>" + executeFinacleScriptOutputVO +
+			  "</ExecuteFinacleScriptOutputVO>\n" +
+			  "<executeFinacleScript_CustomData>" + executeFinacleScriptCustomData +
+			  "</executeFinacleScript_CustomData>\n";
+	}
 }

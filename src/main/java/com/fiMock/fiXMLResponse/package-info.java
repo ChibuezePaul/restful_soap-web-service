@@ -5,5 +5,6 @@
 // Generated on: 2019.07.15 at 12:39:42 PM WAT 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://webservice.fiusb.ci.infosys.com", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema ( namespace = "http://webservice.fiusb.ci.infosys.com", elementFormDefault =
+	  javax.xml.bind.annotation.XmlNsForm.QUALIFIED )
 package com.fiMock.fiXMLResponse;

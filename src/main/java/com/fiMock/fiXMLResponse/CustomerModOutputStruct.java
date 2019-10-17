@@ -36,44 +36,44 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType ( XmlAccessType.FIELD )
-@XmlType ( name = "RetCustModRs", propOrder = {
-	  "custId" ,
+@XmlType ( name = "CustomerModOutputStruct", propOrder = {
+	  "cifid" ,
 	  "desc" ,
 	  "entity" ,
 	  "service" ,
 	  "status"
 } )
-public class RetCustModRs {
+public class CustomerModOutputStruct {
 	
-	@XmlElement ( name = "CustId", required = true )
-	protected String custId;
-	@XmlElement ( name = "Desc", required = true )
+	@XmlElement ( name = "cifid", required = true )
+	protected String cifid;
+	@XmlElement ( name = "desc", required = true )
 	protected String desc;
-	@XmlElement ( name = "Entity", required = true )
+	@XmlElement ( name = "entity", required = true )
 	protected String entity;
-	@XmlElement ( name = "Service", required = true )
+	@XmlElement ( name = "service", required = true )
 	protected String service;
-	@XmlElement ( name = "Status", required = true )
+	@XmlElement ( name = "status", required = true )
 	protected String status;
 	
 	/**
-	 * Gets the value of the custId property.
+	 * Gets the value of the cifd property.
 	 *
 	 * @return possible object is
 	 * {@link String }
 	 */
-	public String getCustId () {
-		return custId;
+	public String getcifid () {
+		return cifid;
 	}
 	
 	/**
-	 * Sets the value of the custId property.
+	 * Sets the value of the cifd property.
 	 *
 	 * @param value allowed object is
 	 *              {@link String }
 	 */
-	public void setCustId ( String value ) {
-		this.custId = value;
+	public void setcifid ( String value ) {
+		this.cifid = value;
 	}
 	
 	/**
@@ -158,10 +158,10 @@ public class RetCustModRs {
 	
 	@Override
 	public String toString () {
-		return "\n<CustId>" + custId + "</CustId>\n" +
-			  "<Desc>" + desc + "</Desc>\n" +
-			  "<Entity>" + entity + "</Entity>\n" +
-			  "<Service>" + service + "</Service>\n" +
-			  "<Status>" + status + "</Status>\n";
+		return "\n<cifid>" + cifid + "</cifid>\n" +
+			  "<desc>" + desc + "</desc>\n" +
+			  "<entity>" + entity + "</entity>\n" +
+			  "<service>" + service + "</service>\n" +
+			  "<status>" + status + "</status>\n";
 	}
 }

@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Header complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Header">
  *   &lt;complexContent>
@@ -30,44 +30,38 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Header", propOrder = {
-    "responseHeader"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "Header", propOrder = {
+	  "responseHeader"
+} )
 public class Header {
-
-    @XmlElement(name = "ResponseHeader", required = true)
-    protected ResponseHeader responseHeader;
-
-    /**
-     * Gets the value of the responseHeader property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResponseHeader }
-     *     
-     */
-    public ResponseHeader getResponseHeader() {
-        return responseHeader;
-    }
-
-    /**
-     * Sets the value of the responseHeader property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResponseHeader }
-     *     
-     */
-    public void setResponseHeader(ResponseHeader value) {
-        this.responseHeader = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<ResponseHeader>" + responseHeader + "</ResponseHeader>\n";
-    }
+	
+	@XmlElement ( name = "ResponseHeader", required = true )
+	protected ResponseHeader responseHeader;
+	
+	/**
+	 * Gets the value of the responseHeader property.
+	 *
+	 * @return possible object is
+	 * {@link ResponseHeader }
+	 */
+	public ResponseHeader getResponseHeader () {
+		return responseHeader;
+	}
+	
+	/**
+	 * Sets the value of the responseHeader property.
+	 *
+	 * @param value allowed object is
+	 *              {@link ResponseHeader }
+	 */
+	public void setResponseHeader ( ResponseHeader value ) {
+		this.responseHeader = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<ResponseHeader>" + responseHeader + "</ResponseHeader>\n";
+	}
 }

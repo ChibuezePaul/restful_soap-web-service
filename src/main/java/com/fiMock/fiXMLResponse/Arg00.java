@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for arg_0_0 complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="arg_0_0">
  *   &lt;complexContent>
@@ -30,46 +30,40 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "arg_0_0", propOrder = {
-    "fixml"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "arg_0_0", propOrder = {
+	  "fixml"
+} )
 public class Arg00 {
-
-    @XmlElement(name = "FIXML", required = true)
-    protected FIXML fixml;
-
-    /**
-     * Gets the value of the fixml property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FIXML }
-     *     
-     */
-    public FIXML getFIXML() {
-        return fixml;
-    }
-
-    /**
-     * Sets the value of the fixml property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FIXML }
-     *     
-     */
-    public void setFIXML(FIXML value) {
-        this.fixml = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "Arg00{" +
-              "fixml=" + fixml +
-              '}';
-    }
+	
+	@XmlElement ( name = "FIXML", required = true )
+	protected FIXML fixml;
+	
+	/**
+	 * Gets the value of the fixml property.
+	 *
+	 * @return possible object is
+	 * {@link FIXML }
+	 */
+	public FIXML getFIXML () {
+		return fixml;
+	}
+	
+	/**
+	 * Sets the value of the fixml property.
+	 *
+	 * @param value allowed object is
+	 *              {@link FIXML }
+	 */
+	public void setFIXML ( FIXML value ) {
+		this.fixml = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "Arg00{" +
+			  "fixml=" + fixml +
+			  '}';
+	}
 }

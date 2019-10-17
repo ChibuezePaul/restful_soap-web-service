@@ -19,9 +19,9 @@ import java.util.GregorianCalendar;
 
 /**
  * <p>Java class for ResponseMessageInfo complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="ResponseMessageInfo">
  *   &lt;complexContent>
@@ -35,108 +35,96 @@ import java.util.GregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ResponseMessageInfo", propOrder = {
-    "bankId",
-    "timeZone",
-    "messageDateTime"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "ResponseMessageInfo", propOrder = {
+	  "bankId" ,
+	  "timeZone" ,
+	  "messageDateTime"
+} )
 public class ResponseMessageInfo {
-
-    @XmlElement(name = "BankId", required = true)
-    protected String bankId;
-    @XmlElement(name = "TimeZone", required = true)
-    protected String timeZone;
-    @XmlElement(name = "MessageDateTime", required = true)
-    protected String messageDateTime;
-
-    {
-        try {
-            messageDateTime = String.valueOf(DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar()).normalize());
-        } catch (DatatypeConfigurationException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Gets the value of the bankId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBankId() {
-        return bankId;
-    }
-
-    /**
-     * Sets the value of the bankId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBankId(String value) {
-        this.bankId = value;
-    }
-
-    /**
-     * Gets the value of the timeZone property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTimeZone() {
-        return timeZone;
-    }
-
-    /**
-     * Sets the value of the timeZone property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTimeZone(String value) {
-        this.timeZone = value;
-    }
-
-    /**
-     * Gets the value of the messageDateTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMessageDateTime() {
-        return messageDateTime;
-    }
-
-    /**
-     * Sets the value of the messageDateTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMessageDateTime(String value) {
-        this.messageDateTime = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<BankId>" + bankId + "</BankId>\n" +
-                 "<TimeZone>" + timeZone + "</TimeZone>\n" +
-                 "<MessageDateTime>" + messageDateTime + "</MessageDateTime>\n";
-    }
+	
+	@XmlElement ( name = "BankId", required = true )
+	protected String bankId;
+	@XmlElement ( name = "TimeZone", required = true )
+	protected String timeZone;
+	@XmlElement ( name = "MessageDateTime", required = true )
+	protected String messageDateTime;
+	
+	{
+		try {
+			messageDateTime = String.valueOf ( DatatypeFactory.newInstance ().newXMLGregorianCalendar ( new
+				  GregorianCalendar () ).normalize () );
+		}
+		catch ( DatatypeConfigurationException e ) {
+			e.printStackTrace ();
+		}
+	}
+	
+	/**
+	 * Gets the value of the bankId property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getBankId () {
+		return bankId;
+	}
+	
+	/**
+	 * Sets the value of the bankId property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setBankId ( String value ) {
+		this.bankId = value;
+	}
+	
+	/**
+	 * Gets the value of the timeZone property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getTimeZone () {
+		return timeZone;
+	}
+	
+	/**
+	 * Sets the value of the timeZone property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setTimeZone ( String value ) {
+		this.timeZone = value;
+	}
+	
+	/**
+	 * Gets the value of the messageDateTime property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getMessageDateTime () {
+		return messageDateTime;
+	}
+	
+	/**
+	 * Sets the value of the messageDateTime property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setMessageDateTime ( String value ) {
+		this.messageDateTime = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<BankId>" + bankId + "</BankId>\n" +
+			  "<TimeZone>" + timeZone + "</TimeZone>\n" +
+			  "<MessageDateTime>" + messageDateTime + "</MessageDateTime>\n";
+	}
 }

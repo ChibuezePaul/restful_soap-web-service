@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for RequestMessageKey complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="RequestMessageKey">
  *   &lt;complexContent>
@@ -33,128 +33,110 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RequestMessageKey", propOrder = {
-    "requestUUID",
-    "serviceRequestId",
-    "serviceRequestVersion",
-    "channelId"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "RequestMessageKey", propOrder = {
+	  "requestUUID" ,
+	  "serviceRequestId" ,
+	  "serviceRequestVersion" ,
+	  "channelId"
+} )
 public class RequestMessageKey {
-
-    @XmlElement(name = "RequestUUID", required = true)
-    protected String requestUUID;
-    @XmlElement(name = "ServiceRequestId", required = true)
-    protected String serviceRequestId;
-    @XmlElement(name = "ServiceRequestVersion", required = true)
-    protected String serviceRequestVersion;
-    @XmlElement(name = "ChannelId", required = true)
-    protected String channelId;
-
-    /**
-     * Gets the value of the requestUUID property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRequestUUID() {
-        return requestUUID;
-    }
-
-    /**
-     * Sets the value of the requestUUID property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRequestUUID(String value) {
-        this.requestUUID = value;
-    }
-
-    /**
-     * Gets the value of the serviceRequestId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getServiceRequestId() {
-        return serviceRequestId;
-    }
-
-    /**
-     * Sets the value of the serviceRequestId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setServiceRequestId(String value) {
-        this.serviceRequestId = value;
-    }
-
-    /**
-     * Gets the value of the serviceRequestVersion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getServiceRequestVersion() {
-        return serviceRequestVersion;
-    }
-
-    /**
-     * Sets the value of the serviceRequestVersion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setServiceRequestVersion(String value) {
-        this.serviceRequestVersion = value;
-    }
-
-    /**
-     * Gets the value of the channelId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getChannelId() {
-        return channelId;
-    }
-
-    /**
-     * Sets the value of the channelId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setChannelId(String value) {
-        this.channelId = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<RequestUUID>" + requestUUID + "</RequestUUID>\n" +
-              "<ServiceRequestId>" + serviceRequestId + "</ServiceRequestId>\n" +
-              "<ServiceRequestVersion>" + serviceRequestVersion + "</ServiceRequestVersion>\n" +
-              "<ChannelId>" + channelId + "</ChannelId>\n";
-    }
+	
+	@XmlElement ( name = "RequestUUID", required = true )
+	protected String requestUUID;
+	@XmlElement ( name = "ServiceRequestId", required = true )
+	protected String serviceRequestId;
+	@XmlElement ( name = "ServiceRequestVersion", required = true )
+	protected String serviceRequestVersion;
+	@XmlElement ( name = "ChannelId", required = true )
+	protected String channelId;
+	
+	/**
+	 * Gets the value of the requestUUID property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getRequestUUID () {
+		return requestUUID;
+	}
+	
+	/**
+	 * Sets the value of the requestUUID property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setRequestUUID ( String value ) {
+		this.requestUUID = value;
+	}
+	
+	/**
+	 * Gets the value of the serviceRequestId property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getServiceRequestId () {
+		return serviceRequestId;
+	}
+	
+	/**
+	 * Sets the value of the serviceRequestId property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setServiceRequestId ( String value ) {
+		this.serviceRequestId = value;
+	}
+	
+	/**
+	 * Gets the value of the serviceRequestVersion property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getServiceRequestVersion () {
+		return serviceRequestVersion;
+	}
+	
+	/**
+	 * Sets the value of the serviceRequestVersion property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setServiceRequestVersion ( String value ) {
+		this.serviceRequestVersion = value;
+	}
+	
+	/**
+	 * Gets the value of the channelId property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getChannelId () {
+		return channelId;
+	}
+	
+	/**
+	 * Sets the value of the channelId property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setChannelId ( String value ) {
+		this.channelId = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<RequestUUID>" + requestUUID + "</RequestUUID>\n" +
+			  "<ServiceRequestId>" + serviceRequestId + "</ServiceRequestId>\n" +
+			  "<ServiceRequestVersion>" + serviceRequestVersion + "</ServiceRequestVersion>\n" +
+			  "<ChannelId>" + channelId + "</ChannelId>\n";
+	}
 }

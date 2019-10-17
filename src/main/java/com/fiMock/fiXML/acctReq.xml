@@ -1,4 +1,4 @@
-    <!--Account Tab Fetching Request-->
+<!--Account Tab Fetching Request-->
 
 <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
     <Body>
@@ -51,7 +51,7 @@
                 </FIXML>]]>
             </arg_0_0>
         </executeService>
-</Body>
+    </Body>
 </Envelope>
 
         <!--Account Tab Fetching Response-->
@@ -62,7 +62,8 @@
 <soapenv:Body>
     <p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com">
         <executeServiceReturn>
-            <FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+            <FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot;
+            xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
             <Header>
                 <ResponseHeader>
                     <RequestMessageKey>
@@ -102,7 +103,7 @@
                         <AcctBal>375.66</AcctBal>
                         <schmType>CAA</schmType>
                         <schmCode>CA202</schmCode>
-                    <schmCodeDesc>PREMIUM CURRENT</schmCodeDesc>
+                        <schmCodeDesc>PREMIUM CURRENT</schmCodeDesc>
                         <acctOfficerCode>001DE</acctOfficerCode>
                         <acctOfficerCodeDesc>UGOH JACINTA CHINONSO</acctOfficerCodeDesc>
                         <acctBrokerCode>D1782</acctBrokerCode>

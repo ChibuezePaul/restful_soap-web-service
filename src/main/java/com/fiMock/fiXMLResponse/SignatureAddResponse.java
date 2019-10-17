@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for SignatureAddResponse complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="SignatureAddResponse">
  *   &lt;complexContent>
@@ -31,72 +31,62 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SignatureAddResponse", propOrder = {
-    "signatureAddRs",
-    "signatureAddCustomData"
-})
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "SignatureAddResponse", propOrder = {
+	  "signatureAddRs" ,
+	  "signatureAddCustomData"
+} )
 public class SignatureAddResponse {
-
-    @XmlElement(name = "SignatureAddRs", required = true)
-    protected SignatureAddRs signatureAddRs;
-    @XmlElement(name = "SignatureAdd_CustomData", required = true)
-    protected String signatureAddCustomData;
-
-    /**
-     * Gets the value of the signatureAddRs property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SignatureAddRs }
-     *     
-     */
-    public SignatureAddRs getSignatureAddRs() {
-        return signatureAddRs;
-    }
-
-    /**
-     * Sets the value of the signatureAddRs property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SignatureAddRs }
-     *     
-     */
-    public void setSignatureAddRs(SignatureAddRs value) {
-        this.signatureAddRs = value;
-    }
-
-    /**
-     * Gets the value of the signatureAddCustomData property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSignatureAddCustomData() {
-        return signatureAddCustomData;
-    }
-
-    /**
-     * Sets the value of the signatureAddCustomData property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSignatureAddCustomData(String value) {
-        this.signatureAddCustomData = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "\n<SignatureAddRs>" + signatureAddRs + "</SignatureAddRs>\n" +
-              "</SignatureAddRs><SignatureAdd_CustomData/>\n";
-    }
+	
+	@XmlElement ( name = "SignatureAddRs", required = true )
+	protected SignatureAddRs signatureAddRs;
+	@XmlElement ( name = "SignatureAdd_CustomData", required = true )
+	protected String signatureAddCustomData;
+	
+	/**
+	 * Gets the value of the signatureAddRs property.
+	 *
+	 * @return possible object is
+	 * {@link SignatureAddRs }
+	 */
+	public SignatureAddRs getSignatureAddRs () {
+		return signatureAddRs;
+	}
+	
+	/**
+	 * Sets the value of the signatureAddRs property.
+	 *
+	 * @param value allowed object is
+	 *              {@link SignatureAddRs }
+	 */
+	public void setSignatureAddRs ( SignatureAddRs value ) {
+		this.signatureAddRs = value;
+	}
+	
+	/**
+	 * Gets the value of the signatureAddCustomData property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getSignatureAddCustomData () {
+		return signatureAddCustomData;
+	}
+	
+	/**
+	 * Sets the value of the signatureAddCustomData property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setSignatureAddCustomData ( String value ) {
+		this.signatureAddCustomData = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "\n<SignatureAddRs>" + signatureAddRs + "</SignatureAddRs>\n" +
+			  "</SignatureAddRs><SignatureAdd_CustomData/>\n";
+	}
 }

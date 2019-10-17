@@ -13,9 +13,9 @@ import javax.xml.bind.annotation.*;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -27,53 +27,47 @@ import javax.xml.bind.annotation.*;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "executeServiceReturn"
-})
-@XmlRootElement(name = "executeServiceResponse")
+@XmlAccessorType ( XmlAccessType.FIELD )
+@XmlType ( name = "", propOrder = {
+	  "executeServiceReturn"
+} )
+@XmlRootElement ( name = "executeServiceResponse" )
 public class ExecuteServiceResponse {
-
-    @XmlElement(required = true)
-    protected ExecuteServiceReturn executeServiceReturn;
-
-    /**
-     * Gets the value of the executeServiceReturn property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExecuteServiceReturn }
-     *     
-     */
-    public ExecuteServiceReturn getExecuteServiceReturn() {
-        return executeServiceReturn;
-    }
-
-    /**
-     * Sets the value of the executeServiceReturn property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExecuteServiceReturn }
-     *     
-     */
-    public void setExecuteServiceReturn(ExecuteServiceReturn value) {
-        this.executeServiceReturn = value;
-    }
-    
-    @Override
-    public String toString () {
-        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www" +
-              ".w3.org/2001/XMLSchema-instance\">" +
-              "\n<soapenv:Header/>" +
-              "\n <soapenv:Body>\n" +
-              "<executeServiceResponse xmlns:p594=\"http://webservice.fiusb.ci.infosys.com\"> \n" +
-              "<executeServiceReturn>" + executeServiceReturn + "<executeServiceReturn>\n" +
-              "</p594:executeServiceResponse>\n" +
-              "</soapenv:Body>\n" +
-              "</soapenv:Envelope>";
-    }
+	
+	@XmlElement ( required = true )
+	protected ExecuteServiceReturn executeServiceReturn;
+	
+	/**
+	 * Gets the value of the executeServiceReturn property.
+	 *
+	 * @return possible object is
+	 * {@link ExecuteServiceReturn }
+	 */
+	public ExecuteServiceReturn getExecuteServiceReturn () {
+		return executeServiceReturn;
+	}
+	
+	/**
+	 * Sets the value of the executeServiceReturn property.
+	 *
+	 * @param value allowed object is
+	 *              {@link ExecuteServiceReturn }
+	 */
+	public void setExecuteServiceReturn ( ExecuteServiceReturn value ) {
+		this.executeServiceReturn = value;
+	}
+	
+	@Override
+	public String toString () {
+		return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www" +
+			  ".w3.org/2001/XMLSchema-instance\">" +
+			  "\n<soapenv:Header/>" +
+			  "\n <soapenv:Body>\n" +
+			  "<executeServiceResponse xmlns:p594=\"http://webservice.fiusb.ci.infosys.com\"> \n" +
+			  "<executeServiceReturn>" + executeServiceReturn + "<executeServiceReturn>\n" +
+			  "</p594:executeServiceResponse>\n" +
+			  "</soapenv:Body>\n" +
+			  "</soapenv:Envelope>";
+	}
 }
