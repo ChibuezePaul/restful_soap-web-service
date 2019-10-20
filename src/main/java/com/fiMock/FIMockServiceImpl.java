@@ -15,18 +15,11 @@ public class FIMockServiceImpl implements FIMockService {
 	@Autowired
 	private FIMockRepository fiMockRepo;
 	private final Logger logger = LoggerFactory.getLogger ( this.getClass () );
-	private String text1;
-	private String text2;
-	private String text3;
-	private String text4;
-	private String text5;
-	private boolean check1;
-	private boolean check2;
-	private boolean check3;
-	
 	
 	@Override
 	public ExecuteServiceResponse executeServiceResponse (String serviceRequestId, String request) {
+		String text1,text2,text3,text4,text5;
+		boolean check1;
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		text1 = StringUtils.substringBetween ( request, "<RequestUUID>" , "</RequestUUID>");
 		text2 = StringUtils.substringBetween ( request, "<ChannelId>" , "</ChannelId>");
@@ -35,8 +28,8 @@ public class FIMockServiceImpl implements FIMockService {
 		try{
 			switch ( serviceRequestId ){
 				case "executeFinacleScript" :
-					check2 = StringUtils.substringBetween ( request, "<requestId>", "</requestId>" ).contains ( "customHol.scr" );
-					response = fiMockRepo.executeFIScript ( text1, text2, text3, request.contains ( "<lienType>"), check2 );
+					check1 = StringUtils.substringBetween ( request, "<requestId>", "</requestId>" ).contains ( "customHol.scr" );
+					response = fiMockRepo.executeFIScript ( text1, text2, text3, request.contains ( "<lienType>"), check1 );
 					break;
 					
 				case "RetCustMod" :
