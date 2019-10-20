@@ -39,7 +39,8 @@ import javax.xml.bind.annotation.XmlType;
 	  "executeFinacleScriptResponse" ,
 	  "retCustModResponse" ,
 	  "updateCorpCustomerResponse" ,
-	  "signatureAddResponse"
+	  "signatureAddResponse",
+	  "verifyCustomerDetailsResponse"
 } )
 public class Body {
 	
@@ -51,6 +52,8 @@ public class Body {
 	protected updateCorpCustomerResponse updateCorpCustomerResponse;
 	@XmlElement ( name = "SignatureAddResponse", required = true )
 	protected SignatureAddResponse signatureAddResponse;
+	@XmlElement ( name = "verifyCustomerDetailsResponse", required = true )
+	protected verifyCustomerDetailsResponse verifyCustomerDetailsResponse;
 	
 	/**
 	 * Gets the value of the executeFinacleScriptResponse property.
@@ -132,11 +135,32 @@ public class Body {
 		this.signatureAddResponse = value;
 	}
 	
+	/**
+	 * Gets the value of the verifyCustomerDetailsResponse property.
+	 *
+	 * @return possible object is
+	 * {@link verifyCustomerDetailsResponse }
+	 */
+	public verifyCustomerDetailsResponse getverifyCustomerDetailsResponse () {
+		return verifyCustomerDetailsResponse;
+	}
+	
+	/**
+	 * Sets the value of the verifyCustomerDetailsResponse property.
+	 *
+	 * @param value allowed object is
+	 *              {@link verifyCustomerDetailsResponse }
+	 */
+	public void setverifyCustomerDetailsResponse ( verifyCustomerDetailsResponse value ) {
+		this.verifyCustomerDetailsResponse = value;
+	}
+	
 	@Override
 	public String toString () {
 		return "\n<executeFinacleScriptResponse>" + executeFinacleScriptResponse + "</executeFinacleScriptResponse>" +
 			  "\n<RetCustModResponse>" + retCustModResponse + "</RetCustModResponse>" +
 			  "\n<updateCorpCustomerResponse>" + updateCorpCustomerResponse + "</updateCorpCustomerResponse>" +
-			  "\n<SignatureAddResponse>" + signatureAddResponse + "</SignatureAddResponse>\n";
+			  "\n<SignatureAddResponse>" + signatureAddResponse + "</SignatureAddResponse>" +
+			  "\n<verifyCustomerDetailsResponse>" + verifyCustomerDetailsResponse + "</verifyCustomerDetailsResponse>\n";
 	}
 }

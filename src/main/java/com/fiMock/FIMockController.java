@@ -29,7 +29,7 @@ public class FIMockController {
 			return response;
 		}
 		catch ( Exception e ) {
-			logger.info ( "Level1 Error Occurred, RequestId is empty : {}, Error : {}", reqId.isEmpty () , e.getMessage () );
+			logger.info ( "Level1 Error Occurred, Request is empty : {}, Error : {}", request.isEmpty () , e.getMessage () );
 			e.printStackTrace ();
 		}
 		return response;

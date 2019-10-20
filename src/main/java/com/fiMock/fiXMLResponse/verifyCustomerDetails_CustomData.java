@@ -10,22 +10,21 @@ package com.fiMock.fiXMLResponse;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for updateCorpCustomer_CustomData simple type.
+ * <p>Java class for verifyCustomerDetails_CustomData simple type.
  * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="updateCorpCustomer_CustomData">
+ * &lt;simpleType name="verifyCustomerDetails_CustomData">
  * &lt;/simpleType>
  * </pre>
  */
 @XmlAccessorType ( XmlAccessType.FIELD )
-@XmlType ( name = "updateCorpCustomer_CustomData" )
-public class updateCorpCustomer_CustomData {
+@XmlType ( name = "verifyCustomerDetails_CustomData" )
+public class verifyCustomerDetails_CustomData {
 
 }

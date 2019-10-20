@@ -28,39 +28,8 @@ public class FIMockRepository {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
-			RequestMessageKey messageKey = new RequestMessageKey ();
-			messageKey.setRequestUUID ( reqUUID );
-			messageKey.setServiceRequestId ( "executeFinacleScript" );
-			messageKey.setServiceRequestVersion ( "10.2" );
-			messageKey.setChannelId ( channelId );
-			
-			ResponseMessageInfo messageInfo = new ResponseMessageInfo ();
-			messageInfo.setBankId ( "01" );
-			messageInfo.setMessageDateTime ( messageDateTime );
-			messageInfo.setTimeZone ( "" );
-			
-			UBUSTransaction ubusTransaction = new UBUSTransaction ();
-			ubusTransaction.setId ( "" );
-			ubusTransaction.setStatus ( "" );
-			
-			HostTransaction hostTransaction = new HostTransaction ();
-			hostTransaction.setId ( hostTransaction.getId () );
-			hostTransaction.setStatus ( "SUCCESS" );
-			
-			HostParentTransaction parentTransaction = new HostParentTransaction ();
-			parentTransaction.setId ( "" );
-			parentTransaction.setStatus ( "" );
-			
-			ResponseHeader responseHeader = new ResponseHeader ();
-			responseHeader.setRequestMessageKey ( messageKey );
-			responseHeader.setResponseMessageInfo ( messageInfo );
-			responseHeader.setUBUSTransaction ( ubusTransaction );
-			responseHeader.setHostTransaction ( hostTransaction );
-			responseHeader.setHostParentTransaction ( parentTransaction );
-			responseHeader.setCustomInfo ( "" );
-			
 			Header header = new Header ();
-			header.setResponseHeader ( responseHeader );
+			header.setResponseHeader ( createResponseHeader ( reqUUID, "executeFinacleScript", channelId ) );
 			
 			ExecuteFinacleScriptCustomData customData = new ExecuteFinacleScriptCustomData ();
 			customData.setSuccessOrFailure ( "SUCCESS" );
@@ -93,49 +62,17 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	public ExecuteServiceResponse updateCustomerInfo (String reqUUID, String custId, boolean isCorpCustomer ) {
+	public ExecuteServiceResponse updateCustomerInfo (String reqUUID, String custId, String servReqId, boolean isCorpCustomer ) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		
 		try {
-			RequestMessageKey messageKey = new RequestMessageKey ();
-			messageKey.setRequestUUID ( reqUUID );
-			messageKey.setServiceRequestId ( "RetCustMod" );
-			messageKey.setServiceRequestVersion ( "10.2" );
-			messageKey.setChannelId ( "CRM" );
-			
-			ResponseMessageInfo messageInfo = new ResponseMessageInfo ();
-			messageInfo.setBankId ( "01" );
-			messageInfo.setMessageDateTime ( messageDateTime );
-			messageInfo.setTimeZone ( "" );
-			
-			UBUSTransaction ubusTransaction = new UBUSTransaction ();
-			ubusTransaction.setId ( "" );
-			ubusTransaction.setStatus ( "" );
-			
-			HostTransaction hostTransaction = new HostTransaction ();
-			hostTransaction.setId ( "" );
-			hostTransaction.setStatus ( "SUCCESS" );
-			
-			HostParentTransaction parentTransaction = new HostParentTransaction ();
-			parentTransaction.setId ( "" );
-			parentTransaction.setStatus ( "" );
-			
-			ResponseHeader responseHeader = new ResponseHeader ();
-			responseHeader.setRequestMessageKey ( messageKey );
-			responseHeader.setResponseMessageInfo ( messageInfo );
-			responseHeader.setUBUSTransaction ( ubusTransaction );
-			responseHeader.setHostTransaction ( hostTransaction );
-			responseHeader.setHostParentTransaction ( parentTransaction );
-			responseHeader.setCustomInfo ( "" );
-			
 			Header header = new Header ();
-			header.setResponseHeader ( responseHeader );
+			header.setResponseHeader ( createResponseHeader ( reqUUID, servReqId, "CRM" ) );
 			
 			Body body = new Body ();
 			
 			if(isCorpCustomer){
-				
 				CustomerModOutputStruct customerModOutputStruct = new CustomerModOutputStruct ();
 				customerModOutputStruct.setcifid ( custId );
 				customerModOutputStruct.setDesc ( String.format ( "Corporate Customer successfully updated with CIFID %s", custId ) );
@@ -145,10 +82,11 @@ public class FIMockRepository {
 				
 				updateCorpCustomerResponse corpCustomerResponse = new updateCorpCustomerResponse ();
 				corpCustomerResponse.setCustomerModOutputStruct ( customerModOutputStruct );
+				corpCustomerResponse.setupdateCorpCustomer_CustomData ( new updateCorpCustomer_CustomData () );
 				
 				body.setupdateCorpCustomerResponse ( corpCustomerResponse );
 			}
-			else {
+			else if (servReqId.equals ( "RetCustMod" )){
 				RetCustModRs retCustModRs = new RetCustModRs ();
 				retCustModRs.setCustId ( custId );
 				retCustModRs.setDesc ( String.format ( "Retail Customer successfully updated with CIFID %s", custId ) );
@@ -161,6 +99,18 @@ public class FIMockRepository {
 				custModResponse.setRetCustModRs ( retCustModRs );
 				
 				body.setRetCustModResponse ( custModResponse );
+			}
+			else {
+				CustomerVerifyRs customerVerifyRs = new CustomerVerifyRs ();
+				customerVerifyRs.setcifid ( custId );
+				customerVerifyRs.setDesc ( "Customer Verified" );
+				customerVerifyRs.setStatus ( "Success" );
+				
+				verifyCustomerDetailsResponse verifyCustomerDetailsResponse = new verifyCustomerDetailsResponse ();
+				verifyCustomerDetailsResponse.setCustomerVerifyRs ( customerVerifyRs );
+				verifyCustomerDetailsResponse.setverifyCustomerDetails_CustomData ( new verifyCustomerDetails_CustomData () );
+				
+				body.setverifyCustomerDetailsResponse ( verifyCustomerDetailsResponse );
 			}
 			
 			FIXML fixml = new FIXML ();
@@ -184,39 +134,8 @@ public class FIMockRepository {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		
 		try {
-			RequestMessageKey messageKey = new RequestMessageKey ();
-			messageKey.setRequestUUID ( reqUUID );
-			messageKey.setServiceRequestId ( "executeFinacleScript" );
-			messageKey.setServiceRequestVersion ( "10.2" );
-			messageKey.setChannelId ( "COR" );
-			
-			ResponseMessageInfo messageInfo = new ResponseMessageInfo ();
-			messageInfo.setBankId ( "01" );
-			messageInfo.setMessageDateTime ( messageDateTime );
-			messageInfo.setTimeZone ( "" );
-			
-			UBUSTransaction ubusTransaction = new UBUSTransaction ();
-			ubusTransaction.setId ( "" );
-			ubusTransaction.setStatus ( "" );
-			
-			HostTransaction hostTransaction = new HostTransaction ();
-			hostTransaction.setId ( "" );
-			hostTransaction.setStatus ( "SUCCESS" );
-			
-			HostParentTransaction parentTransaction = new HostParentTransaction ();
-			parentTransaction.setId ( "" );
-			parentTransaction.setStatus ( "" );
-			
-			ResponseHeader responseHeader = new ResponseHeader ();
-			responseHeader.setRequestMessageKey ( messageKey );
-			responseHeader.setResponseMessageInfo ( messageInfo );
-			responseHeader.setUBUSTransaction ( ubusTransaction );
-			responseHeader.setHostTransaction ( hostTransaction );
-			responseHeader.setHostParentTransaction ( parentTransaction );
-			responseHeader.setCustomInfo ( "" );
-			
 			Header header = new Header ();
-			header.setResponseHeader ( responseHeader );
+			header.setResponseHeader ( createResponseHeader ( reqUUID, "SignatureAdd", "COR" ) );
 			
 			SignatureAddRs signatureAddRs = new SignatureAddRs ();
 			signatureAddRs.setAcctId ( acctId );
@@ -247,5 +166,41 @@ public class FIMockRepository {
 			e.printStackTrace ();
 		}
 		return response;
+	}
+	
+	private ResponseHeader createResponseHeader(String reqUUID, String servReqId, String channelId){
+		
+		RequestMessageKey messageKey = new RequestMessageKey ();
+		messageKey.setRequestUUID ( reqUUID );
+		messageKey.setServiceRequestId ( servReqId );
+		messageKey.setServiceRequestVersion ( "10.2" );
+		messageKey.setChannelId ( channelId );
+		
+		ResponseMessageInfo messageInfo = new ResponseMessageInfo ();
+		messageInfo.setBankId ( "01" );
+		messageInfo.setMessageDateTime ( messageDateTime );
+		messageInfo.setTimeZone ( "" );
+		
+		UBUSTransaction ubusTransaction = new UBUSTransaction ();
+		ubusTransaction.setId ( "" );
+		ubusTransaction.setStatus ( "" );
+		
+		HostTransaction hostTransaction = new HostTransaction ();
+		hostTransaction.setId ( hostTransaction.getId () );
+		hostTransaction.setStatus ( "SUCCESS" );
+		
+		HostParentTransaction parentTransaction = new HostParentTransaction ();
+		parentTransaction.setId ( "" );
+		parentTransaction.setStatus ( "" );
+		
+		ResponseHeader responseHeader = new ResponseHeader ();
+		responseHeader.setRequestMessageKey ( messageKey );
+		responseHeader.setResponseMessageInfo ( messageInfo );
+		responseHeader.setUBUSTransaction ( ubusTransaction );
+		responseHeader.setHostTransaction ( hostTransaction );
+		responseHeader.setHostParentTransaction ( parentTransaction );
+		responseHeader.setCustomInfo ( "" );
+		
+		return  responseHeader;
 	}
 }

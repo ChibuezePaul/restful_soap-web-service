@@ -31,20 +31,22 @@ public class FIMockServiceImpl implements FIMockService {
 		text1 = StringUtils.substringBetween ( request, "<RequestUUID>" , "</RequestUUID>");
 		text2 = StringUtils.substringBetween ( request, "<ChannelId>" , "</ChannelId>");
 		text3 = StringUtils.substringBetween ( request, "<signId>" , "</signId>");
-		check1 = request.contains ( "<lienType>");
-		if(request.contains ( "<executeFinacleScriptRequest>" )) check2 = StringUtils.substringBetween ( request, "<requestId>", "</requestId>" ).contains ( "customHol.scr" );
 		
 		try{
 			switch ( serviceRequestId ){
 				case "executeFinacleScript" :
-					response = fiMockRepo.executeFIScript ( text1, text2, text3, check1, check2 );
+					check2 = StringUtils.substringBetween ( request, "<requestId>", "</requestId>" ).contains ( "customHol.scr" );
+					response = fiMockRepo.executeFIScript ( text1, text2, text3, request.contains ( "<lienType>"), check2 );
 					break;
 					
 				case "RetCustMod" :
 				case "updateCorpCustomer" :
-					text2 = serviceRequestId.equals ( "RetCustMod" ) ? StringUtils.substringBetween ( request, "<CustId>" , "</CustId>") : StringUtils.substringBetween ( request, "<corp_key>","</corp_key>");
+				case "verifyCustomerDetails" :
+					text2 = serviceRequestId.equals ( "RetCustMod" ) ? ( StringUtils.substringBetween ( request, "<CustId>" , "</CustId>") )
+						  : (serviceRequestId.equals ( "updateCorpCustomer" ) ? StringUtils.substringBetween ( request, "<corp_key>","</corp_key>")
+						  : StringUtils.substringBetween ( request, "<cifId>","</cifId>" ) );
 					check1 = serviceRequestId.equals ( "updateCorpCustomer" );
-					response = fiMockRepo.updateCustomerInfo ( text1, text2, check1 );
+					response = fiMockRepo.updateCustomerInfo ( text1, text2, serviceRequestId, check1 );
 					break;
 					
 				case "SignatureAdd":
@@ -56,11 +58,11 @@ public class FIMockServiceImpl implements FIMockService {
 					break;
 					
 				default:
-					response = fiMockRepo.executeFIScript ( text1, text2, text3, check1, check2 );
+					response = fiMockRepo.executeFIScript ( text1, text2, text3, false, false );
 					break;
 			}
 		}catch ( Exception e ){
-			logger.info ( "Level2 Error Occurred : {}",e.getMessage () );
+			logger.info ( "Level2 Error Occurred, RequestId is empty : {}, Error : {}", serviceRequestId.isEmpty () , e.getMessage () );
 			e.printStackTrace ();
 		}
 		FIMockLog fiMockLog = new FIMockLog ( new Date (), request, filterResponseForLog ( response.toString () ) );
@@ -74,22 +76,27 @@ public class FIMockServiceImpl implements FIMockService {
 		if(!StringUtils.substringBetween (response, "<executeFinacleScriptResponse>" , "</executeFinacleScriptResponse>").equalsIgnoreCase ("null"))
 			filteredResponse.append (response
 				.replaceAll ("<RetCustModResponse>null</RetCustModResponse>|<SignatureAddResponse>null</SignatureAddResponse>","" )
-				.replaceAll ( "<updateCorpCustomerResponse>null</updateCorpCustomerResponse>", "" ));
+				.replaceAll ( "<updateCorpCustomerResponse>null</updateCorpCustomerResponse>|<verifyCustomerDetailsResponse>null</verifyCustomerDetailsResponse>", "" ));
 		
 		if(!StringUtils.substringBetween (response, "<RetCustModResponse>" , "</RetCustModResponse>").equalsIgnoreCase ("null"))
 			filteredResponse.append (response
 				  .replaceAll ("<executeFinacleScriptResponse>null</executeFinacleScriptResponse>|<SignatureAddResponse>null</SignatureAddResponse>","")
-				  .replaceAll ( "<updateCorpCustomerResponse>null</updateCorpCustomerResponse>", "" ));
+				  .replaceAll ( "<updateCorpCustomerResponse>null</updateCorpCustomerResponse>|<verifyCustomerDetailsResponse>null</verifyCustomerDetailsResponse>", "" ));
 		
 		if(!StringUtils.substringBetween (response, "<updateCorpCustomerResponse>","</updateCorpCustomerResponse>").equalsIgnoreCase ("null"))
 			filteredResponse.append (response
 				  .replaceAll ("<executeFinacleScriptResponse>null</executeFinacleScriptResponse>|<SignatureAddResponse>null</SignatureAddResponse>","")
-				  .replaceAll ( "<RetCustModResponse>null</RetCustModResponse>", "" ));
+				  .replaceAll ( "<RetCustModResponse>null</RetCustModResponse>|<verifyCustomerDetailsResponse>null</verifyCustomerDetailsResponse>", "" ));
+		
+		if(!StringUtils.substringBetween (response, "<verifyCustomerDetailsResponse>", "</verifyCustomerDetailsResponse>").equalsIgnoreCase ("null"))
+			filteredResponse.append (response
+				  .replaceAll ("<executeFinacleScriptResponse>null</executeFinacleScriptResponse>|<RetCustModResponse>null</RetCustModResponse>","")
+				  .replaceAll ( "<updateCorpCustomerResponse>null</updateCorpCustomerResponse>|<SignatureAddResponse>null</SignatureAddResponse>", "" ));
 		
 		if(!StringUtils.substringBetween (response, "<SignatureAddResponse>", "</SignatureAddResponse>").equalsIgnoreCase ("null"))
 			filteredResponse.append (response
 				  .replaceAll ("<executeFinacleScriptResponse>null</executeFinacleScriptResponse>|<RetCustModResponse>null</RetCustModResponse>","")
-				  .replaceAll ( "<updateCorpCustomerResponse>null</updateCorpCustomerResponse>", "" ));
+				  .replaceAll ( "<updateCorpCustomerResponse>null</updateCorpCustomerResponse>|<verifyCustomerDetailsResponse>null</verifyCustomerDetailsResponse>", "" ));
 		
 		return filteredResponse.toString ();
 	}

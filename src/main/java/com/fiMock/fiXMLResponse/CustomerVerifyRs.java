@@ -15,19 +15,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CustomerModOutputStruct complex type.
+ * <p>Java class for CustomerVerifyRs complex type.
  * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;complexType name="CustomerModOutputStruct">
+ * &lt;complexType name="CustomerVerifyRs">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="cifid" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="desc" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="entity" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="service" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -36,23 +34,17 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType ( XmlAccessType.FIELD )
-@XmlType ( name = "CustomerModOutputStruct", propOrder = {
+@XmlType ( name = "CustomerVerifyRs", propOrder = {
 	  "cifid" ,
 	  "desc" ,
-	  "entity" ,
-	  "service" ,
 	  "status"
 } )
-public class CustomerModOutputStruct {
+public class CustomerVerifyRs {
 	
 	@XmlElement ( name = "cifid", required = true )
 	protected String cifid;
 	@XmlElement ( name = "desc", required = true )
 	protected String desc;
-	@XmlElement ( name = "entity", required = true )
-	protected String entity;
-	@XmlElement ( name = "service", required = true )
-	protected String service;
 	@XmlElement ( name = "status", required = true )
 	protected String status;
 	
@@ -95,47 +87,7 @@ public class CustomerModOutputStruct {
 	public void setDesc ( String value ) {
 		this.desc = value;
 	}
-	
-	/**
-	 * Gets the value of the entity property.
-	 *
-	 * @return possible object is
-	 * {@link String }
-	 */
-	public String getEntity () {
-		return entity;
-	}
-	
-	/**
-	 * Sets the value of the entity property.
-	 *
-	 * @param value allowed object is
-	 *              {@link String }
-	 */
-	public void setEntity ( String value ) {
-		this.entity = value;
-	}
-	
-	/**
-	 * Gets the value of the service property.
-	 *
-	 * @return possible object is
-	 * {@link String }
-	 */
-	public String getService () {
-		return service;
-	}
-	
-	/**
-	 * Sets the value of the service property.
-	 *
-	 * @param value allowed object is
-	 *              {@link String }
-	 */
-	public void setService ( String value ) {
-		this.service = value;
-	}
-	
+
 	/**
 	 * Gets the value of the status property.
 	 *
@@ -160,8 +112,6 @@ public class CustomerModOutputStruct {
 	public String toString () {
 		return "\n<cifid>" + cifid + "</cifid>\n" +
 			  "<desc>" + desc + "</desc>\n" +
-			  "<entity>" + entity + "</entity>\n" +
-			  "<service>" + service + "</service>\n" +
 			  "<status>" + status + "</status>\n";
 	}
 }

@@ -85,6 +85,27 @@ public class ObjectFactory {
 	}
 	
 	/**
+	 * Create an instance of {@link verifyCustomerDetailsResponse }
+	 */
+	public verifyCustomerDetailsResponse createverifyCustomerDetailsResponse () {
+		return new verifyCustomerDetailsResponse ();
+	}
+	
+	/**
+	 * Create an instance of {@link verifyCustomerDetails_CustomData }
+	 */
+	public verifyCustomerDetails_CustomData createverifyCustomerDetails_CustomData () {
+		return new verifyCustomerDetails_CustomData ();
+	}
+	
+	/**
+	 * Create an instance of {@link CustomerVerifyRs }
+	 */
+	public CustomerVerifyRs createCustomerVerifyRs () {
+		return new CustomerVerifyRs ();
+	}
+	
+	/**
 	 * Create an instance of {@link RetCustModResponse }
 	 */
 	public RetCustModResponse createRetCustModResponse () {

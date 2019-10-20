@@ -15,17 +15,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RetCustModResponse complex type.
+ * <p>Java class for updateCorpCustomerResponse complex type.
  * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;complexType name="RetCustModResponse">
+ * &lt;complexType name="updateCorpCustomerResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="RetCustModRs" type="{http://webservice.fiusb.ci.infosys.com}RetCustModRs"/>
- *         &lt;element name="RetCustMod_CustomData" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="CustomerModOutputStruct" type="{http://webservice.fiusb.ci.infosys.com}CustomerModOutputStruct"/>
+ *         &lt;element name="updateCorpCustomer_CustomData" type="{http://www.w3.org/2001/XMLSchema}updateCorpCustomer_CustomData"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,7 +42,7 @@ public class updateCorpCustomerResponse {
 	@XmlElement ( name = "CustomerModOutputStruct", required = true )
 	protected CustomerModOutputStruct CustomerModOutputStruct;
 	@XmlElement ( name = "updateCorpCustomer_CustomData", required = true )
-	protected updateCorpCustomer_CustomData updateCorpCustomer_CustomData = new updateCorpCustomer_CustomData ();
+	protected updateCorpCustomer_CustomData updateCorpCustomer_CustomData;
 	
 	/**
 	 * Gets the value of the CustomerModOutputStruct property.
