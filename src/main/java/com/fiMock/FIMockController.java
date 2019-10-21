@@ -21,10 +21,10 @@ public class FIMockController {
 	public FIMockController () {}
 	
 	@PostMapping ( value = "/fi", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE )
-	public ExecuteServiceResponse getRequest ( @RequestBody String request, String reqId ) {
+	public ExecuteServiceResponse getRequest ( @RequestBody String request ) {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
-			reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
+			String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
 			response = fiMockService.executeServiceResponse ( reqId, request );
 			return response;
 		}
