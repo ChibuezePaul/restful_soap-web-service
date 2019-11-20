@@ -41,7 +41,9 @@ import javax.xml.bind.annotation.XmlType;
 	  "successOrFailure" ,
 	  "mainHol" ,
 	  "prevHol" ,
-	  "lienB2KId"
+	  "lienB2KId",
+	  "AcctBal",
+	  "acctName"
 } )
 public class ExecuteFinacleScriptCustomData {
 	
@@ -55,6 +57,11 @@ public class ExecuteFinacleScriptCustomData {
 	protected String prevHol;
 	@XmlElement ( name = "LienB2kId", required = true )
 	protected String lienB2KId;
+	@XmlElement ( name = "AcctBal", required = true )
+	protected String AcctBal;
+	@XmlElement ( name = "acctName", required = true )
+	protected String acctName;
+	
 	
 	/**
 	 * Gets the value of the signId property.
@@ -154,6 +161,46 @@ public class ExecuteFinacleScriptCustomData {
 	 */
 	public void setLienB2KId ( String value ) {
 		this.lienB2KId = value;
+	}
+	
+	/**
+	 * Gets the value of the AcctBal property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getAcctBal () {
+		return AcctBal;
+	}
+	
+	/**
+	 * Sets the value of the AcctBal property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setAcctBal ( String value ) {
+		this.AcctBal = value;
+	}
+	
+	/**
+	 * Gets the value of the acctName property.
+	 *
+	 * @return possible object is
+	 * {@link String }
+	 */
+	public String getAcctName () {
+		return acctName;
+	}
+	
+	/**
+	 * Sets the value of the acctName property.
+	 *
+	 * @param value allowed object is
+	 *              {@link String }
+	 */
+	public void setAcctName ( String value ) {
+		this.acctName = value;
 	}
 	
 	@Override

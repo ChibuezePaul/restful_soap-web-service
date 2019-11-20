@@ -19,7 +19,7 @@ public class FIMockRepository {
 		try {
 			messageDateTime = String.valueOf( DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar ()).normalize());
 		} catch (DatatypeConfigurationException e) {
-			e.getMessage();
+			logger.info ( "MessageDateTime Error {}",e );
 		}
 	}
 	
@@ -33,6 +33,8 @@ public class FIMockRepository {
 			
 			ExecuteFinacleScriptCustomData customData = new ExecuteFinacleScriptCustomData ();
 			customData.setSuccessOrFailure ( "SUCCESS" );
+			customData.setAcctName ( "");
+			customData.setAcctBal ( "1000");
 			if ( signId != null ) customData.setSignId ( signId );
 			if ( isLien ) customData.setLienB2KId ( "01183256054" );
 			if ( isChannel ) {
@@ -56,8 +58,7 @@ public class FIMockRepository {
 			response.setExecuteServiceReturn ( serviceReturn );
 			
 		}catch ( Exception e ){
-			logger.info ( "Level3 Error Occured : {}",e.getMessage () );
-			e.printStackTrace ();
+			logger.info ( "Level 3 Error Occured : {}",e );
 		}
 		return response;
 	}
@@ -86,7 +87,7 @@ public class FIMockRepository {
 				
 				body.setupdateCorpCustomerResponse ( corpCustomerResponse );
 			}
-			else if (servReqId.equals ( "RetCustMod" )){
+			else if ( "RetCustMod".equals ( servReqId ) ){
 				RetCustModRs retCustModRs = new RetCustModRs ();
 				retCustModRs.setCustId ( custId );
 				retCustModRs.setDesc ( String.format ( "Retail Customer successfully updated with CIFID %s", custId ) );
@@ -123,8 +124,7 @@ public class FIMockRepository {
 			response.setExecuteServiceReturn ( serviceReturn );
 			return response;
 		}catch ( Exception e ){
-			logger.info ( "Level3 Error Occured : {}",e.getMessage () );
-			e.printStackTrace ();
+			logger.info ( "Level 3 Error Occured : {}",e );
 		}
 		return response;
 	}
@@ -162,8 +162,7 @@ public class FIMockRepository {
 			response.setExecuteServiceReturn ( serviceReturn );
 			return response;
 		}catch ( Exception e ){
-			logger.info ( "Level3 Error Occured : {}",e.getMessage () );
-			e.printStackTrace ();
+			logger.info ( "Level 3 Error Occured : {}",e );
 		}
 		return response;
 	}

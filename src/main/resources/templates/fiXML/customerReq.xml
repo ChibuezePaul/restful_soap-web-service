@@ -61,3 +61,79 @@
         </web:executeService>
     </soapenv:Body>
 </soapenv:Envelope>
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse xmlns:p594="http://webservice.fiusb.ci.infosys.com"><executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml executeFinacleScript.xsd&quot; xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>
+    <Header>
+        <ResponseHeader>
+            <RequestMessageKey>
+                <RequestUUID>Req_1571845616967</RequestUUID>
+                <ServiceRequestId>executeFinacleScript</ServiceRequestId>
+                <ServiceRequestVersion>10.2</ServiceRequestVersion>
+                <ChannelId>COR</ChannelId>
+            </RequestMessageKey>
+            <ResponseMessageInfo>
+                <BankId>01</BankId>
+                <TimeZone></TimeZone>
+                <MessageDateTime>2019-10-23T15:46:48.604</MessageDateTime>
+            </ResponseMessageInfo><UBUSTransaction>
+            <Id/>
+            <Status/>
+        </UBUSTransaction>
+            <HostTransaction>
+                <Id/>
+                <Status>SUCCESS</Status>
+            </HostTransaction>
+            <HostParentTransaction>
+                <Id/>
+                <Status/>
+            </HostParentTransaction>
+            <CustomInfo/>
+        </ResponseHeader>
+    </Header>
+    <Body>
+        <executeFinacleScriptResponse>
+            <ExecuteFinacleScriptOutputVO>
+            </ExecuteFinacleScriptOutputVO>
+            <executeFinacleScript_CustomData>
+            <AccountNo>2498695013</AccountNo>
+            <CustId>2498695</CustId>
+            <mainCustCifId>2498695</mainCustCifId>
+            <mainCustType>IND</mainCustType>
+            <mainCustFirstName>OLUSEGUN</mainCustFirstName>
+            <mainCustLastName>AIYEGBUSI</mainCustLastName>
+            <mainCustMiddleName>AKINDELE</mainCustMiddleName>
+            <mainCustAddressLine1>NO 3 WALE ADELEKAN ST</mainCustAddressLine1>
+            <mainCustAddressLine2>MAGODO PHASE2 LAGOS</mainCustAddressLine2>
+            <mainCustAddressLine3>null</mainCustAddressLine3>
+            <mainCustSalutation>MR</mainCustSalutation>
+            <mainCustDOB>30-07-1977</mainCustDOB>
+            <mainCustGender>M</mainCustGender>
+            <mainCustMaidenName>GLORIA</mainCustMaidenName>
+            <mainCorpId>Ret</mainCorpId>
+            <mainCustSectorCode>1800</mainCustSectorCode>
+            <mainCustSubSectorCode>1802</mainCustSubSectorCode>
+            <mainCity>.</mainCity>
+            <mainState>LG</mainState>
+            <mainCountry>NG</mainCountry>
+            <mainCustMaritalStatus>OTHR</mainCustMaritalStatus>
+            <mainCustNationality>ZZ</mainCustNationality>
+            <mainCustRegion>70J</mainCustRegion>
+            <mainCustManager>OYE3133</mainCustManager>
+            <custRegistrationNumber>null</custRegistrationNumber>
+            <mainBvnId>null</mainBvnId>
+            <mainCustPhoneNo>08033083115</mainCustPhoneNo>
+            <mainCustPhoneCity>0</mainCustPhoneCity>
+            <mainCustPhoneCountry>234</mainCustPhoneCountry>
+            <mainCustEmail>AKIN_LUCKY@YAHOO.COM</mainCustEmail>
+            <CustomerContactCount>0</CustomerContactCount>
+            <Relationship>No Relationship found</Relationship>
+            <SuccessOrFailure>SUCCESS</SuccessOrFailure>
+        </executeFinacleScript_CustomData>
+        </executeFinacleScriptResponse>
+    </Body>
+</FIXML>
+</executeServiceReturn>
+</p594:executeServiceResponse>
+</soapenv:Body>
+</soapenv:Envelope>

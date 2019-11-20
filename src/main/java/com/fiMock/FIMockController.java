@@ -6,10 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+//@RestController
+@Controller
 public class FIMockController {
 	
 	private final Logger logger = LoggerFactory.getLogger ( this.getClass () );
@@ -20,8 +22,9 @@ public class FIMockController {
 	
 	public FIMockController () {}
 	
+	@ResponseBody
 	@PostMapping ( value = "/fi", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE )
-	public ExecuteServiceResponse getRequest ( @RequestBody String request ) {
+	public ExecuteServiceResponse mockSuccessfulFIRequest ( @RequestBody String request ) {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
 			String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
@@ -29,14 +32,20 @@ public class FIMockController {
 			return response;
 		}
 		catch ( Exception e ) {
-			logger.info ( "Level1 Error Occurred, Request is empty : {}, Error : {}", request.isEmpty () , e.getMessage () );
-			e.printStackTrace ();
+			logger.info ( "Level 1 Error Occurred, Request is empty : {}, Error : {}", request.isEmpty () , e );
 		}
 		return response;
 	}
 	
+	@ResponseBody
+	@PostMapping ( value = "/fi/error", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE )
+	public String mockFailedFIRequest( @RequestBody String request ){
+		String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
+		return fiMockService.createFailedResponse ( reqId );
+	}
+	
 	@GetMapping
 	public String index () {
-		return "THIS IS A FINACLE MOCK SERVER...URI - http://{hostname}:8888/fi";
+		return "/fiXML/index";
 	}
 }
