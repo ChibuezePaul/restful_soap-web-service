@@ -38,12 +38,25 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType ( XmlAccessType.FIELD )
 @XmlType ( name = "executeFinacleScript_CustomData", propOrder = {
 	  "signId" ,
-	  "successOrFailure" ,
 	  "mainHol" ,
 	  "prevHol" ,
 	  "lienB2KId",
+	  "solId",
+	  "crncyCode",
+	  "acctName",
+	  "freezeCode",
 	  "AcctBal",
-	  "acctName"
+	  "schmType",
+	  "schmCode",
+	  "schmCodeDesc",
+	  "acctOfficerCode",
+	  "acctOfficerCodeDesc",
+	  "acctBrokerCode",
+	  "brokerCodeDesc",
+	  "acctStatus",
+	  "acctSMSStatus",
+	  "acctEmailStatus",
+	  "successOrFailure"
 } )
 public class ExecuteFinacleScriptCustomData {
 	
@@ -61,6 +74,32 @@ public class ExecuteFinacleScriptCustomData {
 	protected String AcctBal;
 	@XmlElement ( name = "acctName", required = true )
 	protected String acctName;
+	@XmlElement ( name = "solId", required = true )
+	protected String solId;
+	@XmlElement ( name = "crncyCode", required = true )
+	protected String crncyCode;
+	@XmlElement ( name = "freezeCode", required = true )
+	protected String freezeCode;
+	@XmlElement ( name = "schmType", required = true )
+	protected String schmType;
+	@XmlElement ( name = "schmCode", required = true )
+	protected String schmCode;
+	@XmlElement ( name = "schmCodeDesc", required = true )
+	protected String schmCodeDesc;
+	@XmlElement ( name = "acctOfficerCode", required = true )
+	protected String acctOfficerCode;
+	@XmlElement ( name = "acctOfficerCodeDesc", required = true )
+	protected String acctOfficerCodeDesc;
+	@XmlElement ( name = "acctBrokerCode", required = true )
+	protected String acctBrokerCode;
+	@XmlElement ( name = "brokerCodeDesc", required = true )
+	protected String brokerCodeDesc;
+	@XmlElement ( name = "acctStatus", required = true )
+	protected String acctStatus;
+	@XmlElement ( name = "acctSMSStatus", required = true )
+	protected String acctSMSStatus;
+	@XmlElement ( name = "acctEmailStatus", required = true )
+	protected String acctEmailStatus;
 	
 	
 	/**
@@ -203,12 +242,131 @@ public class ExecuteFinacleScriptCustomData {
 		this.acctName = value;
 	}
 	
+	public String getSolId () {
+		return solId;
+	}
+	
+	public void setSolId ( String solId ) {
+		this.solId = solId;
+	}
+	
+	public String getCrncyCode () {
+		return crncyCode;
+	}
+	
+	public void setCrncyCode ( String crncyCode ) {
+		this.crncyCode = crncyCode;
+	}
+	
+	public String getFreezeCode () {
+		return freezeCode;
+	}
+	
+	public void setFreezeCode ( String freezeCode ) {
+		this.freezeCode = freezeCode;
+	}
+	
+	public String getSchmType () {
+		return schmType;
+	}
+	
+	public void setSchmType ( String schmType ) {
+		this.schmType = schmType;
+	}
+	
+	public String getSchmCode () {
+		return schmCode;
+	}
+	
+	public void setSchmCode ( String schmCode ) {
+		this.schmCode = schmCode;
+	}
+	
+	public String getAcctOfficerCode () {
+		return acctOfficerCode;
+	}
+	
+	public void setAcctOfficerCode ( String acctOfficerCode ) {
+		this.acctOfficerCode = acctOfficerCode;
+	}
+	
+	public String getAcctOfficerCodeDesc () {
+		return acctOfficerCodeDesc;
+	}
+	
+	public void setAcctOfficerCodeDesc ( String acctOfficerCodeDesc ) {
+		this.acctOfficerCodeDesc = acctOfficerCodeDesc;
+	}
+	
+	public String getAcctBrokerCode () {
+		return acctBrokerCode;
+	}
+	
+	public void setAcctBrokerCode ( String acctBrokerCode ) {
+		this.acctBrokerCode = acctBrokerCode;
+	}
+	
+	public String getBrokerCodeDesc () {
+		return brokerCodeDesc;
+	}
+	
+	public void setBrokerCodeDesc ( String brokerCodeDesc ) {
+		this.brokerCodeDesc = brokerCodeDesc;
+	}
+	
+	public String getAcctStatus () {
+		return acctStatus;
+	}
+	
+	public void setAcctStatus ( String acctStatus ) {
+		this.acctStatus = acctStatus;
+	}
+	
+	public String getAcctSMSStatus () {
+		return acctSMSStatus;
+	}
+	
+	public void setAcctSMSStatus ( String acctSMSStatus ) {
+		this.acctSMSStatus = acctSMSStatus;
+	}
+	
+	public String getAcctEmailStatus () {
+		return acctEmailStatus;
+	}
+	
+	public void setAcctEmailStatus ( String acctEmailStatus ) {
+		this.acctEmailStatus = acctEmailStatus;
+	}
+	
+	public String getSchmCodeDesc () {
+		return schmCodeDesc;
+	}
+	
+	public void setSchmCodeDesc ( String schmCodeDesc ) {
+		this.schmCodeDesc = schmCodeDesc;
+	}
+	
 	@Override
 	public String toString () {
 		return "\n<signId>" + signId + "</signId>\n" +
 			  "<SuccessOrFailure>" + successOrFailure + "</SuccessOrFailure>\n" +
 			  "<mainHol>" + mainHol + "</mainHol>\n" +
-			  "<prevHol>" + prevHol + "</prevHol>\n" +
-			  "<LienB2kId>" + lienB2KId + "</LienB2kId>\n";
+			  "<prevHol>" + prevHol + "</prevHol>\n"  +
+			  "<LienB2kId>" + lienB2KId + "</LienB2kId>\n" +
+			  "<AcctBal>" + AcctBal + "</AcctBal>\n" +
+			  "<acctName>" + acctName + "</acctName>\n" +
+			  "<solId>" + solId + "</solId>\n" +
+			  "<crncyCode>" + crncyCode + "</crncyCode>\n" +
+			  "<freezeCode>" + freezeCode + "</freezeCode>\n" +
+			  "<schmType>" + schmType + "</schmType>\n" +
+			  "<schmCode>" + schmCode + "</schmCode>\n" +
+			  "<schmCodeDesc>" + schmCodeDesc + "</schmCodeDesc>\n" +
+			  "<acctOfficerCode>" + acctOfficerCode + "</acctOfficerCode>\n" +
+			  "<acctOfficerCodeDesc>" + acctOfficerCodeDesc + "</acctOfficerCodeDesc>\n" +
+			  "<acctBrokerCode>" + acctBrokerCode + "</acctBrokerCode>\n" +
+			  "<brokerCodeDesc>" + brokerCodeDesc + "</brokerCodeDesc>\n" +
+			  "<acctStatus>" + acctStatus + "</acctStatus>\n" +
+			  "<acctSMSStatus>" + acctSMSStatus + "</acctSMSStatus>\n" +
+			  "<acctEmailStatus>" + acctEmailStatus + "</acctEmailStatus>\n";
 	}
 }

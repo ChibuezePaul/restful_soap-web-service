@@ -6,43 +6,43 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Service
 public class FIMockServiceImpl implements FIMockService {
 	
-	@Autowired
-	private FIMockRepository fiMockRepo;
+	private static final String UPDATE_CORP_CUSTOMER = "updateCorpCustomer";
+	private final FIMockRepository fiMockRepo;
 	private final Logger logger = LoggerFactory.getLogger ( this.getClass () );
 	
+	@Autowired
+	public FIMockServiceImpl ( FIMockRepository fiMockRepo ) {this.fiMockRepo = fiMockRepo;}
+	
 	@Override
-	public ExecuteServiceResponse executeServiceResponse (String serviceRequestId, String request) {
-		String text1,text2,text3,text4,text5;
-		boolean check1;
+	public ExecuteServiceResponse executeServiceResponse (@NotNull String serviceRequestId, @NotNull String request) {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
-		text1 = StringUtils.substringBetween ( request, "<RequestUUID>" , "</RequestUUID>");
-		text2 = StringUtils.substringBetween ( request, "<ChannelId>" , "</ChannelId>");
-		text3 = StringUtils.substringBetween ( request, "<signId>" , "</signId>");
-		
+		String text1 = StringUtils.substringBetween ( request, "<RequestUUID>" , "</RequestUUID>");
+		String text2 = StringUtils.substringBetween ( request, "<ChannelId>" , "</ChannelId>");
+		String text3 = StringUtils.substringBetween ( request, "<signId>" , "</signId>");
+		String text5 = StringUtils.substringBetween ( request, "<accountID>" , "</accountID>");
+		String text4 = StringUtils.substringBetween ( request, "<requestId>", "</requestId>" );
 		try{
 			switch ( serviceRequestId ){
 				case "executeFinacleScript" :
-					check1 = StringUtils.substringBetween ( request, "<requestId>", "</requestId>" ).contains ( "customHol.scr" );
-					response = fiMockRepo.executeFIScript ( text1, text2, text3, request.contains ( "<lienType>"), check1 );
+					
+					response = fiMockRepo.executeFIScript ( text1, text2, text3, text4, text5 );
 					break;
 					
 				case "RetCustMod" :
-				case "updateCorpCustomer" :
+				case UPDATE_CORP_CUSTOMER:
 				case "verifyCustomerDetails" :
-					serviceRequestId=null;
 					if ( "RetCustMod".equals ( serviceRequestId ) )
 						text2 = StringUtils.substringBetween ( request, "<CustId>" , "</CustId>");
 					else
-						text2 = ( "updateCorpCustomer".equals ( serviceRequestId ) ) ? StringUtils.substringBetween ( request, "<corp_key>","</corp_key>")
+						text2 = ( UPDATE_CORP_CUSTOMER.equals ( serviceRequestId ) ) ? StringUtils.substringBetween ( request, "<corp_key>","</corp_key>")
 						  : StringUtils.substringBetween ( request, "<cifId>","</cifId>" );
-					check1 = ( "updateCorpCustomer".equals ( serviceRequestId ) );
+					boolean check1 = ( UPDATE_CORP_CUSTOMER.equals ( serviceRequestId ) );
 					response = fiMockRepo.updateCustomerInfo ( text1, text2, serviceRequestId, check1 );
 					break;
 					
@@ -55,11 +55,11 @@ public class FIMockServiceImpl implements FIMockService {
 					break;
 					
 				default:
-					response = fiMockRepo.executeFIScript ( text1, text2, text3, false, false );
+					response = fiMockRepo.executeFIScript ( text1, text2, text3, text4, text5 );
 					break;
 			}
 		}catch ( Exception e ){
-			logger.info ( "Level2 Error Occurred, RequestId is empty : {}, Error : {}", serviceRequestId.isEmpty () , e );
+			logger.info ( "Level2 Error Occurred, RequestId is empty : {}, {} {}", serviceRequestId.isEmpty (), e.getMessage (), e.getStackTrace() );
 		}
 		FIMockLog fiMockLog = new FIMockLog ( new Date (), request, filterResponseForLog ( response.toString () ) );
 		logger.info ( "FIMOCK LOG : {}", fiMockLog );

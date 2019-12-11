@@ -3,18 +3,30 @@ package com.fiMock;
 import com.fiMock.fiXMLResponse.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.GregorianCalendar;
 
 @Component
 public class FIMockRepository {
 	
+	private static final String LEVEL_3_ERROR_OCCURRED = "Level 3 Error Occured : {} {}";
+	private static final String SUCCESS_OR_FAILURE = "SUCCESS";
 	private final Logger logger = LoggerFactory.getLogger ( this.getClass () );
 	private String messageDateTime;
-	
+	@Value ( "${spring.datasource.url}" )
+	private String dbUrl;
+	@Value ( "${spring.datasource.username}" )
+	private String dbUsername;
+	@Value ( "${spring.datasource.password}" )
+	private String dbPassword;
 	{
 		try {
 			messageDateTime = String.valueOf( DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar ()).normalize());
@@ -23,8 +35,7 @@ public class FIMockRepository {
 		}
 	}
 	
-	public ExecuteServiceResponse executeFIScript ( String reqUUID, String channelId, String signId, boolean isLien,
-		  boolean isChannel ) {
+	public ExecuteServiceResponse executeFIScript ( String reqUUID, String channelId, String signId, String servReqId, String acctNumber ) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
@@ -32,14 +43,61 @@ public class FIMockRepository {
 			header.setResponseHeader ( createResponseHeader ( reqUUID, "executeFinacleScript", channelId ) );
 			
 			ExecuteFinacleScriptCustomData customData = new ExecuteFinacleScriptCustomData ();
-			customData.setSuccessOrFailure ( "SUCCESS" );
-			customData.setAcctName ( "");
-			customData.setAcctBal ( "1000");
+			customData.setSuccessOrFailure ( SUCCESS_OR_FAILURE );
 			if ( signId != null ) customData.setSignId ( signId );
-			if ( isLien ) customData.setLienB2KId ( "01183256054" );
-			if ( isChannel ) {
+			if ( "<lienType>".equals ( servReqId ) ) customData.setLienB2KId ( "01183256054" );
+			if ( "customHol.scr".equals ( servReqId ) ) {
 				customData.setPrevHol ( "YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY" );
 				customData.setMainHol ( "YYNNNN" );
+			}
+			if( "customAcctInfoUpdate.scr".equals ( servReqId ) ){
+				customData.setSolId ( "001" );
+				customData.setCrncyCode ( "NGN" );
+				customData.setAcctName ( "OKOROAFOR VINCENT ONYEKWERE");
+				customData.setFreezeCode ( "null" );
+				customData.setAcctBal ( "1000000");
+				customData.setSchmType ( "CAA" );
+				customData.setSchmCode ( "CA202" );
+				customData.setSchmCodeDesc ( "PREMIUM CURRENT" );
+				customData.setAcctOfficerCode ( "001DE" );
+				customData.setAcctOfficerCodeDesc ( "UGOH JACINTA CHINONSO" );
+				customData.setAcctBrokerCode ( "D1782" );
+				customData.setBrokerCodeDesc ( "ENEJE JANE ONYINYE" );
+				customData.setAcctStatus ( "I" );
+				customData.setAcctSMSStatus ( "N" );
+				customData.setAcctEmailStatus( "Y" );
+				
+				String sqlQuery = String.format ( "select a.branch_sol, a.account_currency, b.value, " +
+					  "a.account_category, a.account_scheme, a.account_secondary_category, a.account_officer_code, " +
+					  "a.account_officer_desc, a.broker_code, b.value from account a, bio b where a.id = b.account_id " +
+					  "and a.account_number = '%s'", acctNumber );
+				String query = String.format ( "select a.branch_sol, a.account_currency, b.value, a.account_category, a.account_scheme, " +
+					  "a.account_secondary_category, a.account_officer_code, a.account_officer_desc, a.broker_code" +
+					  " from account a, bio b where exists (select a.id where (b.id = a.account_name_id or b.id = a.account_status_id)" +
+					  " and account_number='%s')", acctNumber );
+				try ( final Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); final PreparedStatement preparedStatement = connection.prepareCall(query); final ResultSet resultSet = preparedStatement.executeQuery() ) {
+					logger.info("Database Connected Successfully");
+					resultSet.next ();
+					customData.setSolId ( resultSet.getString ( "branch_sol" ) );
+					customData.setCrncyCode ( resultSet.getString ( "account_currency" ) );
+					customData.setFreezeCode ( "null" );
+					customData.setAcctBal ( "1000000");
+					customData.setSchmType ( resultSet.getString ( "account_category" ) );
+					customData.setSchmCode ( resultSet.getString ( "account_scheme" ) );
+					customData.setSchmCodeDesc ( resultSet.getString ( "account_secondary_category" ) );
+					customData.setAcctOfficerCode ( resultSet.getString ( "account_officer_code" ) );
+					customData.setAcctOfficerCodeDesc ( resultSet.getString ( "account_officer_desc" ) );
+					customData.setAcctBrokerCode ( resultSet.getString ( "broker_code" ) );
+					customData.setBrokerCodeDesc ( "ENEJE JANE ONYINYE" );
+					customData.setAcctName ( resultSet.getString ( "value" ) );
+					customData.setAcctSMSStatus ( "N" );
+					customData.setAcctEmailStatus( "Y" );
+					resultSet.next ();
+					customData.setAcctStatus ( resultSet.getString ( "value" ) );
+					logger.info("Record Size {}",resultSet.getFetchSize ());
+				} catch (Exception e) {
+					logger.error ("Database Error Occured : {} {}", e.getMessage (),e.getStackTrace ());
+				}
 			}
 			
 			ExecuteFinacleScriptResponse scriptResponse = new ExecuteFinacleScriptResponse ();
@@ -58,7 +116,7 @@ public class FIMockRepository {
 			response.setExecuteServiceReturn ( serviceReturn );
 			
 		}catch ( Exception e ){
-			logger.info ( "Level 3 Error Occured : {}",e );
+			logger.info ( LEVEL_3_ERROR_OCCURRED,e.getMessage (),e.getStackTrace() );
 		}
 		return response;
 	}
@@ -79,7 +137,7 @@ public class FIMockRepository {
 				customerModOutputStruct.setDesc ( String.format ( "Corporate Customer successfully updated with CIFID %s", custId ) );
 				customerModOutputStruct.setEntity ( "Corporate Customer" );
 				customerModOutputStruct.setService ( "CIFCorpCustomerUpdate" );
-				customerModOutputStruct.setStatus ( "SUCCESS" );
+				customerModOutputStruct.setStatus ( SUCCESS_OR_FAILURE );
 				
 				updateCorpCustomerResponse corpCustomerResponse = new updateCorpCustomerResponse ();
 				corpCustomerResponse.setCustomerModOutputStruct ( customerModOutputStruct );
@@ -93,7 +151,7 @@ public class FIMockRepository {
 				retCustModRs.setDesc ( String.format ( "Retail Customer successfully updated with CIFID %s", custId ) );
 				retCustModRs.setEntity ( "Retail Customer" );
 				retCustModRs.setService ( "CIFRetailCustomerUpdate" );
-				retCustModRs.setStatus ( "SUCCESS" );
+				retCustModRs.setStatus ( SUCCESS_OR_FAILURE );
 				
 				RetCustModResponse custModResponse = new RetCustModResponse ();
 				custModResponse.setRetCustModCustomData ( "" );
@@ -105,7 +163,7 @@ public class FIMockRepository {
 				CustomerVerifyRs customerVerifyRs = new CustomerVerifyRs ();
 				customerVerifyRs.setcifid ( custId );
 				customerVerifyRs.setDesc ( "Customer Verified" );
-				customerVerifyRs.setStatus ( "Success" );
+				customerVerifyRs.setStatus ( SUCCESS_OR_FAILURE );
 				
 				verifyCustomerDetailsResponse verifyCustomerDetailsResponse = new verifyCustomerDetailsResponse ();
 				verifyCustomerDetailsResponse.setCustomerVerifyRs ( customerVerifyRs );
@@ -124,7 +182,7 @@ public class FIMockRepository {
 			response.setExecuteServiceReturn ( serviceReturn );
 			return response;
 		}catch ( Exception e ){
-			logger.info ( "Level 3 Error Occured : {}",e );
+			logger.info ( LEVEL_3_ERROR_OCCURRED,e.getMessage (),e.getStackTrace() );
 		}
 		return response;
 	}
@@ -162,7 +220,7 @@ public class FIMockRepository {
 			response.setExecuteServiceReturn ( serviceReturn );
 			return response;
 		}catch ( Exception e ){
-			logger.info ( "Level 3 Error Occured : {}",e );
+			logger.info ( LEVEL_3_ERROR_OCCURRED,e.getMessage (),e.getStackTrace() );
 		}
 		return response;
 	}
@@ -186,7 +244,7 @@ public class FIMockRepository {
 		
 		HostTransaction hostTransaction = new HostTransaction ();
 		hostTransaction.setId ( hostTransaction.getId () );
-		hostTransaction.setStatus ( "SUCCESS" );
+		hostTransaction.setStatus ( SUCCESS_OR_FAILURE );
 		
 		HostParentTransaction parentTransaction = new HostParentTransaction ();
 		parentTransaction.setId ( "" );

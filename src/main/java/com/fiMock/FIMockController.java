@@ -7,10 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.constraints.NotNull;
 
-//@RestController
 @Controller
 public class FIMockController {
 	
@@ -24,7 +23,7 @@ public class FIMockController {
 	
 	@ResponseBody
 	@PostMapping ( value = "/fi", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE )
-	public ExecuteServiceResponse mockSuccessfulFIRequest ( @RequestBody String request ) {
+	public ExecuteServiceResponse mockSuccessfulFIRequest ( @NotNull @RequestBody String request ) {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
 			String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
@@ -39,7 +38,7 @@ public class FIMockController {
 	
 	@ResponseBody
 	@PostMapping ( value = "/fi/error", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE )
-	public String mockFailedFIRequest( @RequestBody String request ){
+	public String mockFailedFIRequest( @NotNull @RequestBody String request ){
 		String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
 		return fiMockService.createFailedResponse ( reqId );
 	}
