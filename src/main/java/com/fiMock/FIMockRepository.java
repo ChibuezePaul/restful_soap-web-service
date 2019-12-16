@@ -17,17 +17,18 @@ import java.util.GregorianCalendar;
 @Component
 public class FIMockRepository {
 	
+	private static final String VALUE = "value";
 	private static final String LEVEL_3_ERROR_OCCURRED = "Level 3 Error Occured : {} {}";
 	private static final String SUCCESS_OR_FAILURE = "SUCCESS";
-	private final Logger logger = LoggerFactory.getLogger ( this.getClass () );
-	private String messageDateTime;
+	private static final Logger logger = LoggerFactory.getLogger ( FIMockRepository.class );
+	private static String messageDateTime;
 	@Value ( "${spring.datasource.url}" )
 	private String dbUrl;
 	@Value ( "${spring.datasource.username}" )
 	private String dbUsername;
 	@Value ( "${spring.datasource.password}" )
 	private String dbPassword;
-	{
+	static {
 		try {
 			messageDateTime = String.valueOf( DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar ()).normalize());
 		} catch (DatatypeConfigurationException e) {
@@ -35,7 +36,7 @@ public class FIMockRepository {
 		}
 	}
 	
-	public ExecuteServiceResponse executeFIScript ( String reqUUID, String channelId, String signId, String servReqId, String acctNumber ) {
+	public ExecuteServiceResponse executeFIScriptResponse ( String reqUUID, String channelId, String signId, String servReqId, String acctNumber ) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
@@ -44,56 +45,51 @@ public class FIMockRepository {
 			
 			ExecuteFinacleScriptCustomData customData = new ExecuteFinacleScriptCustomData ();
 			customData.setSuccessOrFailure ( SUCCESS_OR_FAILURE );
+			
 			if ( signId != null ) customData.setSignId ( signId );
+			
 			if ( "<lienType>".equals ( servReqId ) ) customData.setLienB2KId ( "01183256054" );
+			
 			if ( "customHol.scr".equals ( servReqId ) ) {
 				customData.setPrevHol ( "YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY" );
 				customData.setMainHol ( "YYNNNN" );
 			}
+			
 			if( "customAcctInfoUpdate.scr".equals ( servReqId ) ){
-				customData.setSolId ( "001" );
-				customData.setCrncyCode ( "NGN" );
-				customData.setAcctName ( "OKOROAFOR VINCENT ONYEKWERE");
-				customData.setFreezeCode ( "null" );
-				customData.setAcctBal ( "1000000");
-				customData.setSchmType ( "CAA" );
-				customData.setSchmCode ( "CA202" );
-				customData.setSchmCodeDesc ( "PREMIUM CURRENT" );
-				customData.setAcctOfficerCode ( "001DE" );
-				customData.setAcctOfficerCodeDesc ( "UGOH JACINTA CHINONSO" );
-				customData.setAcctBrokerCode ( "D1782" );
-				customData.setBrokerCodeDesc ( "ENEJE JANE ONYINYE" );
-				customData.setAcctStatus ( "I" );
-				customData.setAcctSMSStatus ( "N" );
-				customData.setAcctEmailStatus( "Y" );
-				
-				String sqlQuery = String.format ( "select a.branch_sol, a.account_currency, b.value, " +
-					  "a.account_category, a.account_scheme, a.account_secondary_category, a.account_officer_code, " +
-					  "a.account_officer_desc, a.broker_code, b.value from account a, bio b where a.id = b.account_id " +
-					  "and a.account_number = '%s'", acctNumber );
 				String query = String.format ( "select a.branch_sol, a.account_currency, b.value, a.account_category, a.account_scheme, " +
 					  "a.account_secondary_category, a.account_officer_code, a.account_officer_desc, a.broker_code" +
 					  " from account a, bio b where exists (select a.id where (b.id = a.account_name_id or b.id = a.account_status_id)" +
 					  " and account_number='%s')", acctNumber );
 				try ( final Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); final PreparedStatement preparedStatement = connection.prepareCall(query); final ResultSet resultSet = preparedStatement.executeQuery() ) {
 					logger.info("Database Connected Successfully");
+					String queryValue;
 					resultSet.next ();
-					customData.setSolId ( resultSet.getString ( "branch_sol" ) );
-					customData.setCrncyCode ( resultSet.getString ( "account_currency" ) );
+					queryValue = resultSet.getString ( "branch_sol" ) != null ? resultSet.getString ( "branch_sol" ) : "";
+					customData.setSolId ( queryValue );
+					queryValue = resultSet.getString ( "account_currency" ) != null ? resultSet.getString ( "account_currency" ) : "";
+					customData.setCrncyCode ( queryValue );
 					customData.setFreezeCode ( "null" );
 					customData.setAcctBal ( "1000000");
-					customData.setSchmType ( resultSet.getString ( "account_category" ) );
-					customData.setSchmCode ( resultSet.getString ( "account_scheme" ) );
-					customData.setSchmCodeDesc ( resultSet.getString ( "account_secondary_category" ) );
-					customData.setAcctOfficerCode ( resultSet.getString ( "account_officer_code" ) );
-					customData.setAcctOfficerCodeDesc ( resultSet.getString ( "account_officer_desc" ) );
-					customData.setAcctBrokerCode ( resultSet.getString ( "broker_code" ) );
+					queryValue = resultSet.getString ( "account_category" ) != null ? resultSet.getString ( "account_category" ) : "";
+					customData.setSchmType ( queryValue );
+					queryValue = resultSet.getString ( "account_scheme" ) != null ? resultSet.getString ( "account_scheme" ) : "";
+					customData.setSchmCode ( queryValue );
+					queryValue = resultSet.getString ( "account_secondary_category" ) != null ? resultSet.getString ( "account_secondary_category" ) : "";
+					customData.setSchmCodeDesc ( queryValue );
+					queryValue = resultSet.getString ( "account_officer_code" ) != null ? resultSet.getString ( "account_officer_code" ) : "";
+					customData.setAcctOfficerCode ( queryValue );
+					queryValue = resultSet.getString ( "broker_code" ) != null ? resultSet.getString ( "broker_code" ) : "";
+					customData.setAcctBrokerCode ( queryValue );
 					customData.setBrokerCodeDesc ( "ENEJE JANE ONYINYE" );
-					customData.setAcctName ( resultSet.getString ( "value" ) );
+					//The column VALUE holds the customer name from the first row returned
+					queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "";
+					customData.setAcctName ( queryValue );
 					customData.setAcctSMSStatus ( "N" );
 					customData.setAcctEmailStatus( "Y" );
 					resultSet.next ();
-					customData.setAcctStatus ( resultSet.getString ( "value" ) );
+					//The column VALUE holds the customer account status from the second row returned
+					queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "";
+					customData.setAcctStatus ( queryValue );
 					logger.info("Record Size {}",resultSet.getFetchSize ());
 				} catch (Exception e) {
 					logger.error ("Database Error Occured : {} {}", e.getMessage (),e.getStackTrace ());
@@ -121,7 +117,7 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	public ExecuteServiceResponse updateCustomerInfo (String reqUUID, String custId, String servReqId, boolean isCorpCustomer ) {
+	public ExecuteServiceResponse updateCustomerInfoResponse (String reqUUID, String custId, String servReqId, boolean isCorpCustomer ) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		
@@ -187,7 +183,7 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	public ExecuteServiceResponse addMandate (String reqUUID, String acctId, String acctCode, String bankCode, String sigPowerNum) {
+	public ExecuteServiceResponse addMandateResponse (String reqUUID, String acctId, String acctCode, String bankCode, String sigPowerNum) {
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		

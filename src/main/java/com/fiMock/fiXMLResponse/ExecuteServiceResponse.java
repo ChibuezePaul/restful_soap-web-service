@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.*;
 @XmlType ( name = "", propOrder = {
 	  "executeServiceReturn"
 } )
-@XmlRootElement ( name = "executeServiceResponse" )
+@XmlRootElement ( name = "createSuccessfulResponse" )
 public class ExecuteServiceResponse {
 	
 	@XmlElement ( required = true )
@@ -64,9 +64,9 @@ public class ExecuteServiceResponse {
 			  ".w3.org/2001/XMLSchema-instance\">" +
 			  "\n<soapenv:Header/>" +
 			  "\n <soapenv:Body>\n" +
-			  "<executeServiceResponse xmlns:p594=\"http://webservice.fiusb.ci.infosys.com\"> \n" +
+			  "<createSuccessfulResponse xmlns:p594=\"http://webservice.fiusb.ci.infosys.com\"> \n" +
 			  "<executeServiceReturn>" + executeServiceReturn + "<executeServiceReturn>\n" +
-			  "</p594:executeServiceResponse>\n" +
+			  "</p594:createSuccessfulResponse>\n" +
 			  "</soapenv:Body>\n" +
 			  "</soapenv:Envelope>";
 	}

@@ -27,7 +27,7 @@ public class FIMockController {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
 			String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
-			response = fiMockService.executeServiceResponse ( reqId, request );
+			response = fiMockService.createSuccessfulResponse ( reqId, request );
 			return response;
 		}
 		catch ( Exception e ) {

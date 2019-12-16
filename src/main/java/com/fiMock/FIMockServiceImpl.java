@@ -20,7 +20,7 @@ public class FIMockServiceImpl implements FIMockService {
 	public FIMockServiceImpl ( FIMockRepository fiMockRepo ) {this.fiMockRepo = fiMockRepo;}
 	
 	@Override
-	public ExecuteServiceResponse executeServiceResponse (@NotNull String serviceRequestId, @NotNull String request) {
+	public ExecuteServiceResponse createSuccessfulResponse (@NotNull String serviceRequestId, @NotNull String request) {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		String text1 = StringUtils.substringBetween ( request, "<RequestUUID>" , "</RequestUUID>");
 		String text2 = StringUtils.substringBetween ( request, "<ChannelId>" , "</ChannelId>");
@@ -31,7 +31,7 @@ public class FIMockServiceImpl implements FIMockService {
 			switch ( serviceRequestId ){
 				case "executeFinacleScript" :
 					
-					response = fiMockRepo.executeFIScript ( text1, text2, text3, text4, text5 );
+					response = fiMockRepo.executeFIScriptResponse ( text1, text2, text3, text4, text5 );
 					break;
 					
 				case "RetCustMod" :
@@ -43,7 +43,7 @@ public class FIMockServiceImpl implements FIMockService {
 						text2 = ( UPDATE_CORP_CUSTOMER.equals ( serviceRequestId ) ) ? StringUtils.substringBetween ( request, "<corp_key>","</corp_key>")
 						  : StringUtils.substringBetween ( request, "<cifId>","</cifId>" );
 					boolean check1 = ( UPDATE_CORP_CUSTOMER.equals ( serviceRequestId ) );
-					response = fiMockRepo.updateCustomerInfo ( text1, text2, serviceRequestId, check1 );
+					response = fiMockRepo.updateCustomerInfoResponse ( text1, text2, serviceRequestId, check1 );
 					break;
 					
 				case "SignatureAdd":
@@ -51,22 +51,21 @@ public class FIMockServiceImpl implements FIMockService {
 					text3 = StringUtils.substringBetween ( request, "<AcctCode>" , "</AcctCode>");
 					text4 = StringUtils.substringBetween ( request, "<BankCode>" , "</BankCode>");
 					text5 = StringUtils.substringBetween ( request, "<SigPowerNum>" , "</SigPowerNum>");
-					response = fiMockRepo.addMandate ( text1, text2, text3, text4, text5 );
+					response = fiMockRepo.addMandateResponse ( text1, text2, text3, text4, text5 );
 					break;
 					
 				default:
-					response = fiMockRepo.executeFIScript ( text1, text2, text3, text4, text5 );
+					response = fiMockRepo.executeFIScriptResponse ( text1, text2, text3, text4, text5 );
 					break;
 			}
 		}catch ( Exception e ){
 			logger.info ( "Level2 Error Occurred, RequestId is empty : {}, {} {}", serviceRequestId.isEmpty (), e.getMessage (), e.getStackTrace() );
 		}
-		FIMockLog fiMockLog = new FIMockLog ( new Date (), request, filterResponseForLog ( response.toString () ) );
-		logger.info ( "FIMOCK LOG : {}", fiMockLog );
+		logger.info ( "FIMOCK LOG : {}", new FIMockLog ( new Date (), request, filterResponseForLog ( response.toString () ) ) );
 		return response;
 	}
 	
-	private String filterResponseForLog (  String response ){
+	private String filterResponseForLog ( String response ){
 		
 		StringBuilder filteredResponse = new StringBuilder ();
 		final String NULL_EXECUTE_FIN_SCRIPT = "<executeFinacleScriptResponse>null</executeFinacleScriptResponse>";
@@ -112,7 +111,7 @@ public class FIMockServiceImpl implements FIMockService {
 			  "                  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n" +
 			  "    <soapenv:Header/>\n" +
 			  "    <soapenv:Body>\n" +
-			  "        <p594:executeServiceResponse xmlns:p594=\"http://webservice.fiusb.ci.infosys.com\">\n" +
+			  "        <p594:createSuccessfulResponse xmlns:p594=\"http://webservice.fiusb.ci.infosys.com\">\n" +
 			  "            <executeServiceReturn><FIXML xsi:schemaLocation=&quot;http://www.finacle.com/fixml " +
 			  "executeFinacleScript.xsd&quot;\n" +
 			  "                xmlns=&quot;http://www.finacle.com/fixml&quot; xmlns:xsi=&quot;http://www" +
@@ -159,12 +158,12 @@ public class FIMockServiceImpl implements FIMockService {
 			  "                </Body>\n" +
 			  "            </FIXML>\n" +
 			  "        </executeServiceReturn>\n" +
-			  "    </p594:executeServiceResponse>\n" +
+			  "    </p594:createSuccessfulResponse>\n" +
 			  "</soapenv:Body></soapenv:Envelope>";
 		final String PRODUCT_FAILED_RESPONSE = "<soapenv:Envelope xmlns:soapenv=\"\"http://schemas.xmlsoap" +
 			  ".org/soap/envelope/\"\" xmlns:soapenc=\"\"http://schemas.xmlsoap.org/soap/encoding/\"\" " +
 			  "xmlns:xsd=\"\"http://www.w3.org/2001/XMLSchema\"\" xmlns:xsi=\"\"http://www" +
-			  ".w3.org/2001/XMLSchema-instance\"\"><soapenv:Header/><soapenv:Body><p594:executeServiceResponse " +
+			  ".w3.org/2001/XMLSchema-instance\"\"><soapenv:Header/><soapenv:Body><p594:createSuccessfulResponse " +
 			  "xmlns:p594=\"\"http://webservice.fiusb.ci.infosys.com\"\"><executeServiceReturn><FIXML " +
 			  "xsi:schemaLocation=&quot;http://www.finacle.com/fixml RetCustMod.xsd&quot; xmlns=&quot;http://www.finacle" +
 			  ".com/fixml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>\n" +
@@ -204,7 +203,7 @@ public class FIMockServiceImpl implements FIMockService {
 			  "            </FISystemException>\n" +
 			  "        </Error></Body>\n" +
 			  "</FIXML>\n" +
-			  "</executeServiceReturn></p594:executeServiceResponse></soapenv:Body></soapenv:Envelope>";
+			  "</executeServiceReturn></p594:createSuccessfulResponse></soapenv:Body></soapenv:Envelope>";
 		
 		if( reqID.equals ( "executeFinacleScript" ))
 			return CUSTOM_FAILED_RESPONSE;
