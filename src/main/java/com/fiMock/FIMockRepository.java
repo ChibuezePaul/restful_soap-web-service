@@ -60,40 +60,7 @@ public class FIMockRepository {
 					  "a.account_secondary_category, a.account_officer_code, a.account_officer_desc, a.broker_code" +
 					  " from account a, bio b where exists (select a.id where (b.id = a.account_name_id or b.id = a.account_status_id)" +
 					  " and account_number='%s')", acctNumber );
-				try ( final Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); final PreparedStatement preparedStatement = connection.prepareCall(query); final ResultSet resultSet = preparedStatement.executeQuery() ) {
-					logger.info("Database Connected Successfully");
-					String queryValue;
-					resultSet.next ();
-					queryValue = resultSet.getString ( "branch_sol" ) != null ? resultSet.getString ( "branch_sol" ) : "";
-					customData.setSolId ( queryValue );
-					queryValue = resultSet.getString ( "account_currency" ) != null ? resultSet.getString ( "account_currency" ) : "";
-					customData.setCrncyCode ( queryValue );
-					customData.setFreezeCode ( "null" );
-					customData.setAcctBal ( "1000000");
-					queryValue = resultSet.getString ( "account_category" ) != null ? resultSet.getString ( "account_category" ) : "";
-					customData.setSchmType ( queryValue );
-					queryValue = resultSet.getString ( "account_scheme" ) != null ? resultSet.getString ( "account_scheme" ) : "";
-					customData.setSchmCode ( queryValue );
-					queryValue = resultSet.getString ( "account_secondary_category" ) != null ? resultSet.getString ( "account_secondary_category" ) : "";
-					customData.setSchmCodeDesc ( queryValue );
-					queryValue = resultSet.getString ( "account_officer_code" ) != null ? resultSet.getString ( "account_officer_code" ) : "";
-					customData.setAcctOfficerCode ( queryValue );
-					queryValue = resultSet.getString ( "broker_code" ) != null ? resultSet.getString ( "broker_code" ) : "";
-					customData.setAcctBrokerCode ( queryValue );
-					customData.setBrokerCodeDesc ( "ENEJE JANE ONYINYE" );
-					//The column VALUE holds the customer name from the first row returned
-					queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "";
-					customData.setAcctName ( queryValue );
-					customData.setAcctSMSStatus ( "N" );
-					customData.setAcctEmailStatus( "Y" );
-					resultSet.next ();
-					//The column VALUE holds the customer account status from the second row returned
-					queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "";
-					customData.setAcctStatus ( queryValue );
-					logger.info("Record Size {}",resultSet.getFetchSize ());
-				} catch (Exception e) {
-					logger.error ("Database Error Occured : {} {}", e.getMessage (),e.getStackTrace ());
-				}
+				setAcctInfoScriptResponseBody ( customData, query );
 			}
 			
 			ExecuteFinacleScriptResponse scriptResponse = new ExecuteFinacleScriptResponse ();
@@ -255,5 +222,42 @@ public class FIMockRepository {
 		responseHeader.setCustomInfo ( "" );
 		
 		return  responseHeader;
+	}
+	
+	private void setAcctInfoScriptResponseBody ( ExecuteFinacleScriptCustomData customData, String query ) {
+		try ( final Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); final PreparedStatement preparedStatement = connection.prepareCall(query); final ResultSet resultSet = preparedStatement.executeQuery() ) {
+			logger.info("Database Connected Successfully");
+			String queryValue;
+			resultSet.next ();
+			queryValue = resultSet.getString ( "branch_sol" ) != null ? resultSet.getString ( "branch_sol" ) : "";
+			customData.setSolId ( queryValue );
+			queryValue = resultSet.getString ( "account_currency" ) != null ? resultSet.getString ( "account_currency" ) : "";
+			customData.setCrncyCode ( queryValue );
+			customData.setFreezeCode ( "null" );
+			customData.setAcctBal ( "1000000");
+			queryValue = resultSet.getString ( "account_category" ) != null ? resultSet.getString ( "account_category" ) : "";
+			customData.setSchmType ( queryValue );
+			queryValue = resultSet.getString ( "account_scheme" ) != null ? resultSet.getString ( "account_scheme" ) : "";
+			customData.setSchmCode ( queryValue );
+			queryValue = resultSet.getString ( "account_secondary_category" ) != null ? resultSet.getString ( "account_secondary_category" ) : "";
+			customData.setSchmCodeDesc ( queryValue );
+			queryValue = resultSet.getString ( "account_officer_code" ) != null ? resultSet.getString ( "account_officer_code" ) : "";
+			customData.setAcctOfficerCode ( queryValue );
+			queryValue = resultSet.getString ( "broker_code" ) != null ? resultSet.getString ( "broker_code" ) : "";
+			customData.setAcctBrokerCode ( queryValue );
+			customData.setBrokerCodeDesc ( "ENEJE JANE ONYINYE" );
+			//The column VALUE holds the customer name from the first row returned
+			queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "";
+			customData.setAcctName ( queryValue );
+			customData.setAcctSMSStatus ( "N" );
+			customData.setAcctEmailStatus( "Y" );
+			resultSet.next ();
+			//The column VALUE holds the customer account status from the second row returned
+			queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "";
+			customData.setAcctStatus ( queryValue );
+			logger.info("Record Size {}",resultSet.getFetchSize ());
+		} catch (Exception e) {
+			logger.error ("Database Error Occured : {} {}", e.getMessage (),e.getStackTrace ());
+		}
 	}
 }
