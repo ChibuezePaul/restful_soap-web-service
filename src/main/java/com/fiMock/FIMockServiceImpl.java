@@ -7,7 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class FIMockServiceImpl implements FIMockService {
@@ -20,42 +23,44 @@ public class FIMockServiceImpl implements FIMockService {
 	public FIMockServiceImpl ( FIMockRepository fiMockRepo ) {this.fiMockRepo = fiMockRepo;}
 	
 	@Override
-	public ExecuteServiceResponse createSuccessfulResponse (@NotNull String serviceRequestId, @NotNull String request) {
+	public ExecuteServiceResponse createSuccessfulResponse (@NotNull String request) {
+		String serviceRequestId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
-		String text1 = StringUtils.substringBetween ( request, "<RequestUUID>" , "</RequestUUID>");
-		String text2 = StringUtils.substringBetween ( request, "<ChannelId>" , "</ChannelId>");
-		String text3 = StringUtils.substringBetween ( request, "<signId>" , "</signId>");
-		String text5 = StringUtils.substringBetween ( request, "<accountID>" , "</accountID>");
-		String text4 = StringUtils.substringBetween ( request, "<requestId>", "</requestId>" );
+		String requestParam1 = StringUtils.substringBetween ( request, "<RequestUUID>" , "</RequestUUID>");
+		String requestParam2 = StringUtils.substringBetween ( request, "<ChannelId>" , "</ChannelId>");
+		String requestParam3 = StringUtils.substringBetween ( request, "<signId>" , "</signId>");
+		String requestParam4 = StringUtils.substringBetween ( request, "<requestId>", "</requestId>" );
+		String requestParam5 = StringUtils.substringBetween ( request, "<accountID>" , "</accountID>");
+		List<String> requestParametersList = Arrays.asList (requestParam1,requestParam2,requestParam3,requestParam4,requestParam5);
 		try{
 			switch ( serviceRequestId ){
 				case "executeFinacleScript" :
-					
-					response = fiMockRepo.executeFIScriptResponse ( text1, text2, text3, text4, text5 );
+					response = fiMockRepo.executeFIScriptResponse ( requestParametersList );
 					break;
 					
 				case "RetCustMod" :
 				case UPDATE_CORP_CUSTOMER:
 				case "verifyCustomerDetails" :
 					if ( "RetCustMod".equals ( serviceRequestId ) )
-						text2 = StringUtils.substringBetween ( request, "<CustId>" , "</CustId>");
+						requestParam2 = StringUtils.substringBetween ( request, "<CustId>" , "</CustId>");
 					else
-						text2 = ( UPDATE_CORP_CUSTOMER.equals ( serviceRequestId ) ) ? StringUtils.substringBetween ( request, "<corp_key>","</corp_key>")
+						requestParam2 = ( UPDATE_CORP_CUSTOMER.equals ( serviceRequestId ) ) ? StringUtils.substringBetween ( request, "<corp_key>","</corp_key>")
 						  : StringUtils.substringBetween ( request, "<cifId>","</cifId>" );
-					boolean check1 = ( UPDATE_CORP_CUSTOMER.equals ( serviceRequestId ) );
-					response = fiMockRepo.updateCustomerInfoResponse ( text1, text2, serviceRequestId, check1 );
+					requestParametersList = Arrays.asList (requestParam1,requestParam2,serviceRequestId);
+					response = fiMockRepo.updateCustomerInfoResponse ( requestParametersList );
 					break;
 					
 				case "SignatureAdd":
-					text2 = StringUtils.substringBetween ( request, "<AcctId>" , "</AcctId>");
-					text3 = StringUtils.substringBetween ( request, "<AcctCode>" , "</AcctCode>");
-					text4 = StringUtils.substringBetween ( request, "<BankCode>" , "</BankCode>");
-					text5 = StringUtils.substringBetween ( request, "<SigPowerNum>" , "</SigPowerNum>");
-					response = fiMockRepo.addMandateResponse ( text1, text2, text3, text4, text5 );
+					requestParam2 = StringUtils.substringBetween ( request, "<AcctId>" , "</AcctId>");
+					requestParam3 = StringUtils.substringBetween ( request, "<AcctCode>" , "</AcctCode>");
+					requestParam4 = StringUtils.substringBetween ( request, "<BankCode>" , "</BankCode>");
+					requestParam5 = StringUtils.substringBetween ( request, "<SigPowerNum>" , "</SigPowerNum>");
+					requestParametersList = Arrays.asList (requestParam1, requestParam2, requestParam3, requestParam4, requestParam5);
+					response = fiMockRepo.addMandateResponse ( requestParametersList );
 					break;
 					
 				default:
-					response = fiMockRepo.executeFIScriptResponse ( text1, text2, text3, text4, text5 );
+					response = fiMockRepo.executeFIScriptResponse ( requestParametersList );
 					break;
 			}
 		}catch ( Exception e ){
@@ -106,7 +111,7 @@ public class FIMockServiceImpl implements FIMockService {
 		return filteredResponse.toString ();
 	}
 	
-	public String createFailedResponse (String reqID){
+	public String createFailedResponse (String requestID){
 		final String CUSTOM_FAILED_RESPONSE = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n" +
 			  "                  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n" +
 			  "    <soapenv:Header/>\n" +
@@ -120,7 +125,7 @@ public class FIMockServiceImpl implements FIMockService {
 			  "                    <ResponseHeader>\n" +
 			  "                        <RequestMessageKey>\n" +
 			  "                            <RequestUUID>Req_1561473245562</RequestUUID>\n" +
-			  "                            <ServiceRequestId>"+reqID+"</ServiceRequestId>\n" +
+			  "                            <ServiceRequestId>"+requestID+"</ServiceRequestId>\n" +
 			  "                            <ServiceRequestVersion>10.2</ServiceRequestVersion>\n" +
 			  "                            <ChannelId>COR</ChannelId>\n" +
 			  "                        </RequestMessageKey>\n" +
@@ -171,7 +176,7 @@ public class FIMockServiceImpl implements FIMockService {
 			  "        <ResponseHeader>\n" +
 			  "            <RequestMessageKey>\n" +
 			  "                <RequestUUID>Req_1571058701975</RequestUUID>\n" +
-			  "                <ServiceRequestId>"+reqID+"</ServiceRequestId>\n" +
+			  "                <ServiceRequestId>"+requestID+"</ServiceRequestId>\n" +
 			  "                <ServiceRequestVersion>10.2</ServiceRequestVersion>\n" +
 			  "                <ChannelId>CRM</ChannelId>\n" +
 			  "            </RequestMessageKey>\n" +
@@ -205,7 +210,7 @@ public class FIMockServiceImpl implements FIMockService {
 			  "</FIXML>\n" +
 			  "</executeServiceReturn></p594:createSuccessfulResponse></soapenv:Body></soapenv:Envelope>";
 		
-		if( reqID.equals ( "executeFinacleScript" ))
+		if( requestID.equals ( "executeFinacleScript" ))
 			return CUSTOM_FAILED_RESPONSE;
 		return PRODUCT_FAILED_RESPONSE;
 	}

@@ -27,7 +27,7 @@ public class FIMockController {
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
 			String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
-			response = fiMockService.createSuccessfulResponse ( reqId, request );
+			response = fiMockService.createSuccessfulResponse ( request );
 			return response;
 		}
 		catch ( Exception e ) {
@@ -39,8 +39,8 @@ public class FIMockController {
 	@ResponseBody
 	@PostMapping ( value = "/fi/error", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_XML_VALUE )
 	public String mockFailedFIRequest( @NotNull @RequestBody String request ){
-		String reqId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
-		return fiMockService.createFailedResponse ( reqId );
+		String requestId = StringUtils.substringBetween ( request, "<ServiceRequestId>", "</ServiceRequestId>" );
+		return fiMockService.createFailedResponse ( requestId );
 	}
 	
 	@GetMapping

@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 @Component
 public class FIMockRepository {
@@ -36,35 +37,42 @@ public class FIMockRepository {
 		}
 	}
 	
-	public ExecuteServiceResponse executeFIScriptResponse ( String reqUUID, String channelId, String signId, String servReqId, String acctNumber ) {
+	public ExecuteServiceResponse executeFIScriptResponse ( List<String> requestParametersList ) {
+		
+		String requestUUID = requestParametersList.get (0);
+		String channelId = requestParametersList.get (1);
+		String signId = requestParametersList.get (2);
+		String requestId = requestParametersList.get (3);
+		String acctNumber = requestParametersList.get (4);
+		
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		try {
 			Header header = new Header ();
-			header.setResponseHeader ( createResponseHeader ( reqUUID, "executeFinacleScript", channelId ) );
+			header.setResponseHeader ( createResponseHeader ( requestUUID, "executeFinacleScript", channelId ) );
 			
-			ExecuteFinacleScriptCustomData customData = new ExecuteFinacleScriptCustomData ();
-			customData.setSuccessOrFailure ( SUCCESS_OR_FAILURE );
+			ExecuteFinacleScriptCustomData scriptCustomData = new ExecuteFinacleScriptCustomData ();
+			scriptCustomData.setSuccessOrFailure ( SUCCESS_OR_FAILURE );
 			
-			if ( signId != null ) customData.setSignId ( signId );
+			if ( signId != null ) scriptCustomData.setSignId ( signId );
 			
-			if ( "<lienType>".equals ( servReqId ) ) customData.setLienB2KId ( "01183256054" );
+			if ( "addLienCustom.scr".equals ( requestId ) ) scriptCustomData.setLienB2KId ( "01183256054" );
 			
-			if ( "customHol.scr".equals ( servReqId ) ) {
-				customData.setPrevHol ( "YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY" );
-				customData.setMainHol ( "YYNNNN" );
+			if ( "customHol.scr".equals ( requestId ) ) {
+				scriptCustomData.setPrevHol ( "YYYYNNNNYYNNNNNYYNNNNNYYNNNNNY" );
+				scriptCustomData.setMainHol ( "YYNNNN" );
 			}
 			
-			if( "customAcctInfoUpdate.scr".equals ( servReqId ) ){
+			if( "customAcctInfoUpdate.scr".equals ( requestId ) ){
 				String query = String.format ( "select a.branch_sol, a.account_currency, b.value, a.account_category, a.account_scheme, " +
 					  "a.account_secondary_category, a.account_officer_code, a.account_officer_desc, a.broker_code" +
 					  " from account a, bio b where exists (select a.id where (b.id = a.account_name_id or b.id = a.account_status_id)" +
-					  " and account_number='%s')", acctNumber );
-				setAcctInfoScriptResponseBody ( customData, query );
+					  " and account_number = '%s')", acctNumber );
+				generateAcctInfo ( scriptCustomData, query );
 			}
 			
 			ExecuteFinacleScriptResponse scriptResponse = new ExecuteFinacleScriptResponse ();
-			scriptResponse.setExecuteFinacleScriptCustomData ( customData );
+			scriptResponse.setExecuteFinacleScriptCustomData ( scriptCustomData );
 			scriptResponse.setExecuteFinacleScriptOutputVO ( "" );
 			
 			Body body = new Body ();
@@ -84,20 +92,24 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	public ExecuteServiceResponse updateCustomerInfoResponse (String reqUUID, String custId, String servReqId, boolean isCorpCustomer ) {
+	public ExecuteServiceResponse updateCustomerInfoResponse (List<String> requestParametersList) {
+		
+		String requestUUID = requestParametersList.get (0);
+		String customerId = requestParametersList.get (1);
+		String serviceRequestId = requestParametersList.get (2);
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		
 		try {
 			Header header = new Header ();
-			header.setResponseHeader ( createResponseHeader ( reqUUID, servReqId, "CRM" ) );
+			header.setResponseHeader ( createResponseHeader ( requestUUID, serviceRequestId, "CRM" ) );
 			
 			Body body = new Body ();
 			
-			if(isCorpCustomer){
+			if("updateCorpCustomer".equals ( serviceRequestId )){
 				CustomerModOutputStruct customerModOutputStruct = new CustomerModOutputStruct ();
-				customerModOutputStruct.setcifid ( custId );
-				customerModOutputStruct.setDesc ( String.format ( "Corporate Customer successfully updated with CIFID %s", custId ) );
+				customerModOutputStruct.setcifid ( customerId );
+				customerModOutputStruct.setDesc ( String.format ( "Corporate Customer successfully updated with CIFID %s", customerId ) );
 				customerModOutputStruct.setEntity ( "Corporate Customer" );
 				customerModOutputStruct.setService ( "CIFCorpCustomerUpdate" );
 				customerModOutputStruct.setStatus ( SUCCESS_OR_FAILURE );
@@ -108,10 +120,10 @@ public class FIMockRepository {
 				
 				body.setupdateCorpCustomerResponse ( corpCustomerResponse );
 			}
-			else if ( "RetCustMod".equals ( servReqId ) ){
+			else if ( "RetCustMod".equals ( serviceRequestId ) ){
 				RetCustModRs retCustModRs = new RetCustModRs ();
-				retCustModRs.setCustId ( custId );
-				retCustModRs.setDesc ( String.format ( "Retail Customer successfully updated with CIFID %s", custId ) );
+				retCustModRs.setCustId ( customerId );
+				retCustModRs.setDesc ( String.format ( "Retail Customer successfully updated with CIFID %s", customerId ) );
 				retCustModRs.setEntity ( "Retail Customer" );
 				retCustModRs.setService ( "CIFRetailCustomerUpdate" );
 				retCustModRs.setStatus ( SUCCESS_OR_FAILURE );
@@ -124,7 +136,7 @@ public class FIMockRepository {
 			}
 			else {
 				CustomerVerifyRs customerVerifyRs = new CustomerVerifyRs ();
-				customerVerifyRs.setcifid ( custId );
+				customerVerifyRs.setcifid ( customerId );
 				customerVerifyRs.setDesc ( "Customer Verified" );
 				customerVerifyRs.setStatus ( SUCCESS_OR_FAILURE );
 				
@@ -150,13 +162,19 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	public ExecuteServiceResponse addMandateResponse (String reqUUID, String acctId, String acctCode, String bankCode, String sigPowerNum) {
+	public ExecuteServiceResponse addMandateResponse (List<String> requestParametersList) {
+		
+		String requestUUID = requestParametersList.get (0);
+		String acctId = requestParametersList.get (1);
+		String acctCode = requestParametersList.get (2);
+		String bankCode = requestParametersList.get (3);
+		String sigPowerNum = requestParametersList.get (4);
 		
 		ExecuteServiceResponse response = new ExecuteServiceResponse ();
 		
 		try {
 			Header header = new Header ();
-			header.setResponseHeader ( createResponseHeader ( reqUUID, "SignatureAdd", "COR" ) );
+			header.setResponseHeader ( createResponseHeader ( requestUUID, "SignatureAdd", "COR" ) );
 			
 			SignatureAddRs signatureAddRs = new SignatureAddRs ();
 			signatureAddRs.setAcctId ( acctId );
@@ -188,11 +206,11 @@ public class FIMockRepository {
 		return response;
 	}
 	
-	private ResponseHeader createResponseHeader(String reqUUID, String servReqId, String channelId){
+	private ResponseHeader createResponseHeader(String requestUUID, String serviceRequestId, String channelId){
 		
 		RequestMessageKey messageKey = new RequestMessageKey ();
-		messageKey.setRequestUUID ( reqUUID );
-		messageKey.setServiceRequestId ( servReqId );
+		messageKey.setRequestUUID ( requestUUID );
+		messageKey.setServiceRequestId ( serviceRequestId );
 		messageKey.setServiceRequestVersion ( "10.2" );
 		messageKey.setChannelId ( channelId );
 		
@@ -224,40 +242,56 @@ public class FIMockRepository {
 		return  responseHeader;
 	}
 	
-	private void setAcctInfoScriptResponseBody ( ExecuteFinacleScriptCustomData customData, String query ) {
+	private void generateAcctInfo ( ExecuteFinacleScriptCustomData customData, String query ) {
 		try ( final Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword); final PreparedStatement preparedStatement = connection.prepareCall(query); final ResultSet resultSet = preparedStatement.executeQuery() ) {
 			logger.info("Database Connected Successfully");
 			String queryValue;
 			resultSet.next ();
-			queryValue = resultSet.getString ( "branch_sol" ) != null ? resultSet.getString ( "branch_sol" ) : "";
+			queryValue = resultSet.getString ( "branch_sol" ) != null ? resultSet.getString ( "branch_sol" ) : "001";
 			customData.setSolId ( queryValue );
-			queryValue = resultSet.getString ( "account_currency" ) != null ? resultSet.getString ( "account_currency" ) : "";
+			queryValue = resultSet.getString ( "account_currency" ) != null ? resultSet.getString ( "account_currency" ) : "NGN";
 			customData.setCrncyCode ( queryValue );
 			customData.setFreezeCode ( "null" );
 			customData.setAcctBal ( "1000000");
-			queryValue = resultSet.getString ( "account_category" ) != null ? resultSet.getString ( "account_category" ) : "";
+			queryValue = resultSet.getString ( "account_category" ) != null ? resultSet.getString ( "account_category" ) : "CAA";
 			customData.setSchmType ( queryValue );
-			queryValue = resultSet.getString ( "account_scheme" ) != null ? resultSet.getString ( "account_scheme" ) : "";
+			queryValue = resultSet.getString ( "account_scheme" ) != null ? resultSet.getString ( "account_scheme" ) : "CA202";
 			customData.setSchmCode ( queryValue );
-			queryValue = resultSet.getString ( "account_secondary_category" ) != null ? resultSet.getString ( "account_secondary_category" ) : "";
+			queryValue = resultSet.getString ( "account_secondary_category" ) != null ? resultSet.getString ( "account_secondary_category" ) : "PREMIUM CURRENT";
 			customData.setSchmCodeDesc ( queryValue );
-			queryValue = resultSet.getString ( "account_officer_code" ) != null ? resultSet.getString ( "account_officer_code" ) : "";
+			queryValue = resultSet.getString ( "account_officer_code" ) != null ? resultSet.getString ( "account_officer_code" ) : "001DE";
 			customData.setAcctOfficerCode ( queryValue );
-			queryValue = resultSet.getString ( "broker_code" ) != null ? resultSet.getString ( "broker_code" ) : "";
+			queryValue = resultSet.getString ( "broker_code" ) != null ? resultSet.getString ( "broker_code" ) : "D1782";
 			customData.setAcctBrokerCode ( queryValue );
 			customData.setBrokerCodeDesc ( "ENEJE JANE ONYINYE" );
 			//The column VALUE holds the customer name from the first row returned
-			queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "";
+			queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "OKOROAFOR VINCENT ONYEKWERE";
 			customData.setAcctName ( queryValue );
 			customData.setAcctSMSStatus ( "N" );
 			customData.setAcctEmailStatus( "Y" );
 			resultSet.next ();
 			//The column VALUE holds the customer account status from the second row returned
-			queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "";
+			queryValue = resultSet.getString ( VALUE ) != null ? resultSet.getString ( VALUE ) : "A";
 			customData.setAcctStatus ( queryValue );
 			logger.info("Record Size {}",resultSet.getFetchSize ());
 		} catch (Exception e) {
 			logger.error ("Database Error Occured : {} {}", e.getMessage (),e.getStackTrace ());
+			customData.setSolId ( "001" );
+			customData.setCrncyCode ( "NGN" );
+			customData.setFreezeCode ( "null" );
+			customData.setAcctBal ( "1000000");
+			customData.setSchmType ( "CAA" );
+			customData.setSchmCode ( "CA202" );
+			customData.setSchmCodeDesc ( "PREMIUM CURRENT" );
+			customData.setAcctOfficerCode ( "001DE" );
+			customData.setAcctBrokerCode ( "D1782" );
+			customData.setBrokerCodeDesc ( "ENEJE JANE ONYINYE" );
+			//The column VALUE holds the customer name from the first row returned
+			customData.setAcctName ( "OKOROAFOR VINCENT ONYEKWERE" );
+			customData.setAcctSMSStatus ( "N" );
+			customData.setAcctEmailStatus( "Y" );
+			//The column VALUE holds the customer account status from the second row returned
+			customData.setAcctStatus ( "A" );
 		}
 	}
 }
